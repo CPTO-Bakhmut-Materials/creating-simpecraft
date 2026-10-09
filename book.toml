@@ -1,0 +1,24 @@
+[book]
+title = "Minecraft на LÖVE: 3D-графіка з нуля"
+description = "Навчальний курс для професії 4113 «Оператор з обробки інформації та програмного забезпечення»"
+language = "uk"
+src = "."
+
+[build]
+build-dir = "book"
+create-missing = false
+# Без стандартного препроцесора index: інакше README.md перетворюються на index.html
+# і посилання між уроками (../01-window/README.md) ламаються.
+use-default-preprocessors = false
+
+[preprocessor.links]
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+no-section-label = true
+
+# Вбудований пошук mdBook (elasticlunr) відкидає кириличні слова, тож для
+# українського тексту він нічого не знаходить. Вимикаємо, щоб не вводити в оману.
+[output.html.search]
+enable = false
