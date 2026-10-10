@@ -13,10 +13,17 @@ use-default-preprocessors = false
 
 [preprocessor.links]
 
+# Формули LaTeX: $...$ у рядку, $$...$$ окремим блоком. KaTeX рендерить їх під час
+# збирання, а GitHub показує ту саму розмітку у файлах README.
+# Потрібна програма mdbook-katex 0.9.x (сумісна з mdBook 0.4), див. .github/workflows/pages.yml.
+[preprocessor.katex]
+after = ["links"]
+
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
 no-section-label = true
+additional-css = ["theme/katex.css"]
 
 # Вбудований пошук mdBook (elasticlunr) відкидає кириличні слова, тож для
 # українського тексту він нічого не знаходить. Вимикаємо, щоб не вводити в оману.
