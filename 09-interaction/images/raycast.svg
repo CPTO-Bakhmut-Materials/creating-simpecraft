@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="365" viewBox="0 0 900 365" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Обхід клітинок Amanatides &amp; Woo і наївний спосіб">
+<title>Обхід клітинок Amanatides &amp; Woo і наївний спосіб</title>
+<defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#d64545" stroke-width="1.2"/></pattern></defs>
+<rect width="900" height="365" fill="#ffffff"/>
+<text x="20" y="26" font-size="17" font-weight="bold" textLength="188.6" lengthAdjust="spacingAndGlyphs">Amanatides &amp; Woo:</text>
+<text x="20" y="48.1" font-size="17" font-weight="bold" textLength="254.1" lengthAdjust="spacingAndGlyphs">кожна клітинка на шляху</text>
+<path d="M40,322 L40,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="40" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">0</text>
+<path d="M84,322 L84,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="84" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">1</text>
+<path d="M128,322 L128,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="128" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">2</text>
+<path d="M172,322 L172,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="172" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">3</text>
+<path d="M216,322 L216,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="216" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">4</text>
+<path d="M260,322 L260,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="260" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">5</text>
+<path d="M304,322 L304,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="304" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">6</text>
+<path d="M348,322 L348,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="348" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">7</text>
+<path d="M392,322 L392,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="392" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">8</text>
+<path d="M436,322 L436,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="436" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">9</text>
+<path d="M40,322 L436,322" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="32" y="326" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">0</text>
+<path d="M40,278 L436,278" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="32" y="282" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">1</text>
+<path d="M40,234 L436,234" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="32" y="238" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">2</text>
+<path d="M40,190 L436,190" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="32" y="194" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">3</text>
+<path d="M40,146 L436,146" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="32" y="150" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">4</text>
+<path d="M40,102 L436,102" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="32" y="106" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">5</text>
+<rect x="348" y="234" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="260" y="278" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="348" y="190" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="304" y="278" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="348" y="278" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="304" y="102" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="348" y="146" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="304" y="146" width="44" height="44" fill="#e8833a" stroke="#ffffff" stroke-width="1"/>
+<rect x="40" y="278" width="44" height="44" fill="#d5e2f8" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="62" y="315.5" font-size="12" font-weight="bold" text-anchor="middle" textLength="8.4" lengthAdjust="spacingAndGlyphs">0</text>
+<rect x="84" y="278" width="44" height="44" fill="#d5e2f8" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="106" y="315.5" font-size="12" font-weight="bold" text-anchor="middle" textLength="8.4" lengthAdjust="spacingAndGlyphs">1</text>
+<rect x="84" y="234" width="44" height="44" fill="#d5e2f8" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="106" y="249.5" font-size="12" font-weight="bold" text-anchor="middle" textLength="8.4" lengthAdjust="spacingAndGlyphs">2</text>
+<rect x="128" y="234" width="44" height="44" fill="#d5e2f8" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="150" y="271.5" font-size="12" font-weight="bold" text-anchor="middle" textLength="8.4" lengthAdjust="spacingAndGlyphs">3</text>
+<rect x="172" y="234" width="44" height="44" fill="#d5e2f8" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="194" y="271.5" font-size="12" font-weight="bold" text-anchor="middle" textLength="8.4" lengthAdjust="spacingAndGlyphs">4</text>
+<rect x="172" y="190" width="44" height="44" fill="#d5e2f8" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="194" y="205.5" font-size="12" font-weight="bold" text-anchor="middle" textLength="8.4" lengthAdjust="spacingAndGlyphs">5</text>
+<rect x="216" y="190" width="44" height="44" fill="#d5e2f8" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="238" y="227.5" font-size="12" font-weight="bold" text-anchor="middle" textLength="8.4" lengthAdjust="spacingAndGlyphs">6</text>
+<rect x="216" y="146" width="44" height="44" fill="#d5e2f8" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="238" y="161.5" font-size="12" font-weight="bold" text-anchor="middle" textLength="8.4" lengthAdjust="spacingAndGlyphs">7</text>
+<rect x="260" y="146" width="44" height="44" fill="#d5e2f8" stroke="#2f6fdb" stroke-width="1.5"/>
+<text x="282" y="161.5" font-size="12" font-weight="bold" text-anchor="middle" textLength="8.4" lengthAdjust="spacingAndGlyphs">8</text>
+<text x="326" y="183.5" font-size="12" font-weight="bold" text-anchor="middle" fill="#ffffff" textLength="8.4" lengthAdjust="spacingAndGlyphs">9</text>
+<path d="M431.6,97.6 L424.9,105.6 L421.3,98.7 Z" fill="#d64545"/>
+<path d="M66.4,291.2 L424.7,101.3" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="84" cy="281.9" r="3" fill="#1f2933"/>
+<circle cx="91.3" cy="278" r="3" fill="#1f2933"/>
+<circle cx="128" cy="258.5" r="3" fill="#1f2933"/>
+<circle cx="172" cy="235.2" r="3" fill="#1f2933"/>
+<circle cx="174.3" cy="234" r="3" fill="#1f2933"/>
+<circle cx="216" cy="211.9" r="3" fill="#1f2933"/>
+<circle cx="257.3" cy="190" r="3" fill="#1f2933"/>
+<circle cx="260" cy="188.6" r="3" fill="#1f2933"/>
+<circle cx="304" cy="165.2" r="3" fill="#1f2933"/>
+<circle cx="66.4" cy="291.2" r="7" fill="#d64545"/>
+<text x="44.4" y="207.6" font-size="12" font-weight="bold" fill="#d64545" textLength="50.9" lengthAdjust="spacingAndGlyphs">камера</text>
+<path d="M66.4,282.4 L62.4,274.3 L69.2,273.8 Z" fill="#d64545"/>
+<path d="M62,220.8 L65.9,275.7" fill="none" stroke="#d64545" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<rect x="260" y="146" width="44" height="44" fill="none" stroke="#3a9a4e" stroke-width="3" stroke-dasharray="6 4"/>
+<path d="M284.2,183.4 L296.8,178.3 L296.8,188.5 Z" fill="#3a9a4e"/>
+<path d="M308.4,183.4 L294.4,183.4" fill="none" stroke="#3a9a4e" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="284.2" y="260.4" font-size="12" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="112.3" lengthAdjust="spacingAndGlyphs">normal = (−1, 0)</text>
+<path d="M295.2,171.5 L297.3,180.3 L290.6,179.3 Z" fill="#3a9a4e"/>
+<path d="M284.2,245 L294.2,178.2" fill="none" stroke="#3a9a4e" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="46.6" y="108.6" font-size="12" font-weight="bold" fill="#3a9a4e" textLength="139.8" lengthAdjust="spacingAndGlyphs">сюди ставимо блок:</text>
+<text x="46.6" y="124.2" font-size="12" font-weight="bold" fill="#3a9a4e" textLength="124.8" lengthAdjust="spacingAndGlyphs">hit.block + normal</text>
+<path d="M264.4,150.4 L255.6,152.2 L256.8,145.6 Z" fill="#3a9a4e"/>
+<path d="M167.6,132.8 L257.8,149.2" fill="none" stroke="#3a9a4e" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="460" y="26" font-size="17" font-weight="bold" textLength="72.5" lengthAdjust="spacingAndGlyphs">Наївно:</text>
+<text x="460" y="48.1" font-size="17" font-weight="bold" textLength="283.9" lengthAdjust="spacingAndGlyphs">точки через кожні 0.5 блока</text>
+<path d="M480,322 L480,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="480" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">0</text>
+<path d="M524,322 L524,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="524" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">1</text>
+<path d="M568,322 L568,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="568" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">2</text>
+<path d="M612,322 L612,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="612" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">3</text>
+<path d="M656,322 L656,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="656" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">4</text>
+<path d="M700,322 L700,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="700" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">5</text>
+<path d="M744,322 L744,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="744" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">6</text>
+<path d="M788,322 L788,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="788" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">7</text>
+<path d="M832,322 L832,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="832" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">8</text>
+<path d="M876,322 L876,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="876" y="346" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">9</text>
+<path d="M480,322 L876,322" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="472" y="326" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">0</text>
+<path d="M480,278 L876,278" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="472" y="282" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">1</text>
+<path d="M480,234 L876,234" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="472" y="238" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">2</text>
+<path d="M480,190 L876,190" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="472" y="194" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">3</text>
+<path d="M480,146 L876,146" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="472" y="150" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">4</text>
+<path d="M480,102 L876,102" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="472" y="106" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">5</text>
+<rect x="788" y="234" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="700" y="278" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="788" y="190" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="744" y="278" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="788" y="278" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="744" y="102" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="788" y="146" width="44" height="44" fill="#7f7f7f" stroke="#ffffff" stroke-width="1"/>
+<rect x="744" y="146" width="44" height="44" fill="#e8833a" stroke="#ffffff" stroke-width="1"/>
+<rect x="612" y="234" width="44" height="44" fill="url(#hatch)" stroke="#d64545" stroke-width="2"/>
+<rect x="656" y="146" width="44" height="44" fill="url(#hatch)" stroke="#d64545" stroke-width="2"/>
+<path d="M871.6,97.6 L864.9,105.6 L861.3,98.7 Z" fill="#d64545"/>
+<path d="M506.4,291.2 L864.7,101.3" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="506.4" cy="291.2" r="4" fill="#7e4fc4"/>
+<circle cx="525.8" cy="280.9" r="4" fill="#7e4fc4"/>
+<circle cx="545.3" cy="270.6" r="4" fill="#7e4fc4"/>
+<circle cx="564.7" cy="260.3" r="4" fill="#7e4fc4"/>
+<circle cx="584.2" cy="250" r="4" fill="#7e4fc4"/>
+<circle cx="603.6" cy="239.7" r="4" fill="#7e4fc4"/>
+<circle cx="623" cy="229.4" r="4" fill="#7e4fc4"/>
+<circle cx="642.5" cy="219.1" r="4" fill="#7e4fc4"/>
+<circle cx="661.9" cy="208.8" r="4" fill="#7e4fc4"/>
+<circle cx="681.3" cy="198.5" r="4" fill="#7e4fc4"/>
+<circle cx="700.8" cy="188.2" r="4" fill="#7e4fc4"/>
+<circle cx="720.2" cy="177.9" r="4" fill="#7e4fc4"/>
+<circle cx="739.7" cy="167.5" r="4" fill="#7e4fc4"/>
+<circle cx="759.1" cy="157.2" r="4" fill="#7e4fc4"/>
+<circle cx="506.4" cy="291.2" r="7" fill="#d64545"/>
+<text x="484.4" y="207.6" font-size="12" font-weight="bold" fill="#d64545" textLength="50.9" lengthAdjust="spacingAndGlyphs">камера</text>
+<path d="M506.4,282.4 L502.4,274.3 L509.2,273.8 Z" fill="#d64545"/>
+<path d="M502,220.8 L505.9,275.7" fill="none" stroke="#d64545" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+</svg>

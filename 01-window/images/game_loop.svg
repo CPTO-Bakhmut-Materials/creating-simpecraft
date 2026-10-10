@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="430" viewBox="0 0 860 430" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Ігровий цикл LÖVE">
+<title>Ігровий цикл LÖVE</title>
+<rect width="860" height="430" fill="#ffffff"/>
+<rect x="20" y="30" width="200" height="90" rx="8" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="2"/>
+<text x="120" y="68.3" font-size="17" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="112.6" lengthAdjust="spacingAndGlyphs">love.load()</text>
+<text x="120" y="93.7" font-size="12" text-anchor="middle" textLength="118.2" lengthAdjust="spacingAndGlyphs">один раз на старті</text>
+<rect x="320" y="30" width="200" height="90" rx="8" fill="#ede6f8" stroke="#7e4fc4" stroke-width="2"/>
+<text x="420" y="60.5" font-size="17" font-weight="bold" text-anchor="middle" textLength="48.8" lengthAdjust="spacingAndGlyphs">події</text>
+<text x="420" y="85.8" font-size="12" text-anchor="middle" textLength="103.7" lengthAdjust="spacingAndGlyphs">клавіші, миша →</text>
+<text x="420" y="101.4" font-size="12" text-anchor="middle" textLength="113.0" lengthAdjust="spacingAndGlyphs">love.keypressed …</text>
+<rect x="620" y="160" width="200" height="90" rx="8" fill="#e3ebfa" stroke="#2f6fdb" stroke-width="2"/>
+<text x="720" y="198.3" font-size="17" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="153.5" lengthAdjust="spacingAndGlyphs">love.update(dt)</text>
+<text x="720" y="223.7" font-size="12" text-anchor="middle" textLength="117.9" lengthAdjust="spacingAndGlyphs">змінюємо стан гри</text>
+<rect x="320" y="300" width="200" height="90" rx="8" fill="#fbece1" stroke="#e8833a" stroke-width="2"/>
+<text x="420" y="338.3" font-size="17" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="112.6" lengthAdjust="spacingAndGlyphs">love.draw()</text>
+<text x="420" y="363.6" font-size="12" text-anchor="middle" textLength="153.7" lengthAdjust="spacingAndGlyphs">малюємо поточний стан</text>
+<rect x="20" y="300" width="200" height="90" rx="8" fill="#eceef1" stroke="#7a8594" stroke-width="2"/>
+<text x="120" y="330.5" font-size="17" font-weight="bold" text-anchor="middle" textLength="122.2" lengthAdjust="spacingAndGlyphs">показ кадру</text>
+<text x="120" y="355.9" font-size="12" text-anchor="middle" textLength="94.4" lengthAdjust="spacingAndGlyphs">чекаємо vsync,</text>
+<text x="120" y="371.5" font-size="12" text-anchor="middle" textLength="66.4" lengthAdjust="spacingAndGlyphs">міряємо dt</text>
+<path d="M320,75 L310.4,78.9 L310.4,71.1 Z" fill="#1f2933"/>
+<path d="M220,75 L312.2,75" fill="none" stroke="#1f2933" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M720,160 L712.4,152.9 L719.5,149.6 Z" fill="#1f2933"/>
+<path d="M520,75 C600,75 700,100 716.7,152.9" fill="none" stroke="#1f2933" stroke-width="2"/>
+<path d="M520,345 L529.5,340.9 L529.7,348.6 Z" fill="#1f2933"/>
+<path d="M720,250 C700,320 600,345 527.8,344.8" fill="none" stroke="#1f2933" stroke-width="2"/>
+<path d="M220,345 L229.6,341.1 L229.6,348.9 Z" fill="#1f2933"/>
+<path d="M320,345 L227.8,345" fill="none" stroke="#1f2933" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M340,120 L331.2,125.5 L329.8,117.8 Z" fill="#1f2933"/>
+<path d="M120,300 C120,200 200,140 332.3,121.3" fill="none" stroke="#1f2933" stroke-width="2"/>
+<text x="30" y="215" font-size="12" fill="#6b7785" textLength="67.2" lengthAdjust="spacingAndGlyphs">наступний</text>
+<text x="30" y="230.6" font-size="12" fill="#6b7785" textLength="30.5" lengthAdjust="spacingAndGlyphs">кадр</text>
+<text x="420" y="205" font-size="17" font-style="italic" text-anchor="middle" fill="#6b7785" textLength="116.1" lengthAdjust="spacingAndGlyphs">ігровий цикл</text>
+<text x="420" y="227.1" font-size="17" font-style="italic" text-anchor="middle" fill="#6b7785" textLength="197.1" lengthAdjust="spacingAndGlyphs">≈ 60 разів на секунду</text>
+</svg>

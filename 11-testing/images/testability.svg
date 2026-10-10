@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Що й наскільки легко перевіряти автоматично">
+<title>Що й наскільки легко перевіряти автоматично</title>
+<rect width="880" height="470" fill="#ffffff"/>
+<text x="440" y="30" font-size="17" font-weight="bold" text-anchor="middle" textLength="463.5" lengthAdjust="spacingAndGlyphs">Що й наскільки легко перевіряти автоматично</text>
+<rect x="20" y="54" width="840" height="138" rx="4" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="2"/>
+<text x="38" y="82" font-size="17" font-weight="bold" fill="#3a9a4e" textLength="225.4" lengthAdjust="spacingAndGlyphs">Чиста логіка, без LÖVE</text>
+<text x="842" y="82" font-size="12" font-style="italic" text-anchor="end" textLength="152.9" lengthAdjust="spacingAndGlyphs">легко: luajit tests/run.lua</text>
+<rect x="38" y="100" width="50.9" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="63.5" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="28.9" lengthAdjust="spacingAndGlyphs">vec3</text>
+<rect x="98.9" y="100" width="72.6" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="135.2" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="50.6" lengthAdjust="spacingAndGlyphs">extent3</text>
+<rect x="181.5" y="100" width="50.9" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="206.9" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="28.9" lengthAdjust="spacingAndGlyphs">mat4</text>
+<rect x="242.4" y="100" width="43.7" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="264.2" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="21.7" lengthAdjust="spacingAndGlyphs">vox</text>
+<rect x="296.1" y="100" width="58.1" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="325.1" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="36.1" lengthAdjust="spacingAndGlyphs">world</text>
+<rect x="364.2" y="100" width="65.4" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="396.9" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="43.4" lengthAdjust="spacingAndGlyphs">blocks</text>
+<rect x="439.6" y="100" width="72.6" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="475.9" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="50.6" lengthAdjust="spacingAndGlyphs">raycast</text>
+<rect x="522.2" y="100" width="65.4" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="554.8" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="43.4" lengthAdjust="spacingAndGlyphs">camera</text>
+<rect x="597.5" y="100" width="65.4" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="630.2" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="43.4" lengthAdjust="spacingAndGlyphs">mesher</text>
+<rect x="672.9" y="100" width="130.4" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="738.1" y="121" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="108.4" lengthAdjust="spacingAndGlyphs">Game.chooseEdit</text>
+<rect x="38" y="142" width="188.2" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="132.1" y="163" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="166.2" lengthAdjust="spacingAndGlyphs">Renderer.chunksTouching</text>
+<rect x="236.2" y="142" width="159.3" height="32" rx="3" fill="#ffffff" stroke="#3a9a4e" stroke-width="1"/>
+<text x="315.9" y="163" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="137.3" lengthAdjust="spacingAndGlyphs">WorldLoader.fromVox</text>
+<rect x="20" y="206" width="840" height="96" rx="4" fill="#fbece1" stroke="#e8833a" stroke-width="2"/>
+<text x="38" y="234" font-size="17" font-weight="bold" fill="#e8833a" textLength="506.3" lengthAdjust="spacingAndGlyphs">Код, що звертається до love.mouse / love.keyboard</text>
+<text x="842" y="234" font-size="12" font-style="italic" text-anchor="end" textLength="236.5" lengthAdjust="spacingAndGlyphs">потрібна «підробка» LÖVE (fake_love)</text>
+<rect x="38" y="252" width="166.5" height="32" rx="3" fill="#ffffff" stroke="#e8833a" stroke-width="1"/>
+<text x="121.3" y="273" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="144.5" lengthAdjust="spacingAndGlyphs">input/mouse_keyboard</text>
+<rect x="214.5" y="252" width="94.3" height="32" rx="3" fill="#ffffff" stroke="#e8833a" stroke-width="1"/>
+<text x="261.7" y="273" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="72.3" lengthAdjust="spacingAndGlyphs">input/init</text>
+<rect x="20" y="316" width="840" height="112" rx="4" fill="#f9e3e3" stroke="#d64545" stroke-width="2"/>
+<text x="38" y="344" font-size="17" font-weight="bold" fill="#d64545" textLength="180.2" lengthAdjust="spacingAndGlyphs">Те, що бачить око</text>
+<text x="842" y="344" font-size="12" font-style="italic" text-anchor="end" textLength="150.9" lengthAdjust="spacingAndGlyphs">лише запуск і перегляд</text>
+<text x="842" y="359.6" font-size="12" font-style="italic" text-anchor="end" textLength="183.1" lengthAdjust="spacingAndGlyphs">(або порівняння скриншотів)</text>
+<rect x="38" y="378" width="72.6" height="32" rx="3" fill="#ffffff" stroke="#d64545" stroke-width="1"/>
+<text x="74.3" y="399" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="50.6" lengthAdjust="spacingAndGlyphs">шейдери</text>
+<rect x="120.6" y="378" width="115.9" height="32" rx="3" fill="#ffffff" stroke="#d64545" stroke-width="1"/>
+<text x="178.6" y="399" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="93.9" lengthAdjust="spacingAndGlyphs">UV і текстури</text>
+<rect x="246.5" y="378" width="50.9" height="32" rx="3" fill="#ffffff" stroke="#d64545" stroke-width="1"/>
+<text x="272" y="399" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="28.9" lengthAdjust="spacingAndGlyphs">MSAA</text>
+<rect x="307.4" y="378" width="181" height="32" rx="3" fill="#ffffff" stroke="#d64545" stroke-width="1"/>
+<text x="397.9" y="399" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" text-anchor="middle" textLength="159.0" lengthAdjust="spacingAndGlyphs">відчуття від керування</text>
+</svg>

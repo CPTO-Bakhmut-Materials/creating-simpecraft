@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Системи координат: Z угору і Y угору">
+<title>Системи координат: Z угору і Y угору</title>
+<rect width="860" height="360" fill="#ffffff"/>
+<text x="40" y="30" font-size="17" font-weight="bold" textLength="294.0" lengthAdjust="spacingAndGlyphs">MagicaVoxel / .vox і наша гра:</text>
+<text x="40" y="52.1" font-size="17" font-weight="bold" textLength="95.7" lengthAdjust="spacingAndGlyphs">Z — вгору</text>
+<path d="M320,294.8 L303.2,296 L307.1,284.1 Z" fill="#d64545"/>
+<path d="M180,250 L308,291" fill="none" stroke="#d64545" stroke-width="4" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="334" y="316.8" font-size="24" font-weight="bold" fill="#d64545" textLength="18.5" lengthAdjust="spacingAndGlyphs">X</text>
+<path d="M235.8,212.2 L226.4,226.1 L219.4,215.7 Z" fill="#3a9a4e"/>
+<path d="M180,250 L225.4,219.3" fill="none" stroke="#3a9a4e" stroke-width="4" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="249.8" y="218.2" font-size="24" font-weight="bold" fill="#3a9a4e" textLength="17.4" lengthAdjust="spacingAndGlyphs">Y</text>
+<path d="M180,110 L186.3,125.6 L173.7,125.6 Z" fill="#2f6fdb"/>
+<path d="M180,250 L180,122.6" fill="none" stroke="#2f6fdb" stroke-width="4" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="180" y="98" font-size="24" font-weight="bold" text-anchor="middle" fill="#2f6fdb" textLength="45.9" lengthAdjust="spacingAndGlyphs">Z ↑</text>
+<text x="470" y="30" font-size="17" font-weight="bold" textLength="291.1" lengthAdjust="spacingAndGlyphs">OpenGL, Unity, багато рушіїв:</text>
+<text x="470" y="52.1" font-size="17" font-weight="bold" textLength="95.7" lengthAdjust="spacingAndGlyphs">Y — вгору</text>
+<path d="M750,294.8 L733.2,296 L737.1,284.1 Z" fill="#d64545"/>
+<path d="M610,250 L738,291" fill="none" stroke="#d64545" stroke-width="4" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="764" y="316.8" font-size="24" font-weight="bold" fill="#d64545" textLength="18.5" lengthAdjust="spacingAndGlyphs">X</text>
+<path d="M610,110 L616.3,125.6 L603.7,125.6 Z" fill="#3a9a4e"/>
+<path d="M610,250 L610,122.6" fill="none" stroke="#3a9a4e" stroke-width="4" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="610" y="98" font-size="24" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="45.8" lengthAdjust="spacingAndGlyphs">Y ↑</text>
+<path d="M554.2,287.8 L563.6,273.9 L570.6,284.3 Z" fill="#2f6fdb"/>
+<path d="M610,250 L564.6,280.7" fill="none" stroke="#2f6fdb" stroke-width="4" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="540.2" y="309.8" font-size="24" font-weight="bold" text-anchor="end" fill="#2f6fdb" textLength="17.4" lengthAdjust="spacingAndGlyphs">Z</text>
+</svg>

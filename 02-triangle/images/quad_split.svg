@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Правильний і неправильний поділ квадрата на трикутники">
+<title>Правильний і неправильний поділ квадрата на трикутники</title>
+<defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="#d64545" stroke-width="1.2"/></pattern></defs>
+<rect width="860" height="400" fill="#ffffff"/>
+<text x="170" y="34" font-size="17" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="294.7" lengthAdjust="spacingAndGlyphs">Правильно: { 1, 2, 3,  1, 3, 4 }</text>
+<path d="M60,300 L280,300 L280,80 Z" fill="#aac4f0" stroke="#2f6fdb" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M60,300 L280,80 L60,80 Z" fill="#f6cdb0" stroke="#e8833a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="209.6" y="238.4" font-size="17" font-weight="bold" text-anchor="middle" fill="#2f6fdb" textLength="24.9" lengthAdjust="spacingAndGlyphs">△1</text>
+<text x="130.4" y="159.2" font-size="17" font-weight="bold" text-anchor="middle" fill="#e8833a" textLength="24.9" lengthAdjust="spacingAndGlyphs">△2</text>
+<circle cx="60" cy="300" r="5" fill="#1f2933"/>
+<text x="46" y="322" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">1</text>
+<circle cx="280" cy="300" r="5" fill="#1f2933"/>
+<text x="294" y="322" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">2</text>
+<circle cx="280" cy="80" r="5" fill="#1f2933"/>
+<text x="294" y="70" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">3</text>
+<circle cx="60" cy="80" r="5" fill="#1f2933"/>
+<text x="46" y="70" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">4</text>
+<text x="610" y="34" font-size="17" font-weight="bold" text-anchor="middle" fill="#d64545" textLength="274.7" lengthAdjust="spacingAndGlyphs">Помилка: { 1, 2, 3,  2, 3, 4 }</text>
+<path d="M500,300 L610,190 L500,80 Z" fill="url(#hatch)" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M500,300 L720,300 L610,190 Z" fill="#aac4f0" stroke="#2f6fdb" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M500,80 L610,190 L720,80 Z" fill="#f6cdb0" stroke="#e8833a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M610,190 L720,300 L720,80 Z" fill="#c4a9a6" stroke="#1f2933" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="610" y="269.2" font-size="17" font-weight="bold" text-anchor="middle" fill="#2f6fdb" textLength="24.9" lengthAdjust="spacingAndGlyphs">△1</text>
+<text x="610" y="124" font-size="17" font-weight="bold" text-anchor="middle" fill="#e8833a" textLength="24.9" lengthAdjust="spacingAndGlyphs">△2</text>
+<text x="476" y="186" font-size="12" font-weight="bold" text-anchor="end" fill="#d64545" textLength="43.4" lengthAdjust="spacingAndGlyphs">дірка:</text>
+<text x="476" y="201.6" font-size="12" font-weight="bold" text-anchor="end" fill="#d64545" textLength="95.4" lengthAdjust="spacingAndGlyphs">тут порожньо</text>
+<path d="M480,190 L539.6,190" fill="none" stroke="#d64545" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="539.6" cy="190" r="2.5" fill="#d64545"/>
+<text x="744" y="186" font-size="12" font-weight="bold" fill="#7e4fc4" textLength="47.6" lengthAdjust="spacingAndGlyphs">△1 і △2</text>
+<text x="744" y="201.6" font-size="12" font-weight="bold" fill="#7e4fc4" textLength="100.2" lengthAdjust="spacingAndGlyphs">накладаються</text>
+<path d="M740,190 L680.4,190" fill="none" stroke="#7e4fc4" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="680.4" cy="190" r="2.5" fill="#7e4fc4"/>
+<circle cx="500" cy="300" r="5" fill="#1f2933"/>
+<text x="486" y="322" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">1</text>
+<circle cx="720" cy="300" r="5" fill="#1f2933"/>
+<text x="734" y="322" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">2</text>
+<circle cx="720" cy="80" r="5" fill="#1f2933"/>
+<text x="734" y="70" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">3</text>
+<circle cx="500" cy="80" r="5" fill="#1f2933"/>
+<text x="486" y="70" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">4</text>
+</svg>

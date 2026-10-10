@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Порядок обходу вершин: лицьова і тильна сторона">
+<title>Порядок обходу вершин: лицьова і тильна сторона</title>
+<rect width="860" height="400" fill="#ffffff"/>
+<text x="220" y="28" font-size="17" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="168.8" lengthAdjust="spacingAndGlyphs">Дивимося ззовні:</text>
+<text x="220" y="50.1" font-size="17" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="253.7" lengthAdjust="spacingAndGlyphs">1→2→3 проти год. стрілки</text>
+<path d="M100,310 L340,310 L220,100 Z" fill="#c1dfc5" stroke="#3a9a4e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="100" cy="310" r="5" fill="#1f2933"/>
+<circle cx="340" cy="310" r="5" fill="#1f2933"/>
+<circle cx="220" cy="100" r="5" fill="#1f2933"/>
+<text x="86" y="332" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">1</text>
+<text x="354" y="332" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">2</text>
+<text x="220" y="86" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">3</text>
+<path d="M280,284 L270.4,287.9 L270.4,280.1 Z" fill="#1f2933"/>
+<path d="M160,284 L272.2,284" fill="none" stroke="#1f2933" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M227.8,166 L235.9,172.4 L229.2,176.3 Z" fill="#1f2933"/>
+<path d="M287.3,270.2 L231.6,172.8" fill="none" stroke="#1f2933" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M152.7,270.2 L154.1,259.9 L160.9,263.8 Z" fill="#1f2933"/>
+<path d="M212.2,166 L156.6,263.4" fill="none" stroke="#1f2933" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="220" y="375" font-size="17" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="285.6" lengthAdjust="spacingAndGlyphs">лицьова (front) — малюється</text>
+<text x="650" y="28" font-size="17" font-weight="bold" text-anchor="middle" fill="#7a8594" textLength="188.1" lengthAdjust="spacingAndGlyphs">Той самий △ ззаду:</text>
+<text x="650" y="50.1" font-size="17" font-weight="bold" text-anchor="middle" fill="#7a8594" textLength="224.1" lengthAdjust="spacingAndGlyphs">обхід за год. стрілкою</text>
+<path d="M530,310 L770,310 L650,100 Z" fill="#d4d7dc" stroke="#7a8594" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="530" cy="310" r="5" fill="#1f2933"/>
+<circle cx="770" cy="310" r="5" fill="#1f2933"/>
+<circle cx="650" cy="100" r="5" fill="#1f2933"/>
+<text x="516" y="332" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">2</text>
+<text x="784" y="332" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">1</text>
+<text x="650" y="86" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">3</text>
+<path d="M590,284 L599.6,280.1 L599.6,287.9 Z" fill="#1f2933"/>
+<path d="M710,284 L597.8,284" fill="none" stroke="#1f2933" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M642.2,166 L640.8,176.3 L634.1,172.4 Z" fill="#1f2933"/>
+<path d="M582.7,270.2 L638.4,172.8" fill="none" stroke="#1f2933" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M717.3,270.2 L709.1,263.8 L715.9,259.9 Z" fill="#1f2933"/>
+<path d="M657.8,166 L713.4,263.4" fill="none" stroke="#1f2933" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="650" y="375" font-size="17" font-weight="bold" text-anchor="middle" fill="#d64545" textLength="294.1" lengthAdjust="spacingAndGlyphs">тильна (back) — відкидається</text>
+</svg>

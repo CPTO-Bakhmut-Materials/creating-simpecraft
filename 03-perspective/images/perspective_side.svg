@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="450" viewBox="0 0 720 450" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Перспектива з подібних трикутників">
+<title>Перспектива з подібних трикутників</title>
+<rect width="720" height="450" fill="#ffffff"/>
+<path d="M120,230 L300,104" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt" stroke-dasharray="6 4"/>
+<path d="M120,230 L300,356" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt" stroke-dasharray="6 4"/>
+<path d="M678,230 L669.7,233.4 L669.7,226.6 Z" fill="#7a8594"/>
+<path d="M120,230 L671.2,230" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="684" y="235" font-size="12" font-weight="bold" fill="#7a8594" textLength="7.0" lengthAdjust="spacingAndGlyphs">z</text>
+<text x="668" y="254" font-size="12" text-anchor="end" fill="#7a8594" textLength="52.2" lengthAdjust="spacingAndGlyphs">глибина</text>
+<path d="M242.9,316 L246.1,311.3 L249.1,306.4 L251.9,301.4 L254.5,296.3 L257,291.2 L259.2,285.9 L261.2,280.5 L263.1,275.1 L264.7,269.6 L266.1,264.1 L267.3,258.5 L268.3,252.8 L269,247.1 L269.6,241.4 L269.9,235.7 L270,230 L269.9,224.3 L269.6,218.6 L269,212.9 L268.3,207.2 L267.3,201.5 L266.1,195.9 L264.7,190.4 L263.1,184.9 L261.2,179.5 L259.2,174.1 L257,168.8 L254.5,163.7 L251.9,158.6 L249.1,153.6 L246.1,148.7 L242.9,144" fill="none" stroke="#7e4fc4" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="272" y="296" font-size="12" font-weight="bold" fill="#7e4fc4" textLength="71.1" lengthAdjust="spacingAndGlyphs">fovY = 70°</text>
+<path d="M180,188 L180,272" fill="none" stroke="#2f6fdb" stroke-width="4" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="176" y="306" font-size="12" font-weight="bold" text-anchor="end" fill="#2f6fdb" textLength="91.8" lengthAdjust="spacingAndGlyphs">екран (d = 1)</text>
+<path d="M180,274 L182.4,282.7 L175.7,281.9 Z" fill="#2f6fdb"/>
+<path d="M178,292 L179.3,280.7" fill="none" stroke="#2f6fdb" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M360,230 L360,86" fill="none" stroke="#3a9a4e" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M120,230 L360,86" fill="none" stroke="#3a9a4e" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="180" cy="194" r="5" fill="#3a9a4e"/>
+<text x="370" y="100" font-size="12" fill="#3a9a4e" textLength="66.1" lengthAdjust="spacingAndGlyphs">висота 2.4</text>
+<text x="370" y="115.6" font-size="12" fill="#3a9a4e" textLength="31.6" lengthAdjust="spacingAndGlyphs">z = 4</text>
+<path d="M600,230 L600,86" fill="none" stroke="#e8833a" stroke-width="8" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M120,230 L600,86" fill="none" stroke="#e8833a" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="180" cy="212" r="5" fill="#e8833a"/>
+<text x="610" y="100" font-size="12" fill="#e8833a" textLength="66.1" lengthAdjust="spacingAndGlyphs">висота 2.4</text>
+<text x="610" y="115.6" font-size="12" fill="#e8833a" textLength="31.6" lengthAdjust="spacingAndGlyphs">z = 8</text>
+<circle cx="120" cy="230" r="7" fill="#d64545"/>
+<text x="108" y="235" font-size="12" font-weight="bold" text-anchor="end" fill="#d64545" textLength="24.6" lengthAdjust="spacingAndGlyphs">око</text>
+<text x="40" y="60" font-size="17" font-weight="bold" textLength="217.3" lengthAdjust="spacingAndGlyphs">на екрані: y′ = y · d / z</text>
+<path d="M180,186.8 L176.6,178.5 L183.4,178.5 Z" fill="#1f2933"/>
+<path d="M180,68 L180,180.1" fill="none" stroke="#1f2933" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="360" y="400" font-size="12" text-anchor="middle" textLength="493.1" lengthAdjust="spacingAndGlyphs">Удвічі далі → удвічі менше на екрані. Тому матриця перспективи кладе z у w,</text>
+<text x="360" y="415.6" font-size="12" text-anchor="middle" textLength="410.9" lengthAdjust="spacingAndGlyphs">а відеокарта потім ділить x, y, z на w («перспективне ділення»).</text>
+</svg>

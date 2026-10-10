@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1070" viewBox="0 0 900 1070" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Формат MagicaVoxel .vox">
+<title>Формат MagicaVoxel .vox</title>
+<rect width="900" height="1070" fill="#ffffff"/>
+<text x="450" y="30" font-size="17" font-weight="bold" text-anchor="middle" textLength="736.3" lengthAdjust="spacingAndGlyphs">Формат MagicaVoxel .vox (наш файл assets/worlds/test.vox, 94 900 байтів)</text>
+<text x="450" y="54" font-size="12" text-anchor="middle" textLength="373.0" lengthAdjust="spacingAndGlyphs">Усі числа — u32: 4 байти, молодший перший (little-endian).</text>
+<text x="450" y="69.6" font-size="12" text-anchor="middle" textLength="386.6" lengthAdjust="spacingAndGlyphs">Файл — дерево «чанків»: заголовок + вміст + дочірні чанки.</text>
+<text x="110" y="124" font-size="12" font-weight="bold" text-anchor="end" fill="#7a8594" textLength="70.6" lengthAdjust="spacingAndGlyphs">заголовок</text>
+<rect x="120" y="100" width="83" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1"/>
+<text x="161.5" y="119" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="43.4" lengthAdjust="spacingAndGlyphs">&quot;VOX &quot;</text>
+<text x="161.5" y="139" font-size="12" text-anchor="middle" textLength="65.0" lengthAdjust="spacingAndGlyphs">сигнатура</text>
+<rect x="203" y="100" width="87.7" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1"/>
+<text x="246.8" y="119" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="21.7" lengthAdjust="spacingAndGlyphs">150</text>
+<text x="246.8" y="139" font-size="12" text-anchor="middle" textLength="69.7" lengthAdjust="spacingAndGlyphs">версія, u32</text>
+<text x="302.7" y="126" font-size="12" fill="#7a8594" textLength="393.7" lengthAdjust="spacingAndGlyphs">← якщо перші 4 байти не «VOX », це не наш формат: помилка</text>
+<text x="110" y="184" font-size="12" font-weight="bold" text-anchor="end" fill="#7e4fc4" textLength="35.7" lengthAdjust="spacingAndGlyphs">MAIN</text>
+<rect x="120" y="160" width="85.4" height="48" fill="#ede6f8" stroke="#7e4fc4" stroke-width="1"/>
+<text x="162.7" y="179" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="43.4" lengthAdjust="spacingAndGlyphs">&quot;MAIN&quot;</text>
+<text x="162.7" y="199" font-size="12" text-anchor="middle" textLength="67.4" lengthAdjust="spacingAndGlyphs">id, 4 байти</text>
+<rect x="205.4" y="160" width="81.6" height="48" fill="#ede6f8" stroke="#7e4fc4" stroke-width="1"/>
+<text x="246.2" y="179" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="7.2" lengthAdjust="spacingAndGlyphs">0</text>
+<text x="246.2" y="199" font-size="12" text-anchor="middle" textLength="63.6" lengthAdjust="spacingAndGlyphs">вміст, u32</text>
+<rect x="287" y="160" width="93.4" height="48" fill="#ede6f8" stroke="#7e4fc4" stroke-width="1"/>
+<text x="333.6" y="179" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="36.1" lengthAdjust="spacingAndGlyphs">94880</text>
+<text x="333.6" y="199" font-size="12" text-anchor="middle" textLength="75.4" lengthAdjust="spacingAndGlyphs">дочірні, u32</text>
+<text x="392.3" y="186" font-size="12" fill="#7e4fc4" textLength="209.6" lengthAdjust="spacingAndGlyphs">← корінь: власного вмісту немає,</text>
+<text x="392.3" y="201.6" font-size="12" fill="#7e4fc4" textLength="166.7" lengthAdjust="spacingAndGlyphs">    усе — у дочірніх чанках</text>
+<rect x="40" y="230" width="845" height="755" fill="none" stroke="#7e4fc4" stroke-width="1.5" stroke-dasharray="2 4"/>
+<text x="875" y="250" font-size="12" font-style="italic" text-anchor="end" fill="#7e4fc4" textLength="120.9" lengthAdjust="spacingAndGlyphs">дочірні чанки MAIN</text>
+<text x="118" y="294" font-size="12" font-weight="bold" text-anchor="end" fill="#2f6fdb" textLength="30.0" lengthAdjust="spacingAndGlyphs">SIZE</text>
+<rect x="130" y="270" width="85.4" height="48" fill="#e3ebfa" stroke="#2f6fdb" stroke-width="1"/>
+<text x="172.7" y="289" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="43.4" lengthAdjust="spacingAndGlyphs">&quot;SIZE&quot;</text>
+<text x="172.7" y="309" font-size="12" text-anchor="middle" textLength="67.4" lengthAdjust="spacingAndGlyphs">id, 4 байти</text>
+<rect x="215.4" y="270" width="81.6" height="48" fill="#e3ebfa" stroke="#2f6fdb" stroke-width="1"/>
+<text x="256.2" y="289" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="14.5" lengthAdjust="spacingAndGlyphs">12</text>
+<text x="256.2" y="309" font-size="12" text-anchor="middle" textLength="63.6" lengthAdjust="spacingAndGlyphs">вміст, u32</text>
+<rect x="297" y="270" width="93.4" height="48" fill="#e3ebfa" stroke="#2f6fdb" stroke-width="1"/>
+<text x="343.6" y="289" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="7.2" lengthAdjust="spacingAndGlyphs">0</text>
+<text x="343.6" y="309" font-size="12" text-anchor="middle" textLength="75.4" lengthAdjust="spacingAndGlyphs">дочірні, u32</text>
+<rect x="390.3" y="270" width="32.5" height="48" fill="#e3ebfa" stroke="#2f6fdb" stroke-width="1"/>
+<text x="406.6" y="289" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="14.5" lengthAdjust="spacingAndGlyphs">48</text>
+<text x="406.6" y="309" font-size="12" text-anchor="middle" textLength="7.1" lengthAdjust="spacingAndGlyphs">x</text>
+<rect x="422.8" y="270" width="32.5" height="48" fill="#e3ebfa" stroke="#2f6fdb" stroke-width="1"/>
+<text x="439" y="289" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="14.5" lengthAdjust="spacingAndGlyphs">48</text>
+<text x="439" y="309" font-size="12" text-anchor="middle" textLength="7.1" lengthAdjust="spacingAndGlyphs">y</text>
+<rect x="455.2" y="270" width="32.5" height="48" fill="#e3ebfa" stroke="#2f6fdb" stroke-width="1"/>
+<text x="471.5" y="289" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="14.5" lengthAdjust="spacingAndGlyphs">24</text>
+<text x="471.5" y="309" font-size="12" text-anchor="middle" textLength="6.3" lengthAdjust="spacingAndGlyphs">z</text>
+<text x="499.7" y="296" font-size="12" fill="#2f6fdb" textLength="152.7" lengthAdjust="spacingAndGlyphs">розмір моделі → Extent3</text>
+<text x="118" y="374" font-size="12" font-weight="bold" text-anchor="end" fill="#e8833a" textLength="31.1" lengthAdjust="spacingAndGlyphs">XYZI</text>
+<rect x="130" y="350" width="85.4" height="48" fill="#fbece1" stroke="#e8833a" stroke-width="1"/>
+<text x="172.7" y="369" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="43.4" lengthAdjust="spacingAndGlyphs">&quot;XYZI&quot;</text>
+<text x="172.7" y="389" font-size="12" text-anchor="middle" textLength="67.4" lengthAdjust="spacingAndGlyphs">id, 4 байти</text>
+<rect x="215.4" y="350" width="81.6" height="48" fill="#fbece1" stroke="#e8833a" stroke-width="1"/>
+<text x="256.2" y="369" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="36.1" lengthAdjust="spacingAndGlyphs">93808</text>
+<text x="256.2" y="389" font-size="12" text-anchor="middle" textLength="63.6" lengthAdjust="spacingAndGlyphs">вміст, u32</text>
+<rect x="297" y="350" width="93.4" height="48" fill="#fbece1" stroke="#e8833a" stroke-width="1"/>
+<text x="343.6" y="369" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="7.2" lengthAdjust="spacingAndGlyphs">0</text>
+<text x="343.6" y="389" font-size="12" text-anchor="middle" textLength="75.4" lengthAdjust="spacingAndGlyphs">дочірні, u32</text>
+<rect x="390.3" y="350" width="57.5" height="48" fill="#fbece1" stroke="#e8833a" stroke-width="1"/>
+<text x="419.1" y="369" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="36.1" lengthAdjust="spacingAndGlyphs">23451</text>
+<text x="419.1" y="389" font-size="12" text-anchor="middle" textLength="39.5" lengthAdjust="spacingAndGlyphs">N, u32</text>
+<rect x="447.8" y="350" width="68.6" height="48" fill="#fbece1" stroke="#e8833a" stroke-width="1"/>
+<text x="482.1" y="369" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="50.6" lengthAdjust="spacingAndGlyphs">0 0 0 1</text>
+<text x="482.1" y="389" font-size="12" text-anchor="middle" textLength="35.3" lengthAdjust="spacingAndGlyphs">x y z i</text>
+<rect x="516.4" y="350" width="68.6" height="48" fill="#fbece1" stroke="#e8833a" stroke-width="1"/>
+<text x="550.7" y="369" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="50.6" lengthAdjust="spacingAndGlyphs">0 0 1 1</text>
+<text x="550.7" y="389" font-size="12" text-anchor="middle" textLength="35.3" lengthAdjust="spacingAndGlyphs">x y z i</text>
+<rect x="585" y="350" width="67.2" height="48" fill="#fbece1" stroke="#e8833a" stroke-width="1"/>
+<text x="618.6" y="369" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="7.2" lengthAdjust="spacingAndGlyphs">…</text>
+<text x="618.6" y="389" font-size="12" text-anchor="middle" textLength="49.2" lengthAdjust="spacingAndGlyphs">ще N−2</text>
+<rect x="449.8" y="352" width="64.6" height="44" fill="none" stroke="#d64545" stroke-width="2"/>
+<text x="130" y="416" font-size="12" fill="#e8833a" textLength="342.4" lengthAdjust="spacingAndGlyphs">N вокселів по 4 байти: координати + індекс кольору i</text>
+<text x="130" y="337" font-size="12" font-weight="bold" fill="#2f6fdb" textLength="240.2" lengthAdjust="spacingAndGlyphs">↕ пара SIZE + XYZI = одна модель</text>
+<text x="118" y="514" font-size="12" font-weight="bold" text-anchor="end" fill="#3a9a4e" textLength="37.5" lengthAdjust="spacingAndGlyphs">RGBA</text>
+<rect x="130" y="490" width="85.4" height="48" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="1"/>
+<text x="172.7" y="509" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="43.4" lengthAdjust="spacingAndGlyphs">&quot;RGBA&quot;</text>
+<text x="172.7" y="529" font-size="12" text-anchor="middle" textLength="67.4" lengthAdjust="spacingAndGlyphs">id, 4 байти</text>
+<rect x="215.4" y="490" width="81.6" height="48" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="1"/>
+<text x="256.2" y="509" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="28.9" lengthAdjust="spacingAndGlyphs">1024</text>
+<text x="256.2" y="529" font-size="12" text-anchor="middle" textLength="63.6" lengthAdjust="spacingAndGlyphs">вміст, u32</text>
+<rect x="297" y="490" width="93.4" height="48" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="1"/>
+<text x="343.6" y="509" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="7.2" lengthAdjust="spacingAndGlyphs">0</text>
+<text x="343.6" y="529" font-size="12" text-anchor="middle" textLength="75.4" lengthAdjust="spacingAndGlyphs">дочірні, u32</text>
+<rect x="390.3" y="490" width="135.3" height="48" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="1"/>
+<text x="458" y="509" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="108.4" lengthAdjust="spacingAndGlyphs">125 125 125 255</text>
+<text x="458" y="529" font-size="12" text-anchor="middle" textLength="117.3" lengthAdjust="spacingAndGlyphs">запис 0 → індекс 1</text>
+<rect x="525.6" y="490" width="135.3" height="48" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="1"/>
+<text x="593.3" y="509" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="93.9" lengthAdjust="spacingAndGlyphs">121 85 58 255</text>
+<text x="593.3" y="529" font-size="12" text-anchor="middle" textLength="117.3" lengthAdjust="spacingAndGlyphs">запис 1 → індекс 2</text>
+<rect x="660.9" y="490" width="135.3" height="48" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="1"/>
+<text x="728.6" y="509" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="93.9" lengthAdjust="spacingAndGlyphs">95 159 53 255</text>
+<text x="728.6" y="529" font-size="12" text-anchor="middle" textLength="117.3" lengthAdjust="spacingAndGlyphs">запис 2 → індекс 3</text>
+<rect x="796.2" y="490" width="60.4" height="48" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="1"/>
+<text x="826.4" y="509" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="7.2" lengthAdjust="spacingAndGlyphs">…</text>
+<text x="826.4" y="529" font-size="12" text-anchor="middle" textLength="42.4" lengthAdjust="spacingAndGlyphs">до 256</text>
+<text x="130" y="556" font-size="12" fill="#3a9a4e" textLength="209.1" lengthAdjust="spacingAndGlyphs">палітра: 256 кольорів по 4 байти</text>
+<path d="M478,488 L477.9,477.6 L485.1,480.5 Z" fill="#d64545"/>
+<path d="M482.1,400 C482.1,450 498,440 480.8,480.7" fill="none" stroke="#d64545" stroke-width="2"/>
+<text x="502.1" y="456" font-size="12" font-weight="bold" fill="#d64545" textLength="158.4" lengthAdjust="spacingAndGlyphs">i = 1  →  запис i − 1 = 0</text>
+<rect x="200" y="610" width="260" height="46" rx="4" fill="#fbf1cf" stroke="#d9a400" stroke-width="2"/>
+<text x="330" y="639" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="180.7" lengthAdjust="spacingAndGlyphs">Blocks.fromColor(r, g, b)</text>
+<path d="M260,608 L267.4,602.9 L268.9,609.5 Z" fill="#1f2933"/>
+<path d="M458,564 L266.6,606.5" fill="none" stroke="#1f2933" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M330,608 L337.7,603.3 L338.8,609.9 Z" fill="#1f2933"/>
+<path d="M593.3,564 L336.7,606.9" fill="none" stroke="#1f2933" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M400,608 L407.8,603.6 L408.7,610.2 Z" fill="#1f2933"/>
+<path d="M728.6,564 L406.7,607.1" fill="none" stroke="#1f2933" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M500,633 L490.4,636.9 L490.4,629.1 Z" fill="#1f2933"/>
+<path d="M462,633 L492.2,633" fill="none" stroke="#1f2933" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<rect x="504" y="610" width="110" height="46" rx="3" fill="#7f7f7f"/>
+<text x="559" y="639" font-size="12" font-weight="bold" text-anchor="middle" fill="#ffffff" textLength="68.8" lengthAdjust="spacingAndGlyphs">STONE (1)</text>
+<rect x="624" y="610" width="110" height="46" rx="3" fill="#79553a"/>
+<text x="679" y="639" font-size="12" font-weight="bold" text-anchor="middle" fill="#ffffff" textLength="54.8" lengthAdjust="spacingAndGlyphs">DIRT (2)</text>
+<rect x="744" y="610" width="110" height="46" rx="3" fill="#5f9f35"/>
+<text x="799" y="639" font-size="12" font-weight="bold" text-anchor="middle" fill="#ffffff" textLength="68.6" lengthAdjust="spacingAndGlyphs">GRASS (3)</text>
+<text x="200" y="682" font-size="12" textLength="309.8" lengthAdjust="spacingAndGlyphs">найближчий еталонний колір → id блока → World</text>
+<text x="70" y="720" font-size="12" font-weight="bold" fill="#7a8594" textLength="640.6" lengthAdjust="spacingAndGlyphs">Інші дочірні чанки, які пише MagicaVoxel. Ми їх ПРОПУСКАЄМО (у нашому файлі їх немає):</text>
+<text x="118" y="794" font-size="12" font-weight="bold" text-anchor="end" fill="#7a8594" textLength="36.0" lengthAdjust="spacingAndGlyphs">nTRN</text>
+<rect x="130" y="770" width="85.4" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="172.7" y="789" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="43.4" lengthAdjust="spacingAndGlyphs">&quot;nTRN&quot;</text>
+<text x="172.7" y="809" font-size="12" text-anchor="middle" fill="#6b7785" textLength="67.4" lengthAdjust="spacingAndGlyphs">id, 4 байти</text>
+<rect x="215.4" y="770" width="81.6" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="256.2" y="789" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="7.2" lengthAdjust="spacingAndGlyphs">n</text>
+<text x="256.2" y="809" font-size="12" text-anchor="middle" fill="#6b7785" textLength="63.6" lengthAdjust="spacingAndGlyphs">вміст, u32</text>
+<rect x="297" y="770" width="93.4" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="343.6" y="789" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="7.2" lengthAdjust="spacingAndGlyphs">m</text>
+<text x="343.6" y="809" font-size="12" text-anchor="middle" fill="#6b7785" textLength="75.4" lengthAdjust="spacingAndGlyphs">дочірні, u32</text>
+<rect x="390.3" y="770" width="104.7" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="442.7" y="789" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="86.7" lengthAdjust="spacingAndGlyphs">… n байтів …</text>
+<text x="442.7" y="809" font-size="12" text-anchor="middle" fill="#6b7785" textLength="81.8" lengthAdjust="spacingAndGlyphs">DICT, масиви</text>
+<text x="507.1" y="796" font-size="12" fill="#6b7785" textLength="268.6" lengthAdjust="spacingAndGlyphs">вузол-перетворення сцени: зсув і поворот</text>
+<path d="M495.1,766 L484.7,766.8 L487.1,759.4 Z" fill="#d64545"/>
+<path d="M130,766 C190,740 435.1,740 487.6,763.6" fill="none" stroke="#d64545" stroke-width="2"/>
+<text x="507.1" y="758" font-size="12" font-weight="bold" fill="#d64545" textLength="108.9" lengthAdjust="spacingAndGlyphs">перестрибнути:</text>
+<text x="507.1" y="773.6" font-size="12" font-weight="bold" fill="#d64545" textLength="301.2" lengthAdjust="spacingAndGlyphs">pos = pos + 12 + contentSize + childrenSize</text>
+<text x="118" y="848" font-size="12" font-weight="bold" text-anchor="end" fill="#7a8594" textLength="36.4" lengthAdjust="spacingAndGlyphs">nGRP</text>
+<rect x="130" y="824" width="85.4" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="172.7" y="843" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="43.4" lengthAdjust="spacingAndGlyphs">&quot;nGRP&quot;</text>
+<text x="172.7" y="863" font-size="12" text-anchor="middle" fill="#6b7785" textLength="67.4" lengthAdjust="spacingAndGlyphs">id, 4 байти</text>
+<rect x="215.4" y="824" width="81.6" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="256.2" y="843" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="7.2" lengthAdjust="spacingAndGlyphs">n</text>
+<text x="256.2" y="863" font-size="12" text-anchor="middle" fill="#6b7785" textLength="63.6" lengthAdjust="spacingAndGlyphs">вміст, u32</text>
+<rect x="297" y="824" width="93.4" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="343.6" y="843" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="7.2" lengthAdjust="spacingAndGlyphs">m</text>
+<text x="343.6" y="863" font-size="12" text-anchor="middle" fill="#6b7785" textLength="75.4" lengthAdjust="spacingAndGlyphs">дочірні, u32</text>
+<rect x="390.3" y="824" width="104.7" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="442.7" y="843" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="86.7" lengthAdjust="spacingAndGlyphs">… n байтів …</text>
+<text x="442.7" y="863" font-size="12" text-anchor="middle" fill="#6b7785" textLength="81.8" lengthAdjust="spacingAndGlyphs">DICT, масиви</text>
+<text x="507.1" y="850" font-size="12" fill="#6b7785" textLength="120.3" lengthAdjust="spacingAndGlyphs">група вузлів сцени</text>
+<text x="118" y="902" font-size="12" font-weight="bold" text-anchor="end" fill="#7a8594" textLength="36.0" lengthAdjust="spacingAndGlyphs">nSHP</text>
+<rect x="130" y="878" width="85.4" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="172.7" y="897" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="43.4" lengthAdjust="spacingAndGlyphs">&quot;nSHP&quot;</text>
+<text x="172.7" y="917" font-size="12" text-anchor="middle" fill="#6b7785" textLength="67.4" lengthAdjust="spacingAndGlyphs">id, 4 байти</text>
+<rect x="215.4" y="878" width="81.6" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="256.2" y="897" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="7.2" lengthAdjust="spacingAndGlyphs">n</text>
+<text x="256.2" y="917" font-size="12" text-anchor="middle" fill="#6b7785" textLength="63.6" lengthAdjust="spacingAndGlyphs">вміст, u32</text>
+<rect x="297" y="878" width="93.4" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="343.6" y="897" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="7.2" lengthAdjust="spacingAndGlyphs">m</text>
+<text x="343.6" y="917" font-size="12" text-anchor="middle" fill="#6b7785" textLength="75.4" lengthAdjust="spacingAndGlyphs">дочірні, u32</text>
+<rect x="390.3" y="878" width="104.7" height="48" fill="#eceef1" stroke="#7a8594" stroke-width="1" stroke-dasharray="5 3"/>
+<text x="442.7" y="897" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" fill="#6b7785" textLength="86.7" lengthAdjust="spacingAndGlyphs">… n байтів …</text>
+<text x="442.7" y="917" font-size="12" text-anchor="middle" fill="#6b7785" textLength="81.8" lengthAdjust="spacingAndGlyphs">DICT, масиви</text>
+<text x="507.1" y="904" font-size="12" fill="#6b7785" textLength="226.6" lengthAdjust="spacingAndGlyphs">вузол-форма: посилання на модель</text>
+<text x="130" y="950" font-size="12" fill="#6b7785" textLength="529.6" lengthAdjust="spacingAndGlyphs">…а також MATL (матеріали), LAYR (шари редактора), rOBJ / rCAM (рендер і камери),</text>
+<text x="130" y="965.6" font-size="12" fill="#6b7785" textLength="70.3" lengthAdjust="spacingAndGlyphs">NOTE, IMAP</text>
+<text x="40" y="1010" font-size="12" textLength="540.9" lengthAdjust="spacingAndGlyphs">Сцена потрібна, коли файл містить кілька моделей у різних місцях. Наш світ — одна</text>
+<text x="40" y="1025.6" font-size="12" textLength="512.6" lengthAdjust="spacingAndGlyphs">модель, тому сцена, матеріали й шари не впливають на те, які блоки де стоять.</text>
+<text x="40" y="1041.2" font-size="12" textLength="290.1" lengthAdjust="spacingAndGlyphs">Пропускаємо, але не ламаємося, коли вони є.</text>
+</svg>

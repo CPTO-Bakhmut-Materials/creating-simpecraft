@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="560" viewBox="0 0 760 560" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Від кутів yaw і pitch до напрямку погляду">
+<title>Від кутів yaw і pitch до напрямку погляду</title>
+<rect width="760" height="560" fill="#ffffff"/>
+<text x="380" y="30" font-size="17" font-weight="bold" text-anchor="middle" textLength="305.7" lengthAdjust="spacingAndGlyphs">Від кутів до напрямку погляду</text>
+<path d="M135,450 L161.8,452.7 L189.6,454.4 L218.3,455.2 L247.6,455.1 L277.2,454 L307.1,451.9 L336.9,448.9 L366.4,445.1 L395.5,440.3 L423.8,434.7 L451.1,428.3 L477.3,421.2 L502.2,413.3 L525.5,404.9 L547.1,395.8 L566.8,386.3 L584.5,376.3 L600,366 L613.2,355.4 L624.1,344.6" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M151.5,438 L156.3,430.4 L160.2,435.8 Z" fill="#7a8594"/>
+<path d="M300,330 L157,434" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="143.5" y="452" font-size="17" font-weight="bold" text-anchor="end" fill="#7a8594" textLength="13.1" lengthAdjust="spacingAndGlyphs">X</text>
+<path d="M660,373.2 L651.3,375.6 L652.1,368.9 Z" fill="#7a8594"/>
+<path d="M300,330 L653.3,372.4" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="670" y="379.2" font-size="17" font-weight="bold" fill="#7a8594" textLength="12.3" lengthAdjust="spacingAndGlyphs">Y</text>
+<path d="M300,75 L303.4,83.3 L296.6,83.3 Z" fill="#7a8594"/>
+<path d="M300,330 L300,81.8" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="300" y="65" font-size="17" font-weight="bold" text-anchor="middle" fill="#7a8594" textLength="12.3" lengthAdjust="spacingAndGlyphs">Z</text>
+<path d="M300,330 L430.9,415.1" fill="none" stroke="#e8833a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="7 5"/>
+<path d="M430.9,415.1 L430.9,265.1" fill="none" stroke="#3a9a4e" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2 4"/>
+<path d="M250.5,366 L254.1,366.4 L257.9,366.7 L261.6,367 L265.5,367.3 L269.4,367.4 L273.3,367.5 L277.3,367.6 L281.3,367.6 L285.4,367.5 L289.5,367.4 L293.5,367.2 L297.7,366.9 L301.8,366.6 L305.9,366.2 L310,365.8 L314,365.3 L318.1,364.8 L322.1,364.2 L326.1,363.5 L330.1,362.8 L334,362.1 L337.8,361.3 L341.6,360.4 L345.3,359.5" fill="none" stroke="#e8833a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M368,374.2 L368,371.3 L367.9,368.3 L367.9,365.3 L367.7,362.3 L367.6,359.3 L367.4,356.2 L367.2,353.2 L367,350.1 L366.7,347.1 L366.4,344 L366,340.9 L365.7,337.8 L365.3,334.7 L364.9,331.6 L364.4,328.5 L363.9,325.4 L363.4,322.3 L362.8,319.2 L362.2,316.1 L361.6,313 L361,310 L360.3,306.9 L359.6,303.9 L358.9,300.8" fill="none" stroke="#3a9a4e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M430.9,265.1 L419.7,277.7 L414.1,266.4 Z" fill="#2f6fdb"/>
+<path d="M300,330 L419.6,270.7" fill="none" stroke="#2f6fdb" stroke-width="4" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="442.9" y="261.1" font-size="17" font-weight="bold" fill="#2f6fdb" textLength="90.7" lengthAdjust="spacingAndGlyphs">forward()</text>
+<text x="442.9" y="305.1" font-size="12" fill="#3a9a4e" textLength="56.4" lengthAdjust="spacingAndGlyphs">sin(pitch)</text>
+<text x="442.9" y="433.1" font-size="12" fill="#e8833a" textLength="59.4" lengthAdjust="spacingAndGlyphs">cos(pitch)</text>
+<text x="307.7" y="426.9" font-size="17" font-weight="bold" fill="#e8833a" textLength="38.3" lengthAdjust="spacingAndGlyphs">yaw</text>
+<path d="M305.7,406.9 L297.7,366.9" fill="none" stroke="#e8833a" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="297.7" cy="366.9" r="2.5" fill="#e8833a"/>
+<text x="370.9" y="330.8" font-size="17" font-weight="bold" fill="#3a9a4e" textLength="48.3" lengthAdjust="spacingAndGlyphs">pitch</text>
+<text x="380" y="535" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="491.4" lengthAdjust="spacingAndGlyphs">forward = ( cos(pitch)·cos(yaw),  cos(pitch)·sin(yaw),  sin(pitch) )</text>
+</svg>

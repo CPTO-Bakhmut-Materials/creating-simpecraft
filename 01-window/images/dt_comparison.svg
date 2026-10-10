@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Рух без dt і з dt при різній частоті кадрів">
+<title>Рух без dt і з dt при різній частоті кадрів</title>
+<rect width="900" height="430" fill="#ffffff"/>
+<text x="30" y="28" font-size="17" font-weight="bold" textLength="167.4" lengthAdjust="spacingAndGlyphs">БЕЗ dt:  x = x + 5</text>
+<path d="M70,90 L70,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M152.5,90 L152.5,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M235,90 L235,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M317.5,90 L317.5,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M400,90 L400,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M70,360 L400,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M70,306 L400,306" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M70,252 L400,252" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M70,198 L400,198" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M70,144 L400,144" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M70,90 L400,90" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M70,360 L400,360" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M70,90 L70,360" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M70,360 L70,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="70" y="384" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">0</text>
+<path d="M152.5,360 L152.5,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="152.5" y="384" font-size="12" text-anchor="middle" textLength="19.1" lengthAdjust="spacingAndGlyphs">0.5</text>
+<path d="M235,360 L235,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="235" y="384" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">1</text>
+<path d="M317.5,360 L317.5,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="317.5" y="384" font-size="12" text-anchor="middle" textLength="19.1" lengthAdjust="spacingAndGlyphs">1.5</text>
+<path d="M400,360 L400,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="400" y="384" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">2</text>
+<path d="M66,360 L70,360" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="62" y="364" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">0</text>
+<path d="M66,306 L70,306" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="62" y="310" font-size="12" text-anchor="end" textLength="22.9" lengthAdjust="spacingAndGlyphs">300</text>
+<path d="M66,252 L70,252" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="62" y="256" font-size="12" text-anchor="end" textLength="22.9" lengthAdjust="spacingAndGlyphs">600</text>
+<path d="M66,198 L70,198" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="62" y="202" font-size="12" text-anchor="end" textLength="22.9" lengthAdjust="spacingAndGlyphs">900</text>
+<path d="M66,144 L70,144" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="62" y="148" font-size="12" text-anchor="end" textLength="30.5" lengthAdjust="spacingAndGlyphs">1200</text>
+<path d="M66,90 L70,90" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="62" y="94" font-size="12" text-anchor="end" textLength="30.5" lengthAdjust="spacingAndGlyphs">1500</text>
+<text x="235" y="406" font-size="12" text-anchor="middle" textLength="35.3" lengthAdjust="spacingAndGlyphs">час, с</text>
+<text x="30" y="66" font-size="12" textLength="119.6" lengthAdjust="spacingAndGlyphs">пройдено, пікселів</text>
+<path d="M70,360 L400,306" fill="none" stroke="#e8833a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="408" y="311" font-size="12" font-weight="bold" fill="#e8833a" textLength="46.5" lengthAdjust="spacingAndGlyphs">30 FPS</text>
+<path d="M70,360 L400,252" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="408" y="257" font-size="12" font-weight="bold" fill="#2f6fdb" textLength="46.5" lengthAdjust="spacingAndGlyphs">60 FPS</text>
+<path d="M70,360 L400,100.8" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="408" y="105.8" font-size="12" font-weight="bold" fill="#d64545" textLength="54.9" lengthAdjust="spacingAndGlyphs">144 FPS</text>
+<text x="83.2" y="111.6" font-size="12" fill="#d64545" textLength="195.4" lengthAdjust="spacingAndGlyphs">на швидкому моніторі гравець</text>
+<text x="83.2" y="127.2" font-size="12" fill="#d64545" textLength="218.6" lengthAdjust="spacingAndGlyphs">«біжить» майже в 5 разів швидше</text>
+<path d="M226.8,147.6 L284.5,191.5" fill="none" stroke="#d64545" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="284.5" cy="191.5" r="2.5" fill="#d64545"/>
+<text x="480" y="28" font-size="17" font-weight="bold" textLength="205.1" lengthAdjust="spacingAndGlyphs">З dt:  x = x + 300 · dt</text>
+<path d="M520,90 L520,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M602.5,90 L602.5,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M685,90 L685,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M767.5,90 L767.5,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M850,90 L850,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M520,360 L850,360" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M520,306 L850,306" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M520,252 L850,252" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M520,198 L850,198" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M520,144 L850,144" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M520,90 L850,90" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M520,360 L850,360" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M520,90 L520,360" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M520,360 L520,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="520" y="384" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">0</text>
+<path d="M602.5,360 L602.5,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="602.5" y="384" font-size="12" text-anchor="middle" textLength="19.1" lengthAdjust="spacingAndGlyphs">0.5</text>
+<path d="M685,360 L685,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="685" y="384" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">1</text>
+<path d="M767.5,360 L767.5,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="767.5" y="384" font-size="12" text-anchor="middle" textLength="19.1" lengthAdjust="spacingAndGlyphs">1.5</text>
+<path d="M850,360 L850,364" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="850" y="384" font-size="12" text-anchor="middle" textLength="7.6" lengthAdjust="spacingAndGlyphs">2</text>
+<path d="M516,360 L520,360" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="512" y="364" font-size="12" text-anchor="end" textLength="7.6" lengthAdjust="spacingAndGlyphs">0</text>
+<path d="M516,306 L520,306" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="512" y="310" font-size="12" text-anchor="end" textLength="22.9" lengthAdjust="spacingAndGlyphs">300</text>
+<path d="M516,252 L520,252" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="512" y="256" font-size="12" text-anchor="end" textLength="22.9" lengthAdjust="spacingAndGlyphs">600</text>
+<path d="M516,198 L520,198" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="512" y="202" font-size="12" text-anchor="end" textLength="22.9" lengthAdjust="spacingAndGlyphs">900</text>
+<path d="M516,144 L520,144" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="512" y="148" font-size="12" text-anchor="end" textLength="30.5" lengthAdjust="spacingAndGlyphs">1200</text>
+<path d="M516,90 L520,90" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="512" y="94" font-size="12" text-anchor="end" textLength="30.5" lengthAdjust="spacingAndGlyphs">1500</text>
+<text x="685" y="406" font-size="12" text-anchor="middle" textLength="35.3" lengthAdjust="spacingAndGlyphs">час, с</text>
+<text x="480" y="66" font-size="12" textLength="119.6" lengthAdjust="spacingAndGlyphs">пройдено, пікселів</text>
+<path d="M520,360 L850,252" fill="none" stroke="#e8833a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M520,360 L850,252" fill="none" stroke="#2f6fdb" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="9 5"/>
+<path d="M520,360 L850,252" fill="none" stroke="#d64545" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2 4"/>
+<path d="M533.2,104 L567.2,104" fill="none" stroke="#e8833a" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="577.2" y="108" font-size="12" font-weight="bold" fill="#e8833a" textLength="46.5" lengthAdjust="spacingAndGlyphs">30 FPS</text>
+<path d="M533.2,126 L567.2,126" fill="none" stroke="#2f6fdb" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt" stroke-dasharray="9 5"/>
+<text x="577.2" y="130" font-size="12" font-weight="bold" fill="#2f6fdb" textLength="46.5" lengthAdjust="spacingAndGlyphs">60 FPS</text>
+<path d="M533.2,148 L567.2,148" fill="none" stroke="#d64545" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt" stroke-dasharray="2 4"/>
+<text x="577.2" y="152" font-size="12" font-weight="bold" fill="#d64545" textLength="54.9" lengthAdjust="spacingAndGlyphs">144 FPS</text>
+<text x="619" y="198" font-size="12" fill="#3a9a4e" textLength="145.2" lengthAdjust="spacingAndGlyphs">усі три лінії збігаються</text>
+<path d="M701.5,212.4 L742.8,287.1" fill="none" stroke="#3a9a4e" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="742.8" cy="287.1" r="2.5" fill="#3a9a4e"/>
+</svg>

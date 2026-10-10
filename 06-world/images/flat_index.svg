@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="700" viewBox="0 0 860 700" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Плоский індекс тривимірної сітки">
+<title>Плоский індекс тривимірної сітки</title>
+<rect width="860" height="700" fill="#ffffff"/>
+<text x="430" y="32" font-size="17" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" font-weight="bold" text-anchor="middle" textLength="358.2" lengthAdjust="spacingAndGlyphs">index = x + sizeX · (y + sizeY · z)</text>
+<text x="190" y="90" font-size="17" font-weight="bold" text-anchor="middle" fill="#2f6fdb" textLength="95.4" lengthAdjust="spacingAndGlyphs">шар z = 0</text>
+<rect x="72" y="228" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="100" y="253" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">0</text>
+<text x="100" y="273" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,0,0</text>
+<rect x="132" y="228" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="160" y="253" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">1</text>
+<text x="160" y="273" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,0,0</text>
+<rect x="192" y="228" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="220" y="253" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">2</text>
+<text x="220" y="273" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,0,0</text>
+<rect x="252" y="228" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="280" y="253" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">3</text>
+<text x="280" y="273" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,0,0</text>
+<rect x="72" y="168" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="100" y="193" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">4</text>
+<text x="100" y="213" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,1,0</text>
+<rect x="132" y="168" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="160" y="193" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">5</text>
+<text x="160" y="213" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,1,0</text>
+<rect x="192" y="168" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="220" y="193" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">6</text>
+<text x="220" y="213" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,1,0</text>
+<rect x="252" y="168" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="280" y="193" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">7</text>
+<text x="280" y="213" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,1,0</text>
+<rect x="72" y="108" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="100" y="133" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">8</text>
+<text x="100" y="153" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,2,0</text>
+<rect x="132" y="108" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="160" y="133" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">9</text>
+<text x="160" y="153" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,2,0</text>
+<rect x="192" y="108" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="220" y="133" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">10</text>
+<text x="220" y="153" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,2,0</text>
+<rect x="252" y="108" width="56" height="56" rx="2" fill="#a9c3f0"/>
+<text x="280" y="133" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">11</text>
+<text x="280" y="153" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,2,0</text>
+<path d="M330,300 L320.4,303.9 L320.4,296.1 Z" fill="#d64545"/>
+<path d="M70,300 L322.2,300" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="338" y="305" font-size="17" font-weight="bold" fill="#d64545" textLength="11.0" lengthAdjust="spacingAndGlyphs">x</text>
+<path d="M56,96 L59.9,105.6 L52.1,105.6 Z" fill="#3a9a4e"/>
+<path d="M56,286 L56,103.8" fill="none" stroke="#3a9a4e" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="56" y="88" font-size="17" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="11.1" lengthAdjust="spacingAndGlyphs">y</text>
+<text x="620" y="90" font-size="17" font-weight="bold" text-anchor="middle" fill="#e8833a" textLength="95.4" lengthAdjust="spacingAndGlyphs">шар z = 1</text>
+<rect x="502" y="228" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="530" y="253" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">12</text>
+<text x="530" y="273" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,0,1</text>
+<rect x="562" y="228" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="590" y="253" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">13</text>
+<text x="590" y="273" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,0,1</text>
+<rect x="622" y="228" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="650" y="253" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">14</text>
+<text x="650" y="273" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,0,1</text>
+<rect x="682" y="228" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="710" y="253" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">15</text>
+<text x="710" y="273" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,0,1</text>
+<rect x="502" y="168" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="530" y="193" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">16</text>
+<text x="530" y="213" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,1,1</text>
+<rect x="562" y="168" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="590" y="193" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">17</text>
+<text x="590" y="213" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,1,1</text>
+<rect x="622" y="168" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="650" y="193" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">18</text>
+<text x="650" y="213" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,1,1</text>
+<rect x="682" y="168" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="710" y="193" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">19</text>
+<text x="710" y="213" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,1,1</text>
+<rect x="502" y="108" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="530" y="133" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">20</text>
+<text x="530" y="153" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,2,1</text>
+<rect x="562" y="108" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="590" y="133" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">21</text>
+<text x="590" y="153" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,2,1</text>
+<rect x="622" y="108" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="650" y="133" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">22</text>
+<text x="650" y="153" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,2,1</text>
+<rect x="682" y="108" width="56" height="56" rx="2" fill="#f6cdb0"/>
+<text x="710" y="133" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">23</text>
+<text x="710" y="153" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,2,1</text>
+<path d="M760,300 L750.4,303.9 L750.4,296.1 Z" fill="#d64545"/>
+<path d="M500,300 L752.2,300" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="768" y="305" font-size="17" font-weight="bold" fill="#d64545" textLength="11.0" lengthAdjust="spacingAndGlyphs">x</text>
+<path d="M486,96 L489.9,105.6 L482.1,105.6 Z" fill="#3a9a4e"/>
+<path d="M486,286 L486,103.8" fill="none" stroke="#3a9a4e" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="486" y="88" font-size="17" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="11.1" lengthAdjust="spacingAndGlyphs">y</text>
+<text x="430" y="196" font-size="17" font-weight="bold" text-anchor="middle" fill="#7e4fc4" textLength="91.4" lengthAdjust="spacingAndGlyphs">+1 по z →</text>
+<text x="20" y="330" font-size="17" font-weight="bold" textLength="325.2" lengthAdjust="spacingAndGlyphs">У пам&#x27;яті — один масив blocks[ ]:</text>
+<rect x="36" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="67" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">0</text>
+<text x="67" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,0,0</text>
+<rect x="102" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="133" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">1</text>
+<text x="133" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,0,0</text>
+<rect x="168" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="199" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">2</text>
+<text x="199" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,0,0</text>
+<rect x="234" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="265" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">3</text>
+<text x="265" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,0,0</text>
+<rect x="300" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="331" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">4</text>
+<text x="331" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,1,0</text>
+<rect x="366" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="397" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">5</text>
+<text x="397" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,1,0</text>
+<rect x="432" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="463" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">6</text>
+<text x="463" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,1,0</text>
+<rect x="498" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="529" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">7</text>
+<text x="529" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,1,0</text>
+<rect x="564" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="595" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">8</text>
+<text x="595" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,2,0</text>
+<rect x="630" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="661" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="11.8" lengthAdjust="spacingAndGlyphs">9</text>
+<text x="661" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,2,0</text>
+<rect x="696" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="727" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">10</text>
+<text x="727" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,2,0</text>
+<rect x="762" y="350" width="62" height="54" rx="2" fill="#a9c3f0"/>
+<text x="793" y="373" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">11</text>
+<text x="793" y="394" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,2,0</text>
+<rect x="36" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="67" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">12</text>
+<text x="67" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,0,1</text>
+<rect x="102" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="133" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">13</text>
+<text x="133" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,0,1</text>
+<rect x="168" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="199" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">14</text>
+<text x="199" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,0,1</text>
+<rect x="234" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="265" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">15</text>
+<text x="265" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,0,1</text>
+<rect x="300" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="331" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">16</text>
+<text x="331" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,1,1</text>
+<rect x="366" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="397" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">17</text>
+<text x="397" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,1,1</text>
+<rect x="432" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="463" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">18</text>
+<text x="463" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,1,1</text>
+<rect x="498" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="529" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">19</text>
+<text x="529" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,1,1</text>
+<rect x="564" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="595" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">20</text>
+<text x="595" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">0,2,1</text>
+<rect x="630" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="661" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">21</text>
+<text x="661" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">1,2,1</text>
+<rect x="696" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="727" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">22</text>
+<text x="727" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">2,2,1</text>
+<rect x="762" y="410" width="62" height="54" rx="2" fill="#f6cdb0"/>
+<text x="793" y="433" font-size="17" font-weight="bold" text-anchor="middle" textLength="23.7" lengthAdjust="spacingAndGlyphs">23</text>
+<text x="793" y="454" font-size="12" text-anchor="middle" textLength="30.5" lengthAdjust="spacingAndGlyphs">3,2,1</text>
+<text x="34" y="482" font-size="12" textLength="571.7" lengthAdjust="spacingAndGlyphs">X змінюється найшвидше, потім Y, потім Z.  Крок по X = 1, по Y = sizeX, по Z = sizeX·sizeY.</text>
+<text x="20" y="530" font-size="17" font-weight="bold" textLength="749.0" lengthAdjust="spacingAndGlyphs">Перевірка формули: кожен блок має отримати СВІЙ номер (світ 48×48×24)</text>
+<text x="40" y="566" font-size="12" font-weight="bold" textLength="33.6" lengthAdjust="spacingAndGlyphs">блок</text>
+<text x="170" y="566" font-size="12" font-weight="bold" fill="#3a9a4e" textLength="192.2" lengthAdjust="spacingAndGlyphs">правильно: x + sx·(y + sy·z)</text>
+<text x="470" y="566" font-size="12" font-weight="bold" fill="#d64545" textLength="167.1" lengthAdjust="spacingAndGlyphs">помилка: x + sx·y + sy·z</text>
+<text x="40" y="596" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" textLength="65.0" lengthAdjust="spacingAndGlyphs">(0, 1, 0)</text>
+<text x="170" y="596" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" fill="#3a9a4e" textLength="159.0" lengthAdjust="spacingAndGlyphs">0 + 48·(1 + 48·0) = 48</text>
+<text x="470" y="596" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" fill="#d64545" textLength="144.5" lengthAdjust="spacingAndGlyphs">0 + 48·1 + 48·0 = 48</text>
+<text x="40" y="626" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" textLength="65.0" lengthAdjust="spacingAndGlyphs">(0, 0, 1)</text>
+<text x="170" y="626" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" fill="#3a9a4e" textLength="173.4" lengthAdjust="spacingAndGlyphs">0 + 48·(0 + 48·1) = 2304</text>
+<text x="470" y="626" font-size="12" font-family="DejaVu Sans Mono, Consolas, Menlo, monospace" fill="#d64545" textLength="245.7" lengthAdjust="spacingAndGlyphs">0 + 48·0 + 48·1 = 48  ← той самий!</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="250" viewBox="0 0 860 250" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Кількість трикутників до і після відсікання прихованих граней">
+<title>Кількість трикутників до і після відсікання прихованих граней</title>
+<rect width="860" height="250" fill="#ffffff"/>
+<text x="20" y="30" font-size="17" font-weight="bold" textLength="387.5" lengthAdjust="spacingAndGlyphs">Острів 48×48×24: 23 451 твердий блок</text>
+<rect x="220" y="60" width="460" height="56" fill="#d64545"/>
+<text x="208" y="84" font-size="12" text-anchor="end" textLength="125.2" lengthAdjust="spacingAndGlyphs">урок 6: усі 6 граней</text>
+<text x="208" y="99.6" font-size="12" text-anchor="end" textLength="95.1" lengthAdjust="spacingAndGlyphs">кожного блока</text>
+<text x="690" y="93" font-size="12" font-weight="bold" textLength="141.9" lengthAdjust="spacingAndGlyphs">281 412 трикутників</text>
+<rect x="220" y="150" width="27.6" height="56" fill="#3a9a4e"/>
+<text x="208" y="174" font-size="12" text-anchor="end" textLength="118.7" lengthAdjust="spacingAndGlyphs">урок 7: лише грані</text>
+<text x="208" y="189.6" font-size="12" text-anchor="end" textLength="76.9" lengthAdjust="spacingAndGlyphs">біля повітря</text>
+<text x="257.6" y="183" font-size="12" font-weight="bold" textLength="133.6" lengthAdjust="spacingAndGlyphs">16 860 трикутників</text>
+<path d="M220,50 L220,220" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="470" y="183" font-size="17" font-weight="bold" fill="#3a9a4e" textLength="182.5" lengthAdjust="spacingAndGlyphs">у 16,7 раза менше</text>
+</svg>

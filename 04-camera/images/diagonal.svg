@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="300" viewBox="0 0 860 300" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Діагональний рух з нормалізацією і без">
+<title>Діагональний рух з нормалізацією і без</title>
+<rect width="860" height="300" fill="#ffffff"/>
+<text x="40" y="30" font-size="17" font-weight="bold" fill="#d64545" textLength="307.1" lengthAdjust="spacingAndGlyphs">Без нормалізації: (1, 0) + (0, 1)</text>
+<path d="M228.5,260.9 L229.5,252.3 L230,243.6 L229.9,234.9 L229.4,226.3 L228.3,217.7 L226.8,209.1 L224.8,200.7 L222.2,192.4 L219.3,184.3 L215.8,176.3 L211.9,168.6 L207.6,161.1 L202.8,153.8 L197.6,146.9 L192,140.2 L186.1,133.9 L179.8,128 L173.1,122.4 L166.2,117.2 L158.9,112.4 L151.4,108.1 L143.7,104.2 L135.7,100.7 L127.6,97.8 L119.3,95.2 L110.9,93.2 L102.3,91.7 L93.7,90.6 L85.1,90.1 L76.4,90 L67.7,90.5 L59.1,91.5" fill="none" stroke="#d5dde8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5 5"/>
+<path d="M80,90 L83.9,99.6 L76.1,99.6 Z" fill="#e8833a"/>
+<path d="M80,240 L80,97.8" fill="none" stroke="#e8833a" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="70" y="96" font-size="17" font-weight="bold" text-anchor="end" fill="#e8833a" textLength="18.8" lengthAdjust="spacingAndGlyphs">W</text>
+<path d="M230,240 L220.4,243.9 L220.4,236.1 Z" fill="#2f6fdb"/>
+<path d="M80,240 L222.2,240" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="240" y="246" font-size="17" font-weight="bold" fill="#2f6fdb" textLength="14.1" lengthAdjust="spacingAndGlyphs">D</text>
+<path d="M230,90 L224.7,102.5 L217.5,95.3 Z" fill="#d64545"/>
+<path d="M80,240 L222.8,97.2" fill="none" stroke="#d64545" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="242" y="88" font-size="12" font-weight="bold" fill="#d64545" textLength="41.6" lengthAdjust="spacingAndGlyphs">W + D</text>
+<text x="242" y="103.6" font-size="12" font-weight="bold" fill="#d64545" textLength="96.1" lengthAdjust="spacingAndGlyphs">довжина 1.41</text>
+<text x="470" y="30" font-size="17" font-weight="bold" fill="#3a9a4e" textLength="342.6" lengthAdjust="spacingAndGlyphs">Нормалізовано: velocity / |velocity|</text>
+<path d="M658.5,260.9 L659.5,252.3 L660,243.6 L659.9,234.9 L659.4,226.3 L658.3,217.7 L656.8,209.1 L654.8,200.7 L652.2,192.4 L649.3,184.3 L645.8,176.3 L641.9,168.6 L637.6,161.1 L632.8,153.8 L627.6,146.9 L622,140.2 L616.1,133.9 L609.8,128 L603.1,122.4 L596.2,117.2 L588.9,112.4 L581.4,108.1 L573.7,104.2 L565.7,100.7 L557.6,97.8 L549.3,95.2 L540.9,93.2 L532.3,91.7 L523.7,90.6 L515.1,90.1 L506.4,90 L497.7,90.5 L489.1,91.5" fill="none" stroke="#d5dde8" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="5 5"/>
+<path d="M510,90 L513.9,99.6 L506.1,99.6 Z" fill="#e8833a"/>
+<path d="M510,240 L510,97.8" fill="none" stroke="#e8833a" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="500" y="96" font-size="17" font-weight="bold" text-anchor="end" fill="#e8833a" textLength="18.8" lengthAdjust="spacingAndGlyphs">W</text>
+<path d="M660,240 L650.4,243.9 L650.4,236.1 Z" fill="#2f6fdb"/>
+<path d="M510,240 L652.2,240" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="670" y="246" font-size="17" font-weight="bold" fill="#2f6fdb" textLength="14.1" lengthAdjust="spacingAndGlyphs">D</text>
+<path d="M616.1,133.9 L610.8,146.5 L603.5,139.2 Z" fill="#3a9a4e"/>
+<path d="M510,240 L608.9,141.1" fill="none" stroke="#3a9a4e" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="628.1" y="131.9" font-size="12" font-weight="bold" fill="#3a9a4e" textLength="41.6" lengthAdjust="spacingAndGlyphs">W + D</text>
+<text x="628.1" y="147.5" font-size="12" font-weight="bold" fill="#3a9a4e" textLength="96.1" lengthAdjust="spacingAndGlyphs">довжина 1.00</text>
+<text x="40" y="285" font-size="12" fill="#6b7785" textLength="484.7" lengthAdjust="spacingAndGlyphs">Пунктир — коло радіусом 1: швидкість, з якою камера рухається по прямій.</text>
+</svg>

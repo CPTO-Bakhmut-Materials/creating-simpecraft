@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="440" viewBox="0 0 900 440" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Координати екрана і нормалізовані координати пристрою (NDC)">
+<title>Координати екрана і нормалізовані координати пристрою (NDC)</title>
+<rect width="900" height="440" fill="#ffffff"/>
+<text x="30" y="34" font-size="17" font-weight="bold" textLength="286.4" lengthAdjust="spacingAndGlyphs">Координати екрана (пікселі)</text>
+<rect x="60" y="110" width="352" height="198" fill="#87bdf2" stroke="#1f2933" stroke-width="1"/>
+<path d="M150,90 L140.4,93.9 L140.4,86.1 Z" fill="#d64545"/>
+<path d="M60,90 L142.2,90" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="158" y="95" font-size="17" font-weight="bold" fill="#d64545" textLength="11.0" lengthAdjust="spacingAndGlyphs">x</text>
+<path d="M40,200 L36.1,190.4 L43.9,190.4 Z" fill="#3a9a4e"/>
+<path d="M40,110 L40,192.2" fill="none" stroke="#3a9a4e" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="35" y="222" font-size="17" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="11.1" lengthAdjust="spacingAndGlyphs">y</text>
+<circle cx="60" cy="110" r="4" fill="#1f2933"/>
+<text x="34" y="115" font-size="12" text-anchor="end" textLength="32.3" lengthAdjust="spacingAndGlyphs">(0, 0)</text>
+<circle cx="412" cy="308" r="4" fill="#1f2933"/>
+<text x="412" y="330" font-size="12" text-anchor="end" textLength="70.5" lengthAdjust="spacingAndGlyphs">(1280, 720)</text>
+<text x="236" y="214" font-size="17" text-anchor="middle" fill="#165c25" textLength="113.0" lengthAdjust="spacingAndGlyphs">y росте вниз</text>
+<text x="455" y="34" font-size="17" font-weight="bold" textLength="431.0" lengthAdjust="spacingAndGlyphs">Нормалізовані координати пристрою (NDC)</text>
+<rect x="530" y="85" width="300" height="300" fill="#87bdf2" stroke="#1f2933" stroke-width="1"/>
+<path d="M860,235 L850.4,238.9 L850.4,231.1 Z" fill="#d64545"/>
+<path d="M505,235 L852.2,235" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="866" y="241" font-size="17" font-weight="bold" fill="#d64545" textLength="11.0" lengthAdjust="spacingAndGlyphs">x</text>
+<path d="M680,55 L683.9,64.6 L676.1,64.6 Z" fill="#3a9a4e"/>
+<path d="M680,410 L680,62.8" fill="none" stroke="#3a9a4e" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="690" y="59" font-size="17" font-weight="bold" fill="#3a9a4e" textLength="11.1" lengthAdjust="spacingAndGlyphs">y</text>
+<text x="524" y="79" font-size="12" text-anchor="end" fill="#6b7785" textLength="36.6" lengthAdjust="spacingAndGlyphs">(-1, 1)</text>
+<text x="836" y="79" font-size="12" fill="#6b7785" textLength="32.3" lengthAdjust="spacingAndGlyphs">(1, 1)</text>
+<text x="524" y="401" font-size="12" text-anchor="end" fill="#6b7785" textLength="40.9" lengthAdjust="spacingAndGlyphs">(-1, -1)</text>
+<text x="836" y="401" font-size="12" fill="#6b7785" textLength="36.6" lengthAdjust="spacingAndGlyphs">(1, -1)</text>
+<path d="M605,175 L560,325 L650,325 Z" fill="#b59c8c" stroke="#e8833a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="605" cy="175" r="6" fill="#2f6fdb"/>
+<circle cx="560" cy="325" r="6" fill="#d64545"/>
+<circle cx="650" cy="325" r="6" fill="#3a9a4e"/>
+<text x="605" y="161" font-size="12" text-anchor="middle" textLength="59.5" lengthAdjust="spacingAndGlyphs">(-0.5, 0.4)</text>
+<text x="544" y="351" font-size="12" textLength="63.8" lengthAdjust="spacingAndGlyphs">(-0.8, -0.6)</text>
+<text x="672" y="373" font-size="12" text-anchor="end" textLength="63.8" lengthAdjust="spacingAndGlyphs">(-0.2, -0.6)</text>
+<text x="755" y="142" font-size="12" text-anchor="middle" fill="#165c25" textLength="89.9" lengthAdjust="spacingAndGlyphs">y росте вгору,</text>
+<text x="755" y="157.6" font-size="12" text-anchor="middle" fill="#165c25" textLength="78.0" lengthAdjust="spacingAndGlyphs">розмір вікна</text>
+<text x="755" y="173.2" font-size="12" text-anchor="middle" fill="#165c25" textLength="82.4" lengthAdjust="spacingAndGlyphs">не важливий</text>
+</svg>

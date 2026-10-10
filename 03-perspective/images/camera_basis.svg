@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="470" viewBox="0 0 720 470" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Осі світу і базис камери в Mat4.lookAlong">
+<title>Осі світу і базис камери в Mat4.lookAlong</title>
+<rect width="720" height="470" fill="#ffffff"/>
+<text x="360" y="30" font-size="17" font-weight="bold" text-anchor="middle" textLength="307.6" lengthAdjust="spacingAndGlyphs">Базис камери в Mat4.lookAlong</text>
+<path d="M517.5,360 L508.5,360.7 L510.6,354.2 Z" fill="#7a8594"/>
+<path d="M330,300 L511.1,357.9" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="525.5" y="366" font-size="12" font-weight="bold" fill="#7a8594" textLength="9.3" lengthAdjust="spacingAndGlyphs">X</text>
+<path d="M455.6,214.9 L450.5,222.4 L446.8,216.8 Z" fill="#7a8594"/>
+<path d="M330,300 L450,218.7" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="463.6" y="214.9" font-size="12" font-weight="bold" fill="#7a8594" textLength="8.7" lengthAdjust="spacingAndGlyphs">Y</text>
+<path d="M330,105 L333.4,113.3 L326.6,113.3 Z" fill="#7a8594"/>
+<path d="M330,300 L330,111.8" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="330" y="95" font-size="12" font-weight="bold" text-anchor="middle" fill="#7a8594" textLength="62.4" lengthAdjust="spacingAndGlyphs">Z (вгору)</text>
+<path d="M488.3,255.3 L477.5,263.7 L474.7,253.9 Z" fill="#2f6fdb"/>
+<path d="M330,300 L478.5,258.1" fill="none" stroke="#2f6fdb" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M171.7,344.7 L182.5,336.3 L185.3,346.1 Z" fill="#7e4fc4"/>
+<path d="M330,300 L181.5,341.9" fill="none" stroke="#7e4fc4" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M368.3,374.6 L358,365.7 L367.1,361 Z" fill="#d64545"/>
+<path d="M330,300 L363.6,365.5" fill="none" stroke="#d64545" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M290,164.3 L298.5,175 L288.7,177.8 Z" fill="#3a9a4e"/>
+<path d="M330,300 L292.9,174.1" fill="none" stroke="#3a9a4e" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="330" cy="300" r="5" fill="#d64545"/>
+<text x="498.3" y="247.3" font-size="12" font-weight="bold" fill="#2f6fdb" textLength="60.5" lengthAdjust="spacingAndGlyphs">direction</text>
+<text x="161.7" y="366.7" font-size="12" font-weight="bold" text-anchor="end" fill="#7e4fc4" textLength="124.3" lengthAdjust="spacingAndGlyphs">zAxis = −direction</text>
+<text x="374.3" y="400.6" font-size="12" font-weight="bold" fill="#d64545" textLength="125.3" lengthAdjust="spacingAndGlyphs">xAxis = up × zAxis</text>
+<text x="374.3" y="416.2" font-size="12" font-weight="bold" fill="#d64545" textLength="76.4" lengthAdjust="spacingAndGlyphs">(праворуч)</text>
+<text x="276" y="160.3" font-size="12" font-weight="bold" text-anchor="end" fill="#3a9a4e" textLength="144.2" lengthAdjust="spacingAndGlyphs">yAxis = zAxis × xAxis</text>
+<text x="276" y="175.9" font-size="12" font-weight="bold" text-anchor="end" fill="#3a9a4e" textLength="135.2" lengthAdjust="spacingAndGlyphs">(вгору для камери)</text>
+<text x="20" y="455" font-size="12" fill="#6b7785" textLength="367.4" lengthAdjust="spacingAndGlyphs">Камера в початку координат; up = (0, 0, 1) — вісь Z світу.</text>
+</svg>
