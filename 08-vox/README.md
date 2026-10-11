@@ -36,7 +36,7 @@
 
 ## 2. Будова файлу
 
-![Формат .vox](images/vox_format.svg)
+![Формат .vox](images/vox_format.g.svg)
 
 Файл складається з **чанків** (*chunks*; це слово не пов'язане з чанками світу з уроку 7). У кожного чанка однаковий заголовок з 12 байтів:
 
@@ -75,11 +75,11 @@ pos = body + contentSize + childrenSize
 
 Ось як виглядає початок нашого файлу (команда `xxd assets/worlds/test.vox | head`):
 
-![Перші байти файлу](images/hexdump.svg)
+![Перші байти файлу](images/hexdump.g.svg)
 
 ### Порядок байтів (little-endian)
 
-![Little-endian](images/little_endian.svg)
+![Little-endian](images/little_endian.g.svg)
 
 Число `u32` займає 4 байти, і в `.vox` **молодший байт записано першим**. Тому число 150 виглядає як `96 00 00 00`, а не `00 00 00 96`. Так само записують числа процесори x86 та ARM.
 
@@ -172,7 +172,7 @@ vox: not a MagicaVoxel file (missing 'VOX ' header)
 | земля | 121, 85, 58 |
 | трава | 95, 159, 53 |
 
-![Пошук найближчого кольору](images/color_match.svg)
+![Пошук найближчого кольору](images/color_match.g.svg)
 
 «Відстань» між кольорами — це звичайна відстань між точками у тривимірному просторі `(r, g, b)`. Корінь можна не добувати, бо для порівняння достатньо квадратів:
 
@@ -233,7 +233,7 @@ local r, g, b, a = data:byte(pos + index * 4, pos + index * 4 + 3)   -- НЕПР
 voxels[#voxels + 1] = { position = Vec3.new(x, z, y), ... }   -- НЕПРАВИЛЬНО для нашої гри
 ```
 
-![Порівняння систем координат](images/axes.svg)
+![Порівняння систем координат](images/axes.g.svg)
 
 ![Ліворуч правильно, праворуч осі переставлено](images/axes_compare.png)
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Генерує SVG-схеми уроків у <урок>/images/*.svg.
+"""Генерує SVG-схеми уроків у <урок>/images/<назва>.g.svg
+(«.g.» у назві — ознака згенерованого файлу: редагуйте цей скрипт, а не SVG).
 
 Використання: python3 tools/diagrams/build.py [назва ...]
 (без аргументів — усі схеми). Потрібні matplotlib (лише заради шрифтів
@@ -1423,7 +1424,7 @@ def testability():
 
 def out(name):
     lesson = DIAGRAMS[name][0]
-    return os.path.join(ROOT, lesson, "images", name + ".svg")
+    return os.path.join(ROOT, lesson, "images", name + ".g.svg")
 
 
 if __name__ == "__main__":
