@@ -237,9 +237,32 @@ function love.draw()
     love.graphics.draw(triangle)
     love.graphics.draw(quad)
     love.graphics.setShader()
-    ...
+
+    -- Підпис малюємо завжди суцільним, навіть у каркасному режимі.
+    local wireframe = love.graphics.isWireframe()
+    love.graphics.setWireframe(false)
+    love.graphics.print("Tab: wireframe", 10, 10)
+    love.graphics.setWireframe(wireframe)
 end
 ```
+
+`setColor(1, 1, 1)` потрібен, бо колір вершин **множиться** на поточний колір LÖVE. Білий (`1, 1, 1`) нічого не змінює.
+
+### Каркасний режим
+
+**Каркасний режим** (*wireframe*) малює лише ребра трикутників замість зафарбованих площин. Так видно, з яких трикутників складено фігуру, і це найкращий спосіб знайти помилку в порядку вершин (розділ 5).
+
+```lua
+function love.keypressed(key)
+    if key == "escape" then
+        love.event.quit()
+    elseif key == "tab" then
+        love.graphics.setWireframe(not love.graphics.isWireframe())
+    end
+end
+```
+
+Режим діє на все, що малюється після нього, тому в `love.draw` ми вимикаємо його на час виведення підпису й одразу повертаємо як було. Інакше текст теж розпався б на трикутники.
 
 <details class="more">
 <summary>Детальніше: що буде, якщо не вмикати свій шейдер</summary>

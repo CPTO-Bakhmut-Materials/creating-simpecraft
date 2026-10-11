@@ -17,6 +17,8 @@
 **Тест** — маленька програма, яка викликає ваш код з відомими вхідними даними і **перевіряє**, що результат такий, як очікувалося. Якщо ні, тест повідомляє, *що саме* і *де* пішло не так.
 
 ```lua
+local t = require("tests.lib")   -- наш крихітний тестовий каркас, див. розділ 4
+
 t.test("extent3: index of the first cells", function()
     local size = Extent3.new(4, 3, 2)
     t.eq(size:index(Vec3.new(0, 0, 0)), 0)
@@ -64,7 +66,15 @@ function lib.test(name, fn)                 -- зареєструвати тес
     lib.cases[#lib.cases + 1] = { name = name, fn = fn }
 end
 
-function lib.eq(actual, expected, message)  -- перевірка (assertion)
+local function fail(message)
+    error(message, 3) -- 3: повідомлення вказує на рядок тесту, а не на цей файл
+end
+
+function lib.ok(value, message)             -- перевірка: значення істинне
+    if not value then fail(message or "expected truthy value") end
+end
+
+function lib.eq(actual, expected, message)  -- перевірка: actual == expected
     if actual ~= expected then
         fail(("%sexpected %s, got %s"):format(message and message .. ": " or "", tostring(expected), tostring(actual)))
     end
@@ -84,7 +94,11 @@ function lib.run()                          -- запустити всі тес�
 end
 ```
 
-Головне — `pcall`. Невдала перевірка викликає `error`, `pcall` її перехоплює, і каркас переходить до наступного тесту.
+Головне — `pcall` з [уроку 8](../08-vox/README.md). Невдала перевірка викликає `error`, `pcall` її перехоплює, і каркас переходить до наступного тесту.
+
+Другий аргумент `error` вказує, **чий** рядок записати в повідомлення. В уроці 8 ми ставили `0`, щоб рядка не було зовсім. Тут `3` означає «на два виклики вище за `fail`»: `fail` ← `lib.eq` ← **тест**. Так у повідомленні про невдачу з'являється рядок самого тесту, і його одразу видно.
+
+Перевірки (*assertions*) `ok` і `eq` — це звичайні функції, які викликають `error`, якщо щось не так. Вони схожі на `assert` з уроку 3, але кажуть, **що** очікували і **що** отримали.
 
 ## 5. Тести курсу
 
@@ -136,7 +150,54 @@ end)
 
 Для перевірки не потрібні ні `World`, ні файл `.vox`: «світ» — це одна функція.
 
+<details class="more">
+<summary>Решта тестів курсу</summary>
+
+Межі сітки: остання клітинка всередині, а на один крок далі по будь-якій осі вже ні.
+
+```lua
+t.test("extent3: contains checks every bound", function()
+    local size = Extent3.new(4, 3, 2)
+    t.ok(size:contains(Vec3.new(3, 2, 1)))
+    t.ok(not size:contains(Vec3.new(4, 0, 0)))
+    t.ok(not size:contains(Vec3.new(0, -1, 0)))
+end)
+```
+
+Промінь не дістає блока за межею досяжності й правильно визначає верхню грань, якщо дивитися вниз:
+
+```lua
+t.test("raycast: misses a block beyond reach", function()
+    t.eq(Raycast.cast(onlyBlock(Vec3.new(20, 0, 0)), Vec3.new(0.5, 0.5, 0.5), Vec3.new(1, 0, 0), 8), nil)
+end)
+
+t.test("raycast: looking down hits the top face", function()
+    local hit = Raycast.cast(onlyBlock(Vec3.new(2, 3, 0)), Vec3.new(2.5, 3.5, 6), Vec3.new(0, 0, -1), 8)
+    t.ok(hit, "expected a hit")
+    t.eq(hit.normal, Vec3.new(0, 0, 1))
+end)
+```
+
+Останній тест — це відповідь на перше запитання для самоперевірки з уроку 9.
+
+</details>
+
 ### Запуск
+
+`run.lua` підключає всі набори (кожен лише реєструє свої тести через `t.test`) і запускає їх:
+
+```lua
+local lib = require("tests.lib")
+
+require("tests.test_extent3")
+require("tests.test_raycast")
+
+os.exit(lib.run() == 0 and 0 or 1)
+```
+
+`os.exit(1)` повідомляє системі, що щось пішло не так. Так автоматичні системи перевірки (наприклад, CI на GitHub з уроку 10) дізнаються, що тести не пройшли.
+
+Запускаємо звичайним `luajit` з теки коду, без LÖVE. Саме тому `require("src.math.vec3")` знаходить файли так само, як у грі:
 
 ```sh
 cd 11-testing/code

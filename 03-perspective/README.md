@@ -57,14 +57,14 @@ function Vec3.__add(a, b)          -- викликається для a + b
     return Vec3.new(a.x + b.x, a.y + b.y, a.z + b.z)
 end
 
-function Vec3:length()             -- двокрапка: прихований параметр self
-    return math.sqrt(self:dot(self))
+function Vec3:scaledBy(k)          -- двокрапка: прихований параметр self
+    return Vec3.new(self.x * k, self.y * k, self.z * k)
 end
 ```
 
-Тепер можна писати `local c = a + b` та `c:length()`. Двокрапка — це скорочення: `c:length()` означає те саме, що `Vec3.length(c)`.
+Тепер можна писати `local c = a + b` та `c:scaledBy(2)`. Двокрапка — це скорочення: `c:scaledBy(2)` означає те саме, що `Vec3.scaledBy(c, 2)`. (Метод `scaledBy` тут лише для прикладу; у нашому `Vec3` множення на число записується оператором `v * 2`, див. розділ 3.)
 
-Спеціальні поля метатаблиці (`__add`, `__sub`, `__mul`, `__unm`, `__tostring`, `__eq`) задають, як поводяться оператори `+`, `-`, `*`, унарний мінус, `tostring()` та `==`.
+Спеціальні поля метатаблиці (`__add`, `__sub`, `__mul`, `__unm`, `__tostring`) задають, як поводяться оператори `+`, `-`, `*`, унарний мінус і `tostring()`. Є й `__eq` для `==`; він знадобиться нам в уроці 9.
 
 > **Домовленість:** наші вектори **незмінні**. Жоден метод не змінює `x`, `y`, `z`, а повертає новий вектор. Через це один вектор можна безпечно використовувати в багатьох місцях і не боятися, що хтось його непомітно змінить.
 
@@ -98,11 +98,77 @@ end
 
 Векторний добуток — головний інструмент для побудови камери: маючи «вперед» і «вгору», ми отримуємо «праворуч».
 
+У `src/math/vec3.lua` кожна формула з таблиці стає коротким методом:
+
+```lua
+function Vec3:dot(other)           -- скалярний добуток
+    return self.x * other.x + self.y * other.y + self.z * other.z
+end
+
+function Vec3:cross(other)         -- векторний добуток self × other
+    return Vec3.new(
+        self.y * other.z - self.z * other.y,
+        self.z * other.x - self.x * other.z,
+        self.x * other.y - self.y * other.x)
+end
+
+function Vec3:length()             -- довжина: v · v = x² + y² + z²
+    return math.sqrt(self:dot(self))
+end
+
+function Vec3:normalized()         -- той самий напрямок, довжина 1
+    local length = self:length()
+    return Vec3.new(self.x / length, self.y / length, self.z / length)
+end
+```
+
+Нормалізувати нульовий вектор не можна: довжина 0, і ділення дасть `nan`. Цю пастку ми зустрінемо в розділі 4.2.
+
+Решта операторів так само повертають **нові** вектори:
+
+```lua
+function Vec3.__sub(a, b)          -- a - b
+    return Vec3.new(a.x - b.x, a.y - b.y, a.z - b.z)
+end
+
+function Vec3.__mul(a, b)          -- v * s: множення на число (число пишемо другим)
+    return Vec3.new(a.x * b, a.y * b, a.z * b)
+end
+
+function Vec3.__unm(a)             -- -v
+    return Vec3.new(-a.x, -a.y, -a.z)
+end
+
+function Vec3.__tostring(a)        -- tostring(v) і print(v): "(1, 2, 3)"
+    return ("(%g, %g, %g)"):format(a.x, a.y, a.z)
+end
+```
+
+`__mul` очікує число **другим**: `v * 2` працює, а `2 * v` ні, бо тоді Lua передасть число як `a`. Ми завжди пишемо вектор першим.
+
 ## 4. Шлях вершини до екрана
 
 ![Ланцюжок перетворень](images/transform_chain.g.svg)
 
 Щоб намалювати точку світу, її переводять через кілька систем координат. Кожен перехід виконує **матриця 4×4**. Матриці множать одна на одну заздалегідь, і в шейдер потрапляє одна сумарна матриця `viewProjection`.
+
+У коді матриця — це таблиця з 16 чисел, записаних **по рядках**: спочатку чотири числа першого рядка, потім другого і так далі. Елемент у рядку `row` і стовпці `col` лежить за індексом $(\text{row} - 1) \cdot 4 + \text{col}$:
+
+```lua
+local Mat4 = {}
+Mat4.__index = Mat4
+
+function Mat4.new(values)
+    assert(#values == 16, "a 4x4 matrix needs 16 values")
+    return setmetatable(values, Mat4)
+end
+
+function Mat4:get(row, col)
+    return self[(row - 1) * 4 + col]
+end
+```
+
+`assert(умова, повідомлення)` зупиняє програму з повідомленням, якщо умова хибна. Так помилка (наприклад, 15 чисел замість 16) стає видимою одразу, а не десь далеко в шейдері.
 
 ### 4.1. Чому 4×4, а не 3×3
 
@@ -224,6 +290,24 @@ end
 
 `projection * view` означає: **спочатку** `view`, **потім** `projection` (матриці застосовуються справа наліво). Якщо переставити множники, отримаємо зовсім інше перетворення і, найімовірніше, порожній екран.
 
+Оператор `*` для матриць задає метаметод `__mul`. Елемент результату в рядку `row` і стовпці `col` — це рядок матриці `a`, помножений на стовпець матриці `b` (попарні добутки, а потім сума):
+
+```lua
+function Mat4.__mul(a, b)
+    local values = {}
+    for row = 1, 4 do
+        for col = 1, 4 do
+            local sum = 0
+            for k = 1, 4 do
+                sum = sum + a:get(row, k) * b:get(k, col)
+            end
+            values[#values + 1] = sum      -- по рядках, як і в Mat4.new
+        end
+    end
+    return Mat4.new(values)
+end
+```
+
 <details class="more">
 <summary>Детальніше: чому A · B ≠ B · A (інтерактивний приклад)</summary>
 
@@ -263,26 +347,93 @@ vec4 position(mat4 transformProjection, vec4 vertexPosition) {
 
 ### Куб із таблиці граней
 
+Вершина тепер має три координати, а не дві:
+
 ```lua
-local FACES = {
-    { color = { 0.85, 0.25, 0.25 }, corners = { { 1, 0, 0 }, { 1, 1, 0 }, { 1, 1, 1 }, { 1, 0, 1 } } }, -- +X
-    ...
+local VERTEX_FORMAT = {
+    { "VertexPosition", "float", 3 },   -- x, y, z
+    { "VertexColor", "byte", 4 },
 }
 ```
 
-Кожна грань — це 4 кути одиничного куба $[0, 1]^3$ та колір. Кути перелічено **проти годинникової стрілки, якщо дивитися ззовні**. Поки що цей порядок не важливий, але в уроці 7 він дозволить відеокарті не малювати задні грані. За таблицею `QUAD_ORDER = { 1, 2, 3, 1, 3, 4 }` з уроку 2 кожна грань перетворюється на два трикутники.
+Куб описуємо таблицею граней:
+
+```lua
+local FACES = {
+    { color = { 0.85, 0.25, 0.25 }, corners = { { 1, 0, 0 }, { 1, 1, 0 }, { 1, 1, 1 }, { 1, 0, 1 } } }, -- +X
+    { color = { 0.45, 0.10, 0.10 }, corners = { { 0, 1, 0 }, { 0, 0, 0 }, { 0, 0, 1 }, { 0, 1, 1 } } }, -- -X
+    { color = { 0.25, 0.75, 0.30 }, corners = { { 1, 1, 0 }, { 0, 1, 0 }, { 0, 1, 1 }, { 1, 1, 1 } } }, -- +Y
+    { color = { 0.10, 0.40, 0.15 }, corners = { { 0, 0, 0 }, { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 } } }, -- -Y
+    { color = { 0.30, 0.45, 0.95 }, corners = { { 0, 0, 1 }, { 1, 0, 1 }, { 1, 1, 1 }, { 0, 1, 1 } } }, -- +Z
+    { color = { 0.10, 0.15, 0.45 }, corners = { { 0, 1, 0 }, { 1, 1, 0 }, { 1, 0, 0 }, { 0, 0, 0 } } }, -- -Z
+}
+local QUAD_ORDER = { 1, 2, 3, 1, 3, 4 }
+```
+
+Кожна грань — це 4 кути одиничного куба $[0, 1]^3$ та колір. Кути перелічено **проти годинникової стрілки, якщо дивитися ззовні**. Поки що цей порядок не важливий, але в уроці 7 він дозволить відеокарті не малювати задні грані.
+
+Сітку будуємо так само, як квадрат в уроці 2: `QUAD_ORDER` перетворює кожну грань на два трикутники.
+
+```lua
+local function buildCube()
+    local vertices = {}
+    for _, face in ipairs(FACES) do
+        for _, cornerIndex in ipairs(QUAD_ORDER) do
+            local corner, color = face.corners[cornerIndex], face.color
+            vertices[#vertices + 1] = {
+                corner[1] - 0.5, corner[2] - 0.5, corner[3] - 0.5,   -- центр куба в (0, 0, 0)
+                color[1], color[2], color[3], 1,
+            }
+        end
+    end
+    return love.graphics.newMesh(VERTEX_FORMAT, vertices, "triangles", "static")
+end
+```
+
+Кути в таблиці лежать у $[0, 1]$, тобто куб стоїть **кутом** у початку координат. Камера ж облітатиме точку $(0, 0, 0)$, тому віднімаємо $0.5$ від кожної координати. Тоді куб стоїть у $[-0.5, 0.5]^3$, і його центр збігається з початком координат.
+
+```lua
+function love.load()
+    love.graphics.setBackgroundColor(0.53, 0.75, 0.95)
+    shader = love.graphics.newShader(VERTEX_SHADER)
+    cube = buildCube()
+end
+```
 
 ### Камера по колу
 
 ```lua
-local angle = time * 0.6
-local eye = Vec3.new(3 * math.cos(angle), 3 * math.sin(angle), 1.5)
-local view = Mat4.lookAlong(eye, -eye, UP)       -- дивимось у центр (0, 0, 0)
-local width, height = love.graphics.getDimensions()
-local projection = Mat4.perspective(FOV, width / height, NEAR, FAR)
+local time = 0
+
+function love.update(dt)
+    time = time + dt
+end
+
+function love.draw()
+    -- Камера рухається по колу радіусом 3 на висоті 1.5 і дивиться в центр куба.
+    local angle = time * 0.6
+    local eye = Vec3.new(3 * math.cos(angle), 3 * math.sin(angle), 1.5)
+    local view = Mat4.lookAlong(eye, -eye, UP)       -- від камери до (0, 0, 0)
+
+    local width, height = love.graphics.getDimensions()
+    local projection = Mat4.perspective(FOV, width / height, NEAR, FAR)
+
+    love.graphics.push("all")
+    love.graphics.setShader(shader)
+    shader:send("viewProjection", "row", projection * view)
+    love.graphics.setDepthMode("lequal", true)       -- ближчі пікселі перекривають дальші
+    love.graphics.draw(cube)
+    love.graphics.pop()
+
+    love.graphics.print(("eye = (%.1f, %.1f, %.1f)"):format(eye.x, eye.y, eye.z), 10, 10)
+end
 ```
 
-`(cos t, sin t)` — точка на одиничному колі. Коли кут `t` зростає, камера рухається по колу.
+Константи `FOV = math.rad(70)`, `NEAR, FAR = 0.05, 100` і `UP = Vec3.new(0, 0, 1)` оголошено на початку файлу.
+
+* `(cos t, sin t)` — точка на одиничному колі. Коли кут `t` зростає, камера рухається по колу. Напрямок до центру — це $(0, 0, 0) - \text{eye} = -\text{eye}$.
+* `shader:send(назва, ...)` передає значення в `uniform`-змінну шейдера. Шейдер отримує нову матрицю щокадру, бо камера рухається.
+* `love.graphics.push("all")` **запам'ятовує** весь поточний стан малювання: шейдер, колір, режим глибини тощо. `pop()` повертає його назад. Без цієї пари наш шейдер і режим глибини лишилися б увімкненими для `print`, і текст намалювався б через матрицю камери (тобто не там, де треба). Цю пару ми використовуватимемо щоразу, коли змінюємо стан лише для частини малювання.
 
 ### Буфер глибини
 
@@ -290,7 +441,7 @@ local projection = Mat4.perspective(FOV, width / height, NEAR, FAR)
 -- conf.lua
 t.window.depth = 24        -- виділити буфер глибини (24 біти на піксель)
 
--- main.lua
+-- main.lua, у love.draw (див. вище)
 love.graphics.setDepthMode("lequal", true)
 ```
 

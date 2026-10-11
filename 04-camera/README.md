@@ -40,6 +40,33 @@
 
 ![Від кутів до напрямку погляду](images/yaw_pitch.g.svg)
 
+Камера — ще один «клас» на метатаблицях (урок 3):
+
+```lua
+local Camera = {}
+Camera.__index = Camera
+
+local MAX_PITCH = math.rad(89)   -- не даємо дивитися рівно вгору чи вниз
+local UP = Vec3.new(0, 0, 1)
+
+function Camera.new(position, yaw, pitch, fov, near, far)
+    local camera = setmetatable({
+        position = position, yaw = yaw, pitch = 0,
+        fov = fov, near = near, far = far,
+    }, Camera)
+    camera:rotate(0, pitch)      -- нахил задаємо через rotate, щоб спрацювало обмеження
+    return camera
+end
+
+function Camera:rotate(deltaYaw, deltaPitch)
+    self.yaw = (self.yaw + deltaYaw) % (2 * math.pi)
+    self.pitch = math.max(-MAX_PITCH, math.min(MAX_PITCH, self.pitch + deltaPitch))
+end
+```
+
+* `% (2 * math.pi)` тримає `yaw` у межах одного оберту. Без цього після кількох обертів кут ріс би до тисяч радіан, хоча напрямок той самий.
+* `math.max(a, math.min(b, x))` — стандартний прийом, щоб «затиснути» (*clamp*) число `x` у межах `[a, b]`. Нахил не виходить за $\pm 89^\circ$. Чому саме так, показано в розділі 7.
+
 Вектор напрямку отримуємо тригонометрією. Спочатку нахиляємо одиничний вектор на кут `pitch`: його «тінь» на землі має довжину $\cos(\text{pitch})$, а висота дорівнює $\sin(\text{pitch})$. Потім повертаємо тінь на кут `yaw`:
 
 ```lua
@@ -78,6 +105,19 @@ end
 ![Діагональний рух з нормалізацією і без](images/diagonal.g.svg)
 
 Якщо одночасно натиснути **W** і **D**, сума векторів має довжину $\sqrt{2} \approx 1.41$, і камера по діагоналі летить на 41 % швидше. Ділення на `length` (нормалізація) вирівнює швидкість у всіх напрямках.
+
+### Матриця камери
+
+Матриці з уроку 3 тепер живуть усередині камери: позиція, напрямок погляду й кут огляду — це все, що потрібно для `lookAlong` і `perspective`.
+
+```lua
+function Camera:viewProjection(aspect)
+    local projection = Mat4.perspective(self.fov, aspect, self.near, self.far)
+    return projection * Mat4.lookAlong(self.position, self:forward(), UP)
+end
+```
+
+Порівняйте з уроком 3: там `eye` рахувалося з кута на колі, а напрямок був `-eye`. Тепер обидва значення беремо з камери.
 
 ## 4. Миша у відносному режимі
 
@@ -121,14 +161,26 @@ end
 ## 5. Клавіатура: допоміжна функція `axis`
 
 ```lua
+local MOVE_SPEED = 8                -- блоків за секунду
+local FAST_MULTIPLIER = 3
+local MOUSE_SENSITIVITY = 0.0025    -- радіан на піксель руху миші
+
+local look = { yaw = 0, pitch = 0 } -- рух миші, накопичений з минулого кадру
+
 local function axis(positiveKey, negativeKey)
     return (love.keyboard.isDown(positiveKey) and 1 or 0) - (love.keyboard.isDown(negativeKey) and 1 or 0)
 end
 
-camera:move(dt, axis("w", "s"), axis("d", "a"), axis("space", "lshift"), speed)
+function love.update(dt)
+    camera:rotate(look.yaw, look.pitch)   -- застосовуємо накопичений рух миші
+    look.yaw, look.pitch = 0, 0
+
+    local speed = MOVE_SPEED * (love.keyboard.isDown("lctrl") and FAST_MULTIPLIER or 1)
+    camera:move(dt, axis("w", "s"), axis("d", "a"), axis("space", "lshift"), speed)
+end
 ```
 
-Конструкція `умова and A or B` у Lua працює як тернарний оператор `умова ? A : B`. Якщо одночасно натиснути **W** і **S**, вони взаємно знищуються і дають `0`.
+Конструкція `умова and A or B` у Lua працює як тернарний оператор `умова ? A : B`. Якщо одночасно натиснути **W** і **S**, вони взаємно знищуються і дають `0`. Так само **Ctrl** утричі збільшує швидкість.
 
 ## 6. Сцена: поле з кубів
 
@@ -136,11 +188,77 @@ camera:move(dt, axis("w", "s"), axis("d", "a"), axis("space", "lshift"), speed)
 
 ```lua
 local FACES = {
-    { shade = 0.8, corners = { ... } }, -- +X
-    ...
-    { shade = 1.0, corners = { ... } }, -- +Z, верх
-    { shade = 0.5, corners = { ... } }, -- -Z, низ
+    { shade = 0.8, corners = { { 1, 0, 0 }, { 1, 1, 0 }, { 1, 1, 1 }, { 1, 0, 1 } } }, -- +X
+    { shade = 0.8, corners = { { 0, 1, 0 }, { 0, 0, 0 }, { 0, 0, 1 }, { 0, 1, 1 } } }, -- -X
+    { shade = 0.65, corners = { { 1, 1, 0 }, { 0, 1, 0 }, { 0, 1, 1 }, { 1, 1, 1 } } }, -- +Y
+    { shade = 0.65, corners = { { 0, 0, 0 }, { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 } } }, -- -Y
+    { shade = 1.0, corners = { { 0, 0, 1 }, { 1, 0, 1 }, { 1, 1, 1 }, { 0, 1, 1 } } }, -- +Z, верх
+    { shade = 0.5, corners = { { 0, 1, 0 }, { 1, 1, 0 }, { 1, 0, 0 }, { 0, 0, 0 } } }, -- -Z, низ
 }
+
+local GRASS = { 0.37, 0.62, 0.21 }
+local STONE = { 0.49, 0.49, 0.49 }
+```
+
+Кути ті самі, що в уроці 3, лише замість кольору грані тепер її яскравість. Колір дає блок, а яскравість грані його затемнює:
+
+```lua
+--- Додає до vertices усі 6 граней куба з мінімальним кутом (x, y, z).
+local function addCube(vertices, x, y, z, color)
+    for _, face in ipairs(FACES) do
+        for _, cornerIndex in ipairs(QUAD_ORDER) do
+            local corner = face.corners[cornerIndex]
+            vertices[#vertices + 1] = {
+                x + corner[1], y + corner[2], z + corner[3],     -- зсуваємо куб у (x, y, z)
+                color[1] * face.shade, color[2] * face.shade, color[3] * face.shade, 1,
+            }
+        end
+    end
+end
+
+local function buildScene()
+    local vertices = {}
+    for x = 0, 15 do
+        for y = 0, 15 do
+            addCube(vertices, x, y, 0, GRASS)
+            if x % 5 == 2 and y % 5 == 2 then              -- кожна п'ята клітинка
+                for z = 1, 1 + (x + y) % 4 do              -- стовп висотою 1..4
+                    addCube(vertices, x, y, z, STONE)
+                end
+            end
+        end
+    end
+    return love.graphics.newMesh(VERTEX_FORMAT, vertices, "triangles", "static")
+end
+```
+
+Усі куби лежать в **одній** сітці: відеокарта малює все поле одним викликом. На відміну від уроку 3, куби не центруємо: куб з кутом $(x, y, z)$ займає рівно клітинку $[x, x+1] \times [y, y+1] \times [z, z+1]$. Цією домовленістю ми користуватимемося для блоків до кінця курсу.
+
+Залишилося створити камеру й малювати сцену через її матрицю:
+
+```lua
+function love.load()
+    love.graphics.setBackgroundColor(0.53, 0.75, 0.95)
+    shader = love.graphics.newShader(VERTEX_SHADER)
+    scene = buildScene()
+    -- позиція, yaw 45°, pitch −25° (трохи вниз), кут огляду 70°, near, far
+    camera = Camera.new(Vec3.new(-4, -4, 6), math.rad(45), math.rad(-25), math.rad(70), 0.05, 1000)
+    love.mouse.setRelativeMode(true)
+end
+
+function love.draw()
+    local width, height = love.graphics.getDimensions()
+    love.graphics.push("all")
+    love.graphics.setShader(shader)
+    shader:send("viewProjection", "row", camera:viewProjection(width / height))
+    love.graphics.setDepthMode("lequal", true)
+    love.graphics.draw(scene)
+    love.graphics.pop()
+
+    local p = camera.position
+    love.graphics.print(("position (%.1f, %.1f, %.1f)   yaw %d   pitch %d"):format(
+        p.x, p.y, p.z, math.deg(camera.yaw), math.deg(camera.pitch)), 10, 10)
+end
 ```
 
 Повний код: [`code/main.lua`](code/main.lua), [`code/src/render/camera.lua`](code/src/render/camera.lua).
@@ -157,14 +275,11 @@ self.pitch = self.pitch + deltaPitch   -- НЕПРАВИЛЬНО: без обм�
 
 Коли нахил переходить через −90°, `cos(pitch)` стає від'ємним і вектор погляду «перевертається» назад. `lookAlong` при цьому досі вважає, що «вгору» — це +Z, тому світ на екрані **перевертається догори дриґом**, а рух миші вгору-вниз починає працювати навпаки. Точно на ±90° напрямок погляду паралельний до `up`, векторний добуток дорівнює нулю, і матриця виду руйнується повністю.
 
-Виправлення — обмежити нахил трохи менше ніж 90°:
+Саме тому `Camera:rotate` (розділ 2) обмежує нахил трохи менше ніж 90°:
 
 ```lua
-local MAX_PITCH = math.rad(89)
-self.pitch = math.max(-MAX_PITCH, math.min(MAX_PITCH, self.pitch + deltaPitch))
+self.pitch = math.max(-MAX_PITCH, math.min(MAX_PITCH, self.pitch + deltaPitch))   -- MAX_PITCH = 89°
 ```
-
-`math.max(a, math.min(b, x))` — стандартний прийом, щоб «затиснути» (*clamp*) число `x` у межах `[a, b]`.
 
 ## Підсумок
 

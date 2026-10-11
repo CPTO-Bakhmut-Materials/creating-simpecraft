@@ -51,11 +51,23 @@ end
 
 ## 2. Відсікання задніх граней
 
-Навіть з усіх видимих граней куба камера одночасно бачить **не більше трьох**. Решта повернуті до неї спиною. Відеокарта може відкидати такі трикутники сама, ще до розфарбовування пікселів:
+Навіть з усіх видимих граней куба камера одночасно бачить **не більше трьох**. Решта повернуті до неї спиною. Відеокарта може відкидати такі трикутники сама, ще до розфарбовування пікселів. Вмикаємо це в `Renderer:draw`, поруч з буфером глибини:
 
 ```lua
-love.graphics.setMeshCullMode("back")
+function Renderer:draw(viewProjection)
+    love.graphics.push("all")
+    love.graphics.setShader(self.shader)
+    self.shader:send("viewProjection", "row", viewProjection)
+    love.graphics.setDepthMode("lequal", true)
+    love.graphics.setMeshCullMode("back")   -- не малювати трикутники, повернуті до нас спиною
+    for _, mesh in pairs(self.meshes) do     -- сітки чанків (розділ 3)
+        love.graphics.draw(mesh)
+    end
+    love.graphics.pop()
+end
 ```
+
+Завдяки `push("all")` / `pop()` (урок 3) відсікання діє лише на світ, а не на текст лічильника.
 
 Звідки відеокарта знає, де в трикутника «спина»? З **порядку обходу вершин** (*winding order*):
 
@@ -84,26 +96,86 @@ function Extent3:divideRoundingUp(divisor)
 end
 ```
 
-Кожен чанк отримує **ключ** — плоский індекс у сітці чанків (та сама формула з уроку 6, лише для чанків):
+Кожен чанк отримує **ключ** — плоский індекс у сітці чанків (та сама формула з уроку 6, лише для чанків). Замість однієї сітки `Renderer.new` тепер будує таблицю сіток `meshes`, по одній на чанк:
 
 ```lua
-for key = 0, self.chunks:volume() - 1 do
-    self:buildChunk(key)
+function Renderer.new(world, textureDir, chunkSize)
+    -- ... масив текстур, як в уроці 6 ...
+    local self = setmetatable({
+        world = world,
+        chunkSize = chunkSize,
+        chunks = world.size:divideRoundingUp(chunkSize),   -- розмір світу в чанках
+        shader = love.graphics.newShader(PIXEL_SHADER, VERTEX_SHADER),
+        textures = textures,
+        meshes = {},                                        -- ключ чанка → сітка
+        triangleCount = 0,
+        meshCount = 0,
+    }, Renderer)
+
+    for key = 0, self.chunks:volume() - 1 do
+        self:buildChunk(key)
+    end
+    return self
 end
 
 function Renderer:buildChunk(key)
-    local chunk = self.chunks:cell(key)                          -- ключ → координати чанка
+    local chunk = self.chunks:cell(key)                     -- ключ → координати чанка
     local vertices = Mesher.buildChunk(self.world, chunk * self.chunkSize, self.chunkSize)
-    if #vertices > 0 then
-        ...
+    if #vertices > 0 then                                   -- порожній чанк не отримує сітки
+        local mesh = love.graphics.newMesh(VERTEX_FORMAT, vertices, "triangles", "static")
+        mesh:setTexture(self.textures)
         self.meshes[key] = mesh
+        self.triangleCount = self.triangleCount + #vertices / 3
+        self.meshCount = self.meshCount + 1
     end
 end
 ```
 
-`Mesher.buildChunk` обходить лише блоки свого куба (обрізаного межами світу), але **сусідів перевіряє у всьому світі**. Це важливо, і саме тут криється друга типова помилка.
+* `chunk * self.chunkSize` — перший блок чанка: чанк $(1, 2, 0)$ починається з блока $(16, 32, 0)$.
+* Порожні чанки в `meshes` просто відсутні. Через ці «дірки» в ключах `Renderer:draw` обходить таблицю через `pairs`, а не `ipairs`: `ipairs` іде по порядку $1, 2, 3, \ldots$ і зупиняється на першому відсутньому ключі, а `pairs` обходить **усі** ключі в будь-якому порядку.
 
-Повний код: [`code.zip`](code.zip). Нове порівняно з уроком 6: `Mesher.buildChunk`, чанки в `renderer.lua`, `Vec3.fromAxes` і `Vec3:floor`, `Extent3:divideRoundingUp`.
+`Mesher.buildChunk` обходить лише блоки свого куба (обрізаного межами світу), але **сусідів перевіряє у всьому світі**:
+
+```lua
+function Mesher.buildChunk(world, origin, size)
+    local vertices = {}
+    -- Останній блок чанка по кожній осі, але не далі за край світу.
+    local last = Vec3.fromAxes(function(axis) return math.min(origin[axis] + size, world.size[axis]) - 1 end)
+
+    for z = origin.z, last.z do
+        for y = origin.y, last.y do
+            for x = origin.x, last.x do
+                local block = Vec3.new(x, y, z)
+                local id = world:get(block)
+                if id ~= Blocks.AIR then
+                    for _, face in ipairs(FACES) do
+                        if not world:isSolid(block + face.normal) then   -- сусід у всьому світі
+                            emitFace(vertices, block, face, Blocks.textureLayer(id, face.texture))
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return vertices
+end
+```
+
+Саме тут криється друга типова помилка (розділ 4).
+
+**Формули «по кожній осі».** `origin.x` у Lua — це те саме, що `origin["x"]`. Тому вісь можна передати рядком: `origin[axis]` при `axis = "x"` дає `origin.x`. На цьому побудовано допоміжну функцію, яка збирає вектор з однієї формули, застосованої до кожної осі:
+
+```lua
+function Vec3.fromAxes(component)
+    return Vec3.new(component("x"), component("y"), component("z"))
+end
+```
+
+Без неї довелося б тричі повторити `math.min(origin.x + size, world.size.x) - 1` для `x`, `y` і `z`, і помилку в одній копії було б легко не помітити.
+
+У `main.lua` розмір чанка — константа `local CHUNK_SIZE = 16`, яку передаємо в `Renderer.new(world, "assets/textures", CHUNK_SIZE)`. Клавіша **Tab** вмикає каркасний режим, як в уроці 2.
+
+Повний код: [`code.zip`](code.zip).
 
 ## 4. ⚠️ Типові помилки
 

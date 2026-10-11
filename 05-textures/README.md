@@ -102,15 +102,45 @@ void effect() {
 * **Зблизька** (збільшення) один тексель розтягується на багато пікселів. Фільтр `"nearest"` бере найближчий тексель, і край виходить чітким, «піксельним», як у Minecraft. Фільтр `"linear"` змішує сусідні текселі й дає розмиття.
 * **Здалеку** (зменшення) на один піксель припадає багато текселів. Якщо брати лише один з них, далечінь неприємно «мерехтить» під час руху. **Мипмапи** (*mipmaps*) — заздалегідь підготовлені зменшені копії текстури (64, 32, 16, …). Відеокарта сама обирає копію потрібного розміру.
 
+Масив текстур завантажуємо одним викликом, передавши список шляхів у порядку шарів:
+
 ```lua
-local image = love.graphics.newArrayImage(paths, { mipmaps = true })
-image:setFilter("linear", "nearest")   -- (зменшення, збільшення)
-image:setMipmapFilter("linear")        -- плавний перехід між копіями
+local TEXTURE_DIR = "assets/textures"
+
+local function loadTextures()
+    local paths = {}
+    for i, file in ipairs(TEXTURES) do
+        paths[i] = TEXTURE_DIR .. "/" .. file      -- ".." склеює рядки
+    end
+    local image = love.graphics.newArrayImage(paths, { mipmaps = true })
+    image:setFilter("linear", "nearest")   -- (зменшення, збільшення)
+    image:setMipmapFilter("linear")        -- плавний перехід між копіями
+    return image
+end
 ```
+
+Шлях `paths[i]` стає шаром `i - 1`: саме тому в таблиці `LAYER` ми віднімали одиницю.
 
 ## 6. Код уроку
 
 Повний код: [`code/main.lua`](code/main.lua). Камера та математика без змін з уроку 4.
+
+Блок тепер описується не кольором, а трьома текстурами: верх, боки, низ. Кожна грань у `FACES` замість кольору знає, **яку** з трьох текстур блока на неї класти:
+
+```lua
+local STONE = { top = "stone.png", side = "stone.png", bottom = "stone.png" }
+local DIRT = { top = "dirt.png", side = "dirt.png", bottom = "dirt.png" }
+local GRASS = { top = "grass_top.png", side = "dirt_grass.png", bottom = "dirt.png" }
+
+local FACES = {
+    { texture = "side", shade = 0.8, corners = { { 1, 0, 0 }, { 1, 1, 0 }, { 1, 1, 1 }, { 1, 0, 1 } } }, -- +X
+    { texture = "side", shade = 0.8, corners = { { 0, 1, 0 }, { 0, 0, 0 }, { 0, 0, 1 }, { 0, 1, 1 } } }, -- -X
+    { texture = "side", shade = 0.65, corners = { { 1, 1, 0 }, { 0, 1, 0 }, { 0, 1, 1 }, { 1, 1, 1 } } }, -- +Y
+    { texture = "side", shade = 0.65, corners = { { 0, 0, 0 }, { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 } } }, -- -Y
+    { texture = "top", shade = 1.0, corners = { { 0, 0, 1 }, { 1, 0, 1 }, { 1, 1, 1 }, { 0, 1, 1 } } },  -- +Z
+    { texture = "bottom", shade = 0.5, corners = { { 0, 1, 0 }, { 1, 1, 0 }, { 1, 0, 0 }, { 0, 0, 0 } } }, -- -Z
+}
+```
 
 Головна зміна — функція `addCube`, яка для кожної грані знаходить шар текстури блока й додає до кожної вершини UV:
 
@@ -130,7 +160,43 @@ local function addCube(vertices, x, y, z, block)
 end
 ```
 
+Яскравість грані тепер записується в колір вершини (`face.shade` тричі), а піксельний шейдер множить на нього колір текстури.
+
 Сцена — острівець 16×16: знизу шар каменю, над ним земля, згори трава, кілька кам'яних стовпів і земляних горбиків.
+
+```lua
+local function buildScene()
+    local vertices = {}
+    for x = 0, 15 do
+        for y = 0, 15 do
+            addCube(vertices, x, y, 0, STONE)
+            addCube(vertices, x, y, 1, DIRT)
+            addCube(vertices, x, y, 2, GRASS)
+            if x % 5 == 2 and y % 5 == 2 then
+                for z = 3, 3 + (x + y) % 4 do
+                    addCube(vertices, x, y, z, STONE)        -- кам'яні стовпи
+                end
+            elseif (x * 7 + y * 3) % 11 == 0 then
+                addCube(vertices, x, y, 3, DIRT)             -- «розкидані» горбики
+            end
+        end
+    end
+    local mesh = love.graphics.newMesh(VERTEX_FORMAT, vertices, "triangles", "static")
+    mesh:setTexture(textures)      -- у шейдері ця текстура стане MainTex
+    return mesh
+end
+
+function love.load()
+    love.graphics.setBackgroundColor(0.53, 0.75, 0.95)
+    shader = love.graphics.newShader(PIXEL_SHADER, VERTEX_SHADER)
+    textures = loadTextures()      -- до buildScene: сітці потрібна вже завантажена текстура
+    scene = buildScene()
+    camera = Camera.new(Vec3.new(-3, -3, 8), math.rad(45), math.rad(-25), math.rad(70), 0.05, 1000)
+    love.mouse.setRelativeMode(true)
+end
+```
+
+Формула `(x * 7 + y * 3) % 11 == 0` — простий спосіб «розкидати» горбики так, щоб вони не стояли рівними рядами, без генератора випадкових чисел. Тому острів щоразу однаковий.
 
 ## 7. ⚠️ Типові помилки
 

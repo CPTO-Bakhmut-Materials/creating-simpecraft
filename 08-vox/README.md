@@ -83,6 +83,19 @@ pos = body + contentSize + childrenSize
 
 Число `u32` займає 4 байти, і в `.vox` **молодший байт записано першим**. Тому число 150 виглядає як `96 00 00 00`, а не `00 00 00 96`. Так само записують числа процесори x86 та ARM.
 
+Кожна функція розбору може натрапити на пошкоджений файл. Для таких випадків у `vox.lua` є одна допоміжна функція:
+
+```lua
+local function fail(message, ...)
+    error("vox: " .. message:format(...), 0)
+end
+```
+
+* `error(повідомлення)` зупиняє виконання з помилкою. Другий аргумент `0` прибирає з повідомлення назву файлу й номер рядка: гравцеві потрібен зміст помилки, а не адреса в нашому коді.
+* `...` означає «усі інші аргументи». `fail("bad chunk '%s' at %d", id, pos)` передасть `id` і `pos` у `format`, і вони стануть на місця `%s` і `%d`.
+
+Тепер читання числа:
+
 ```lua
 local function readU32(data, pos)
     local b1, b2, b3, b4 = data:byte(pos, pos + 3)
@@ -96,6 +109,47 @@ end
 `string.byte(s, i, j)` повертає числові коди байтів з `i` по `j`. Рядки в Lua можуть містити будь-які байти, зокрема нульові, тому для двійкових даних вони підходять.
 
 ## 4. Розбір файлу: `src/world/vox.lua`
+
+Заголовок чанка читаємо й одразу перевіряємо, що він сам і весь чанк уміщаються у файл:
+
+```lua
+local HEADER_SIZE = 12 -- id чанка (4) + розмір вмісту (4) + розмір дочірніх чанків (4)
+
+local function readChunkHeader(data, pos)
+    if pos + HEADER_SIZE - 1 > #data then
+        fail("truncated chunk header at offset %d", pos - 1)
+    end
+    local id = data:sub(pos, pos + 3)          -- 4 літери: "SIZE", "XYZI", ...
+    local contentSize = readU32(data, pos + 4)
+    local childrenSize = readU32(data, pos + 8)
+    if pos + HEADER_SIZE + contentSize + childrenSize - 1 > #data then
+        fail("chunk '%s' at offset %d extends past end of file", id, pos - 1)
+    end
+    return id, contentSize, childrenSize
+end
+```
+
+`data:sub(i, j)` вирізає з рядка символи з `i` по `j`. Позиції в Lua рахуються з 1, а зсуви (*offsets*) у специфікації та в `xxd` — з 0, тому в повідомленнях ми пишемо `pos - 1`. Тоді число в повідомленні збігається з тим, що людина побачить у шістнадцятковому переглядачі.
+
+Сам файл починається з сигнатури `"VOX "`, версії й чанка `MAIN`:
+
+```lua
+function Vox.parse(data)
+    if type(data) ~= "string" or #data < 8 or data:sub(1, 4) ~= "VOX " then
+        fail("not a MagicaVoxel file (missing 'VOX ' header)")
+    end
+    local version = readU32(data, 5)
+
+    local id, contentSize, childrenSize = readChunkHeader(data, 9)
+    if id ~= "MAIN" then
+        fail("expected MAIN chunk, found '%s'", id)
+    end
+
+    local pos = 9 + HEADER_SIZE + contentSize       -- перший дочірній чанк
+    local finish = pos + childrenSize               -- кінець дочірніх чанків
+    local models, palette, pendingSize = {}, nil, nil
+    -- ... цикл нижче ...
+```
 
 Головний цикл обходить дочірні чанки `MAIN`:
 
@@ -112,15 +166,43 @@ while pos < finish do
         models[#models + 1] = { size = pendingSize, voxels = readVoxels(data, body, contentSize) }
         pendingSize = nil
     elseif id == "RGBA" then
-        ...
+        if contentSize < 255 * 4 then
+            fail("RGBA chunk is too small (%d bytes)", contentSize)
+        end
         palette = readPalette(data, body)
     end
+    -- Будь-який інший чанк (nTRN, MATL, LAYR, ...) просто перестрибуємо.
     pos = body + contentSize + childrenSize
 end
+
+if #models == 0 then
+    fail("file contains no models")
+end
+return { version = version, models = models, palette = palette }
 ```
 
 * `SIZE` і наступний за ним `XYZI` утворюють **пару**, що описує одну модель.
-* У файлі може бути кілька моделей. Ми завантажуємо **першу**, а для решти друкуємо попередження.
+* У файлі може бути кілька моделей. Ми завантажуємо **першу**, а для решти друкуємо попередження (розділ 5).
+
+Вокселі в `XYZI` — це число `N`, а за ним `N` записів по 4 байти:
+
+```lua
+local function readVoxels(data, pos, contentSize)
+    local count = readU32(data, pos)
+    if 4 + count * 4 > contentSize then
+        fail("XYZI chunk declares %d voxels but holds only %d bytes", count, contentSize)
+    end
+    local voxels = {}
+    for i = 0, count - 1 do
+        local p = pos + 4 + i * 4
+        local x, y, z, colorIndex = data:byte(p, p + 3)
+        voxels[#voxels + 1] = { position = Vec3.new(x, y, z), colorIndex = colorIndex }
+    end
+    return voxels
+end
+```
+
+Перевірка `4 + count * 4 > contentSize` не дає пошкодженому файлу, який «обіцяє» мільйон вокселів, змусити нас читати чужі байти.
 
 ### Палітра: зсув на одиницю, закладений у формат
 
@@ -152,7 +234,30 @@ end
 | `XYZI` без `SIZE` | `XYZI chunk … has no preceding SIZE chunk` |
 | кількість вокселів більша за вміст | `XYZI chunk declares … voxels but holds only … bytes` |
 
-`WorldLoader.load` обгортає все в `pcall` і додає до повідомлення шлях до файлу. Якщо передати грі текстовий файл, LÖVE покаже не незрозумілу помилку з глибини коду, а таке:
+Повідомлення ще треба доповнити: «not a MagicaVoxel file» без назви файлу мало що каже. Цим займається `WorldLoader.load` у `src/world/load.lua`:
+
+```lua
+function WorldLoader.load(path)
+    local ok, result = pcall(function()
+        local vox = Vox.parse(readFile(path))
+        if #vox.models > 1 then
+            print(("warning: '%s' has %d models; only the first is loaded"):format(path, #vox.models))
+        end
+        return WorldLoader.fromVox(vox)
+    end)
+    if not ok then
+        error(("Failed to load world '%s':\n%s"):format(path, result), 0)
+    end
+    return result
+end
+```
+
+**`pcall`** (*protected call*, «захищений виклик») виконує функцію і **перехоплює** помилку, замість того щоб зупинити програму. Він повертає два значення:
+
+* `true` і результат функції, якщо все гаразд;
+* `false` і текст помилки, якщо всередині спрацював `error` (наприклад, наш `fail`).
+
+Тут ми перехоплюємо помилку лише для того, щоб додати до неї шлях до файлу, і знову викликаємо `error`. Якщо передати грі текстовий файл, LÖVE покаже не незрозумілу помилку з глибини коду, а таке:
 
 ```
 Failed to load world 'notes.txt':
@@ -171,6 +276,25 @@ vox: not a MagicaVoxel file (missing 'VOX ' header)
 | камінь | 125, 125, 125 |
 | земля | 121, 85, 58 |
 | трава | 95, 159, 53 |
+
+Еталон — нове поле `color` у реєстрі блоків з уроку 6:
+
+```lua
+Blocks.defs = {
+    [Blocks.STONE] = {
+        name = "stone", color = { 125, 125, 125 },
+        top = "stone.png", side = "stone.png", bottom = "stone.png",
+    },
+    [Blocks.DIRT] = {
+        name = "dirt", color = { 121, 85, 58 },
+        top = "dirt.png", side = "dirt.png", bottom = "dirt.png",
+    },
+    [Blocks.GRASS] = {
+        name = "grass", color = { 95, 159, 53 },
+        top = "grass_top.png", side = "dirt_grass.png", bottom = "dirt.png",
+    },
+}
+```
 
 ![Пошук найближчого кольору](images/color_match.g.svg)
 
@@ -192,7 +316,28 @@ end
 
 Зверніть увагу на середній приклад: темно-сірий `(90, 90, 90)` став **землею**, а не каменем. Відстань у RGB не завжди збігається з тим, як колір сприймає людина. Тому малюйте у редакторі кольорами, близькими до еталонних.
 
-`WorldLoader.fromVox` обчислює блок **один раз для кожного індексу палітри** (максимум 255 разів), а не для кожного з 23 451 вокселя.
+`WorldLoader.fromVox` обчислює блок **один раз для кожного індексу палітри** (максимум 255 разів), а не для кожного з 23 451 вокселя, і будує з першої моделі світ:
+
+```lua
+function WorldLoader.fromVox(vox)
+    if not vox.palette then
+        error("world file has no color palette (RGBA chunk)", 0)
+    end
+    local blockForIndex = {}                      -- індекс палітри → тип блока
+    for index, color in ipairs(vox.palette) do
+        blockForIndex[index] = Blocks.fromColor(color[1], color[2], color[3])
+    end
+
+    local model = vox.models[1]
+    local world = World.new(model.size)
+    for _, voxel in ipairs(model.voxels) do
+        world:set(voxel.position, blockForIndex[voxel.colorIndex] or Blocks.STONE)
+    end
+    return world
+end
+```
+
+Світ створюється порожнім (`World.new` з уроку 6) і заповнюється тими самими викликами `world:set`, якими раніше користувався генератор. Решта гри різниці не помічає.
 
 ## 6. Запуск
 
@@ -207,7 +352,24 @@ function love.load(args)
     world = WorldLoader.load(args[1] or DEFAULT_WORLD)
 ```
 
-`args` — аргументи командного рядка після шляху до гри. LÖVE читає файли з теки гри (`love.filesystem`), а для шляху поза нею `readFile` використовує звичайний `io.open`.
+`args` — аргументи командного рядка після шляху до гри. `args[1] or DEFAULT_WORLD` бере перший аргумент, а якщо його немає, то світ за замовчуванням `"assets/worlds/test.vox"`.
+
+LÖVE читає файли з теки гри (`love.filesystem`), а для шляху поза нею `readFile` використовує звичайний `io.open`:
+
+```lua
+local function readFile(path)
+    if love.filesystem.getInfo(path, "file") then
+        return assert(love.filesystem.read(path))   -- файл з теки гри
+    end
+    local file, err = io.open(path, "rb")           -- "rb": читати як двійкові дані
+    if not file then
+        error(("cannot open world file: %s"):format(err), 0)
+    end
+    local data = file:read("*a")                    -- "*a": увесь файл одним рядком
+    file:close()
+    return data
+end
+```
 
 Модуль `src/world/generate.lua` з уроків 6–7 більше не потрібен, і ми його видалили. Повний код: [`code.zip`](code.zip).
 
