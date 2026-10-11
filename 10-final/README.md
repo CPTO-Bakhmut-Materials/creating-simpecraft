@@ -6,6 +6,8 @@
 
 ![Фінальна гра](images/final.gif)
 
+<iframe class="lesson-demo" src="demo/index.html?poster=../images/final.gif" title="Демо: проліт над островом" loading="lazy" tabindex="-1"></iframe>
+
 ## Мета уроку
 
 * Провести **рефакторинг**: змінити будову коду, не змінюючи поведінки.

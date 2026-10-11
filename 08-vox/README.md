@@ -6,6 +6,8 @@
 
 ![Світ, завантажений з файлу](images/result.png)
 
+<iframe class="lesson-demo" src="demo/index.html?poster=../images/result.png" title="Демо: світ, завантажений з файлу" loading="lazy" tabindex="-1"></iframe>
+
 ## Мета уроку
 
 * Прочитати **двійковий** (бінарний) формат файлу за специфікацією.

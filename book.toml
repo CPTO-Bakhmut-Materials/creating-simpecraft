@@ -23,7 +23,7 @@ after = ["links"]
 default-theme = "light"
 preferred-dark-theme = "navy"
 no-section-label = true
-additional-css = ["theme/katex.css"]
+additional-css = ["theme/katex.css", "theme/demo.css"]
 
 # Вбудований пошук mdBook (elasticlunr) відкидає кириличні слова, тож для
 # українського тексту він нічого не знаходить. Вимикаємо, щоб не вводити в оману.

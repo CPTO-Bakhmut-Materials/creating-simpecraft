@@ -6,6 +6,8 @@
 
 ![Острів після оптимізації](images/result.png)
 
+<iframe class="lesson-demo" src="demo/index.html?poster=../images/result.png" title="Демо: острів після оптимізації, частину часу в каркасному режимі" loading="lazy" tabindex="-1"></iframe>
+
 ## Мета уроку
 
 * Не малювати грані, яких **ніколи не видно** (між двома блоками).

@@ -18,18 +18,17 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      MDBOOK_VERSION: 0.4.40
-      MDBOOK_KATEX_VERSION: 0.9.3   # 0.9.x — для mdBook 0.4; 0.10+ потребує mdBook 0.5
     steps:
       - uses: actions/checkout@v4
-      - name: Install mdBook
-        run: |
-          mkdir -p "$HOME/bin"
-          curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz -C "$HOME/bin"
-          curl -sSL "https://github.com/lzanini/mdbook-katex/releases/download/${MDBOOK_KATEX_VERSION}-binaries/mdbook-katex-v${MDBOOK_KATEX_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz -C "$HOME/bin"
-          echo "$HOME/bin" >> "$GITHUB_PATH"
-      - run: tools/build-book.sh
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # mdBook, mdbook-katex and love.js — pinned in tools/versions.env, fetched by tools/build.sh.
+      - uses: actions/cache@v4
+        with:
+          path: .tools
+          key: tools-${{ hashFiles('tools/versions.env') }}
+      - run: tools/build.sh
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

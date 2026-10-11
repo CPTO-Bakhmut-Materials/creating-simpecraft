@@ -6,6 +6,8 @@
 
 ![Ламаємо і ставимо блоки](images/interaction.gif)
 
+<iframe class="lesson-demo" src="demo/index.html?poster=../images/interaction.gif" title="Демо: обліт острова з прицілом" loading="lazy" tabindex="-1"></iframe>
+
 ## Мета уроку
 
 * Визначити, **на який блок** дивиться гравець: пустити **промінь** крізь сітку блоків.

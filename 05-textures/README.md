@@ -6,6 +6,8 @@
 
 ![Текстурований острівець](images/textured.gif)
 
+<iframe class="lesson-demo" src="demo/index.html?poster=../images/textured.gif" title="Демо: текстурований острівець" loading="lazy" tabindex="-1"></iframe>
+
 ## Мета уроку
 
 * Зрозуміти, що таке **текстурні (UV) координати** і як «натягнути» картинку на грань.

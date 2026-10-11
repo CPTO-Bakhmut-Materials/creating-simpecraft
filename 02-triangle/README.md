@@ -6,6 +6,8 @@
 
 ![Результат: трикутник, квадрат і їхні каркаси](images/quad_ok.png)
 
+<iframe class="lesson-demo" src="demo/index.html?poster=../images/quad_ok.png" title="Демо: трикутник і квадрат, по черзі з каркасом" loading="lazy" tabindex="-1"></iframe>
+
 ## Мета уроку
 
 * Зрозуміти, що будь-яка 3D-модель, від кубика до персонажа, складається з **трикутників**.

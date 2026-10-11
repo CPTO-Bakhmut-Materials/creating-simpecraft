@@ -1,0 +1,24 @@
+/* Живі демо уроків (love.js, tools/build-demos.sh).
+   У Markdown демо стоїть одразу після картинки результату:
+       ![…](images/move.gif)
+       <iframe class="lesson-demo" src="demo/index.html?poster=../images/move.gif" …></iframe>
+   У книзі показуємо демо замість картинки; GitHub вирізає iframe, тож там лишається
+   картинка, і в друці теж. */
+.lesson-demo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 6px;
+    background: #87bdf2;
+    pointer-events: none; /* демо неінтерактивне: прокручування сторінки працює й над ним */
+}
+
+p:has(> img:only-child):has(+ .lesson-demo) {
+    display: none;
+}
+
+@media print {
+    .lesson-demo { display: none; }
+    p:has(> img:only-child):has(+ .lesson-demo) { display: block; }
+}

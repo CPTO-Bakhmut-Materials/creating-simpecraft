@@ -6,6 +6,8 @@
 
 ![Політ над островом](images/world.gif)
 
+<iframe class="lesson-demo" src="demo/index.html?poster=../images/world.gif" title="Демо: політ над островом" loading="lazy" tabindex="-1"></iframe>
+
 ## Мета уроку
 
 * Зберігати світ у **плоскому масиві** й навчитися перетворювати координати `(x, y, z)` на індекс.

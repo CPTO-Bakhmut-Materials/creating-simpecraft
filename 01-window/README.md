@@ -6,6 +6,8 @@
 
 ![Квадрат рухається клавішами WASD](images/move.gif)
 
+<iframe class="lesson-demo" src="demo/index.html?poster=../images/move.gif" title="Демо: квадрат рухається клавішами WASD" loading="lazy" tabindex="-1"></iframe>
+
 ## Мета уроку
 
 * Познайомитися з мовою **Lua** у межах, потрібних для курсу.

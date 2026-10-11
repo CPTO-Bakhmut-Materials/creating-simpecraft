@@ -6,6 +6,8 @@
 
 ![Політ над полем](images/fly.gif)
 
+<iframe class="lesson-demo" src="demo/index.html?poster=../images/fly.gif" title="Демо: політ над полем" loading="lazy" tabindex="-1"></iframe>
+
 ## Мета уроку
 
 * Описати орієнтацію камери двома кутами: **yaw** (поворот) і **pitch** (нахил).
