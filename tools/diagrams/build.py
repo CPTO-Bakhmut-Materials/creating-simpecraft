@@ -286,6 +286,98 @@ def quad_split():
     f.save(out("quad_split"))
 
 
+def shade(normal, base=(47, 111, 219)):
+    """Lambert shading of a face colour for a fixed light from the upper left."""
+    light = norm((-0.4, -0.5, 0.75))
+    n = norm(normal)
+    if n[2] < 0:
+        n = neg(n)
+    k = 0.45 + 0.55 * max(0.0, sum(a * b for a, b in zip(n, light)))
+    return "#%02x%02x%02x" % tuple(round(255 - (255 - c) * k) for c in base)
+
+
+@diagram("02-triangle", "nonplanar_quad")
+def nonplanar_quad():
+    f = Fig(920, 340, "Три точки завжди в одній площині, чотири — не завжди")
+    sub = lambda a, b: (a[0] - b[0], a[1] - b[1], a[2] - b[2])  # noqa: E731
+
+    def face(P, pts, owner):
+        n = cross(sub(pts[1], pts[0]), sub(pts[2], pts[0]))
+        f.poly([P(p) for p in pts], fill=shade(n), stroke=INK, sw=1.5, owner=owner)
+
+    def corners(P, pts, labels, offsets):
+        for p, name, (dx, dy) in zip(pts, labels, offsets):
+            q = P(p)
+            f.circle(*q, 4.5)
+            f.text(q[0] + dx, q[1] + dy, name, size=MD, weight="bold", anchor="middle")
+
+    # Panel 1: any three points lie in one plane.
+    P = projector(60, 220, 110)
+    f.text(20, 30, "3 точки — одна площина", size=MD, weight="bold")
+    plane = [(-0.05, -0.6, 0), (1.5, -0.6, 0), (1.5, 1.5, 0), (-0.05, 1.5, 0)]
+    f.poly([P(p) for p in plane], fill=FILL[GRAY], stroke=GRAY, sw=THIN, dash="5 4", owner="plane")
+    tri = [(0, 0, 0), (1.05, 0.05, 0), (0.45, 1.0, 0)]
+    face(P, tri, "triangle")
+    corners(P, tri, ["1", "2", "3"], [(0, 26), (0, 24), (0, -12)])
+    f.text(20, 325, "площину задають напрямки 1→2 і 1→3", color=MUTED)
+
+    # Panels 2–3: the same four corners, one lifted out of the plane, split two ways.
+    quad = [(0, 0, 0), (1, 0, 0), (1, 1, 0.55), (0, 1, 0)]
+    for k, (ox, title, tris, word) in enumerate((
+            (355, "Діагональ 1–3", [(0, 1, 2), (0, 2, 3)], "«хребет»"),
+            (645, "Діагональ 2–4", [(0, 1, 3), (1, 2, 3)], "«долина»"))):
+        P = projector(ox, 230, 150)
+        f.text(ox - 20, 30, title, size=MD, weight="bold")
+        f.text(ox - 20, 58, word, color=MUTED, size=MD)
+        # Where corner 3 would be if the quad were flat.
+        flat = P((1, 1, 0))
+        f.line(*flat, *P(quad[2]), stroke=GRAY, sw=THIN, dash="3 3", owner="lift")
+        f.circle(*flat, 3.5, fill="#ffffff", stroke=GRAY, owner="flat corner")
+        for t in tris:
+            face(P, [quad[i] for i in t], f"tri{k}")
+        corners(P, quad, ["1", "2", "3", "4"], [(-16, 20), (14, 18), (14, -6), (-14, -4)])
+    f.text(355 - 20, 325,"ті самі 4 кути, кут 3 піднято — дві різні поверхні", color=MUTED)
+    f.save(out("nonplanar_quad"))
+
+
+@diagram("02-triangle", "concave_split")
+def concave_split():
+    f = Fig(860, 360, "Увігнутий чотирикутник: правильна і неправильна діагональ")
+    f.defs.append('<pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"'
+                  ' patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8"'
+                  f' stroke="{RED}" stroke-width="1.2"/></pattern>')
+    # A "dart": corner 2 points inwards, so the shape is concave.
+    shape = {1: (0, 0), 2: (1, 0.55), 3: (2, 0), 4: (1, 1.6)}
+    S = 150
+    blue_f, orange_f = "#aac4f0", "#f6cdb0"
+    for k, (ox, title, color) in enumerate(((60, "Правильно: діагональ 2–4", GREEN),
+                                            (500, "Помилка: діагональ 1–3", RED))):
+        oy = 310
+
+        def P(n):
+            x, y = shape[n]
+            return (ox + x * S, oy - y * S)
+
+        f.text(ox + S, 30, title, size=MD, weight="bold", color=color, anchor="middle")
+        outline = [P(n) for n in (1, 2, 3, 4)]
+        if k == 0:
+            f.poly([P(1), P(2), P(4)], fill=blue_f, stroke=BLUE, sw=WIDE)
+            f.poly([P(2), P(3), P(4)], fill=orange_f, stroke=ORANGE, sw=WIDE)
+        else:
+            f.poly([P(1), P(3), P(4)], fill=orange_f, stroke=ORANGE, sw=WIDE)
+            f.poly([P(1), P(2), P(3)], fill="url(#hatch)", stroke=RED, sw=WIDE)
+            # The note sits in the empty corner right of edge 3–4.
+            f.text(ox + 1.55 * S, oy - 1.1 * S, "трикутник 1-2-3\nлежить поза\nфігурою", color=RED,
+                   weight="bold")
+            f.leader((ox + 1.62 * S, oy - 0.82 * S), (ox + 1.45 * S, oy - 0.12 * S), color=RED)
+        f.poly(outline, stroke=INK, sw=THIN, dash="5 4", owner="outline")
+        for n, (dx, dy) in {1: (-14, 18), 2: (0, 24), 3: (14, 18), 4: (0, -12)}.items():
+            q = P(n)
+            f.circle(*q, 4.5)
+            f.text(q[0] + dx, q[1] + dy, str(n), size=MD, weight="bold", anchor="middle")
+    f.save(out("concave_split"))
+
+
 # ---------------------------------------------------------------- 03-perspective
 
 def projector(ox, oy, s, ex=(1.0, 0.32), ey=(0.62, -0.42), ez=(0.0, -1.0)):

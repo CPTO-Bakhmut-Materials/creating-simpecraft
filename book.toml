@@ -23,9 +23,10 @@ after = ["links"]
 default-theme = "light"
 preferred-dark-theme = "navy"
 no-section-label = true
-additional-css = ["theme/katex.css", "theme/demo.css", "theme/rgb-mixer.css"]
-# The "RGB model" widget in lesson 1 (<div class="rgb-mixer"> in the Markdown).
-additional-js = ["theme/rgb-mixer.js"]
+additional-css = ["theme/katex.css", "theme/demo.css", "theme/rgb-mixer.css", "theme/dt-pendulum.css"]
+# Lesson 1 widgets: the "RGB model" (<div class="rgb-mixer">) and the dt pendulums
+# (<div class="dt-pendulum">) in the Markdown.
+additional-js = ["theme/rgb-mixer.js", "theme/dt-pendulum.js"]
 
 # mdBook's built-in search (elasticlunr) drops Cyrillic words, so it finds nothing
 # in Ukrainian text. Disabled so it doesn't mislead readers.

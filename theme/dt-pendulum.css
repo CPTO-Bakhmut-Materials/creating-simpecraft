@@ -1,0 +1,51 @@
+/* The dt pendulum widget (theme/dt-pendulum.js). Colours come from the mdBook theme. */
+.dt-pendulum {
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid var(--table-border-color);
+    border-radius: 6px;
+    background: var(--bg);
+    font-size: 0.9em;
+}
+
+.dt-pendulum-rate {
+    display: grid;
+    grid-template-columns: auto 1fr 2.5em;
+    align-items: center;
+    gap: 0.6em;
+}
+
+.dt-pendulum-rate output { font-variant-numeric: tabular-nums; text-align: right; font-weight: bold; }
+
+.dt-pendulum-buttons { display: flex; flex-wrap: wrap; gap: 0.4em; margin: 0.6em 0; }
+
+.dt-pendulum-buttons button {
+    padding: 0.3em 0.8em;
+    border: 1px solid var(--table-border-color);
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--fg);
+    font: inherit;
+    cursor: pointer;
+}
+
+.dt-pendulum-buttons button:hover { border-color: var(--links); }
+
+.dt-pendulum-status { opacity: 0.8; margin-bottom: 0.4em; font-variant-numeric: tabular-nums; }
+
+.dt-pendulum-canvas { display: block; width: 100%; }
+
+.dt-pendulum-notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+.dt-pendulum-good { color: #3a9a4e; }
+.dt-pendulum-warn { color: #c77a12; }
+.dt-pendulum-bad { color: #d64545; font-weight: bold; }
+
+@media print {
+    .dt-pendulum { display: none; }
+}
