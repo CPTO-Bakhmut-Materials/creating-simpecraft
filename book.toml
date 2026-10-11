@@ -23,7 +23,9 @@ after = ["links"]
 default-theme = "light"
 preferred-dark-theme = "navy"
 no-section-label = true
-additional-css = ["theme/katex.css", "theme/demo.css"]
+additional-css = ["theme/katex.css", "theme/demo.css", "theme/rgb-mixer.css"]
+# Віджет «модель RGB» в уроці 1 (<div class="rgb-mixer"> у Markdown).
+additional-js = ["theme/rgb-mixer.js"]
 
 # Вбудований пошук mdBook (elasticlunr) відкидає кириличні слова, тож для
 # українського тексту він нічого не знаходить. Вимикаємо, щоб не вводити в оману.

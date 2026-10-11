@@ -1,0 +1,100 @@
+/* Віджет «модель RGB» (theme/rgb-mixer.js) і вбудоване відео YouTube Shorts.
+   Кольори рамок — зі змінних теми mdBook. */
+.rgb-mixer {
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid var(--table-border-color);
+    border-radius: 6px;
+    background: var(--quote-bg);
+    font-size: 0.9em;
+}
+
+.rgb-mixer-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: stretch;
+}
+
+.rgb-mixer-torches { width: 240px; max-width: 100%; height: auto; flex: none; }
+
+.rgb-mixer-result {
+    flex: 1 1 14em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+
+.rgb-mixer-swatch {
+    flex: 1;
+    min-height: 5em;
+    border: 1px solid var(--table-border-color);
+    border-radius: 6px;
+}
+
+.rgb-mixer-code code { white-space: nowrap; }
+
+.rgb-mixer-controls { margin-top: 0.8em; }
+
+.rgb-mixer-row {
+    display: grid;
+    grid-template-columns: 9em 1fr 2.5em;
+    align-items: center;
+    gap: 0.6em;
+    margin: 0.25em 0;
+}
+
+.rgb-mixer-row output { font-variant-numeric: tabular-nums; text-align: right; }
+.rgb-mixer-r { accent-color: #d64545; }
+.rgb-mixer-g { accent-color: #3a9a4e; }
+.rgb-mixer-b { accent-color: #2f6fdb; }
+
+.rgb-mixer-presets { display: flex; flex-wrap: wrap; gap: 0.4em; margin-top: 0.6em; }
+
+.rgb-mixer-presets button {
+    padding: 0.25em 0.7em;
+    border: 1px solid var(--table-border-color);
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--fg);
+    font: inherit;
+    cursor: pointer;
+}
+
+.rgb-mixer-presets button:hover { border-color: var(--links); }
+
+/* Вертикальне відео (YouTube Shorts, 9:16). */
+.video-short {
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 9 / 16;
+    margin: 1em auto 0.4em;
+    border: 0;
+    border-radius: 8px;
+}
+
+.video-credit { text-align: center; font-size: 0.9em; }
+
+/* Згорнуті блоки «детальніше». */
+details.more {
+    margin: 0.6em 0 1em;
+    padding: 0.4em 0.9em;
+    border: 1px solid var(--table-border-color);
+    border-radius: 6px;
+    background: #f2f3f5; /* світло-сірий і згорнутим, і розгорнутим */
+}
+
+/* У темних темах mdBook світло-сірий був би сліпучим — беремо ледь світліший відтінок тла. */
+.coal details.more,
+.navy details.more,
+.ayu details.more {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+details.more > summary { cursor: pointer; font-weight: bold; }
+details.more[open] > summary { margin-bottom: 0.6em; }
+
+@media print {
+    .rgb-mixer, .video-short { display: none; }
+}

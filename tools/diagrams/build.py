@@ -135,6 +135,46 @@ def game_loop():
     f.save(out("game_loop"))
 
 
+@diagram("01-window", "screen_coords")
+def screen_coords():
+    f = Fig(700, 430, "Система координат екрана LÖVE: квадрат уроку 1")
+    sky = "#87bdf2"
+    # Вікно 1280×720 у масштабі 0.43 — компактно, щоб написи не дрібнішали в книзі.
+    S = 0.43
+    ox, oy = 100, 76
+
+    def P(x, y):
+        return (ox + x * S, oy + y * S)
+
+    f.text(20, 30, "Вікно 1280×720: де опиниться квадрат", size=MD, weight="bold")
+    f.rect(ox, oy, 1280 * S, 720 * S, fill=sky, stroke=INK, sw=THIN)
+    f.arrow([(ox, oy - 18), (ox + 110, oy - 18)], color=RED)
+    f.text(ox + 118, oy - 13, "x", color=RED, weight="bold", size=MD)
+    f.arrow([(ox - 18, oy), (ox - 18, oy + 110)], color=GREEN)
+    f.text(ox - 18, oy + 132, "y", color=GREEN, weight="bold", size=MD, anchor="middle")
+    f.circle(ox, oy, 4)
+    f.text(ox - 28, oy + 5, "(0, 0)", anchor="end")
+    f.circle(*P(1280, 720), 4)
+    f.text(P(1280, 720)[0], P(1280, 720)[1] + 22, "(1280, 720)", anchor="end")
+    # Квадрат 64×64 у точці (100, 100), колір землі з code/main.lua.
+    sx, sy = P(100, 100)
+    f.rect(sx, sy, 64 * S, 64 * S, fill="#78543b")
+    f.circle(sx, sy, 3.5, fill=INK)
+    f.text(sx + 6, sy + 64 * S + 30, "player = { x = 100, y = 100 }:\nлівий верхній кут квадрата",
+           size=MD)
+    f.leader((sx - 4, sy + 64 * S + 24), (sx - 1, sy + 3), end=None)
+    # Куди рухають клавіші.
+    q = 64 * S
+    cx, cy = sx + q / 2, sy + q / 2
+    f.arrow([(cx, sy - 5), (cx, sy - 36)], color=GREEN, sw=WIDE)
+    f.text(cx + 12, sy - 14, "W: y зменшується", color=GREEN, weight="bold", size=MD)
+    f.arrow([(sx + q + 8, cy), (sx + q + 70, cy)], color=RED, sw=WIDE)
+    f.text(sx + q + 78, cy + 6, "D: x збільшується", color=RED, weight="bold", size=MD)
+    f.text(ox + 1280 * S / 2, oy + 720 * S - 30, "Чим більший y, тим нижче на екрані.",
+           color="#165c25", size=MD, anchor="middle")
+    f.save(out("screen_coords"))
+
+
 # ---------------------------------------------------------------- 02-triangle
 
 @diagram("02-triangle", "ndc")

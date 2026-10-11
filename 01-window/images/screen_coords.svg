@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="430" viewBox="0 0 700 430" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Система координат екрана LÖVE: квадрат уроку 1">
+<title>Система координат екрана LÖVE: квадрат уроку 1</title>
+<rect width="700" height="430" fill="#ffffff"/>
+<text x="20" y="30" font-size="17" font-weight="bold" textLength="388.1" lengthAdjust="spacingAndGlyphs">Вікно 1280×720: де опиниться квадрат</text>
+<rect x="100" y="76" width="550.4" height="309.6" fill="#87bdf2" stroke="#1f2933" stroke-width="1"/>
+<path d="M210,58 L200.4,61.9 L200.4,54.1 Z" fill="#d64545"/>
+<path d="M100,58 L202.2,58" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="218" y="63" font-size="17" font-weight="bold" fill="#d64545" textLength="11.0" lengthAdjust="spacingAndGlyphs">x</text>
+<path d="M82,186 L78.1,176.4 L85.9,176.4 Z" fill="#3a9a4e"/>
+<path d="M82,76 L82,178.2" fill="none" stroke="#3a9a4e" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="82" y="208" font-size="17" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="11.1" lengthAdjust="spacingAndGlyphs">y</text>
+<circle cx="100" cy="76" r="4" fill="#1f2933"/>
+<text x="72" y="81" font-size="12" text-anchor="end" textLength="32.3" lengthAdjust="spacingAndGlyphs">(0, 0)</text>
+<circle cx="650.4" cy="385.6" r="4" fill="#1f2933"/>
+<text x="650.4" y="407.6" font-size="12" text-anchor="end" textLength="70.5" lengthAdjust="spacingAndGlyphs">(1280, 720)</text>
+<rect x="143" y="119" width="27.5" height="27.5" fill="#78543b"/>
+<circle cx="143" cy="119" r="3.5" fill="#1f2933"/>
+<text x="149" y="176.5" font-size="17" textLength="262.6" lengthAdjust="spacingAndGlyphs">player = { x = 100, y = 100 }:</text>
+<text x="149" y="198.6" font-size="17" textLength="246.4" lengthAdjust="spacingAndGlyphs">лівий верхній кут квадрата</text>
+<path d="M139,170.5 L142,122" fill="none" stroke="#1f2933" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M156.8,83 L160.7,92.6 L152.9,92.6 Z" fill="#3a9a4e"/>
+<path d="M156.8,114 L156.8,90.8" fill="none" stroke="#3a9a4e" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="168.8" y="105" font-size="17" font-weight="bold" fill="#3a9a4e" textLength="175.8" lengthAdjust="spacingAndGlyphs">W: y зменшується</text>
+<path d="M240.5,132.8 L230.9,136.7 L230.9,128.9 Z" fill="#d64545"/>
+<path d="M178.5,132.8 L232.7,132.8" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="248.5" y="138.8" font-size="17" font-weight="bold" fill="#d64545" textLength="175.3" lengthAdjust="spacingAndGlyphs">D: x збільшується</text>
+<text x="375.2" y="355.6" font-size="17" text-anchor="middle" fill="#165c25" textLength="333.6" lengthAdjust="spacingAndGlyphs">Чим більший y, тим нижче на екрані.</text>
+</svg>
