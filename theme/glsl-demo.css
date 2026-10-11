@@ -1,0 +1,26 @@
+/* Self-hosted fragment shaders driven by theme/glsl-demo.js: a 16:9 canvas that scales with the page. */
+.glsl-demo {
+    max-width: 640px;
+    margin: 1em auto 0.4em;
+}
+
+.glsl-demo-canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    background: #000;
+}
+
+.glsl-demo-failed {
+    padding: 1em;
+    text-align: center;
+    border: 1px dashed var(--table-border-color, #ccc);
+    border-radius: 8px;
+}
+
+.glsl-credit { text-align: center; font-size: 0.9em; }
+
+@media print {
+    .glsl-demo { display: none; }
+}

@@ -23,10 +23,11 @@ after = ["links"]
 default-theme = "light"
 preferred-dark-theme = "navy"
 no-section-label = true
-additional-css = ["theme/katex.css", "theme/demo.css", "theme/rgb-mixer.css", "theme/dt-pendulum.css"]
+additional-css = ["theme/katex.css", "theme/demo.css", "theme/rgb-mixer.css", "theme/dt-pendulum.css", "theme/glsl-demo.css"]
 # Lesson 1 widgets: the "RGB model" (<div class="rgb-mixer">) and the dt pendulums
-# (<div class="dt-pendulum">) in the Markdown.
-additional-js = ["theme/rgb-mixer.js", "theme/dt-pendulum.js"]
+# (<div class="dt-pendulum">) in the Markdown. glsl-demo runs self-hosted Shadertoy-style
+# shaders (<div class="glsl-demo" data-shader="...">) only while visible.
+additional-js = ["theme/rgb-mixer.js", "theme/dt-pendulum.js", "theme/glsl-demo.js"]
 
 # mdBook's built-in search (elasticlunr) drops Cyrillic words, so it finds nothing
 # in Ukrainian text. Disabled so it doesn't mislead readers.

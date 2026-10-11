@@ -66,6 +66,34 @@
 3. **Растеризація**: відеокарта визначає, які пікселі екрана покриває трикутник. Значення вершин (наприклад, колір) вона плавно **інтерполює** між кутами, тому трикутник з червоною, зеленою та синьою вершинами виходить райдужним.
 4. **Піксельний шейдер** (*pixel / fragment shader*) виконується **для кожного пікселя** й вирішує, якого він кольору. Поки що беремо стандартний шейдер LÖVE; власний з'явиться в уроці 5, коли накладатимемо текстури.
 
+Піксельний шейдер здатен на більше, ніж здається. Анімацію нижче повністю намальовано одним піксельним шейдером: жодних моделей чи текстур, лише формула, яку відеокарта обчислює для кожного пікселя кожного кадру. Анімація працює лише тоді, коли видима на екрані.
+
+<script type="x-shader/x-fragment" id="creation-by-silexars">
+// "Creation by Silexars" by Danguafer, https://www.shadertoy.com/view/XsXXDn
+#define t iTime
+#define r iResolution.xy
+
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+    vec3 c;
+    float l, z = t;
+    for (int i = 0; i < 3; i++) {
+        vec2 uv, p = fragCoord.xy / r;
+        uv = p;
+        p -= .5;
+        p.x *= r.x / r.y;
+        z += .07;
+        l = length(p);
+        uv += p / l * (sin(z) + 1.) * abs(sin(l * 9. - z - z));
+        c[i] = .01 / length(mod(uv, 1.) - .5);
+    }
+    fragColor = vec4(c / l, t);
+}
+</script>
+
+<div class="glsl-demo" data-shader="creation-by-silexars" data-start="10"></div>
+
+<p class="glsl-credit">Шейдер: <a href="https://www.shadertoy.com/view/XsXXDn">«Creation by Silexars»</a>, автор — Danguafer (Shadertoy, ліцензія <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.uk">CC BY-NC-SA 3.0</a>).</p>
+
 ## 3. Нормалізовані координати пристрою (NDC)
 
 Вершинний шейдер повертає позицію не в пікселях, а в **NDC** (*Normalized Device Coordinates*): `x` і `y` змінюються від `-1` до `1` незалежно від розміру вікна.
