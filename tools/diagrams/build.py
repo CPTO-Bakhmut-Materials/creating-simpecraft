@@ -389,32 +389,172 @@ def projector(ox, oy, s, ex=(1.0, 0.32), ey=(0.62, -0.42), ez=(0.0, -1.0)):
     return P
 
 
+def camera_object(f, P, x, y, z, pos=(0, 0, 0), depth=0.5, aspect=16 / 9, height=0.3,
+                  color=INK):
+    """A see-through camera gizmo in the style of Blender, at pos, looking along −z
+    (the camera basis x, y, z): a wireframe pyramid from the eye to the image frame, with a
+    filled triangle above the frame marking the camera's "up" (y)."""
+    def at(cx, cy, cz):
+        return P(tuple(pos[i] + cx * x[i] + cy * y[i] + cz * z[i] for i in range(3)))
+
+    hw, hh = height * aspect / 2, height / 2
+    eye = at(0, 0, 0)
+    frame = [at(-hw, -hh, -depth), at(hw, -hh, -depth), at(hw, hh, -depth), at(-hw, hh, -depth)]
+    # A faint fill keeps the frame readable while everything behind it stays visible.
+    f.poly(frame, fill=color, stroke=None, opacity=0.06, owner="camera")
+    f.poly(frame, stroke=color, sw=1.5, owner="camera")
+    for corner in frame:
+        f.line(*eye, *corner, stroke=color, sw=1.5, owner="camera")
+    up = [at(-hw * 0.6, hh * 1.15, -depth), at(hw * 0.6, hh * 1.15, -depth),
+          at(0, hh * 1.15 + hw * 0.55, -depth)]
+    f.poly(up, fill=color, stroke=color, sw=1.5, opacity=0.55, owner="camera")
+
+
+def faded(color, k=0.65):
+    """The colour mixed with white: for vectors from earlier steps."""
+    r, g, b = (int(color[i:i + 2], 16) for i in (1, 3, 5))
+    return "#%02x%02x%02x" % tuple(round(c + (255 - c) * k) for c in (r, g, b))
+
+
+@diagram("03-perspective", "world_vs_camera")
+def world_vs_camera():
+    """Top-down view of one scene in world and in camera coordinates. Numbers are picked so
+    both sets come out whole: forward (0.6, 0.8), right (0.8, −0.6), camera at (2, 1)."""
+    f = Fig(880, 470, "Ті самі точки у світових координатах і в координатах камери")
+    S = 50
+    C = (2, 1)
+    fwd, right = (0.6, 0.8), (0.8, -0.6)
+    things = (("блок", (5, 5), ORANGE), ("дерево", (7, 1), GREEN))
+
+    def wedge(at, fw, rt):
+        """A top-down camera: a see-through triangle opening forward."""
+        tip = at((0, 0))
+        a, b = at((-0.45 * rt[0] + 0.9 * fw[0], -0.45 * rt[1] + 0.9 * fw[1])), \
+            at((0.45 * rt[0] + 0.9 * fw[0], 0.45 * rt[1] + 0.9 * fw[1]))
+        f.poly([tip, a, b], fill=INK, opacity=0.08, owner="camera")
+        f.poly([tip, a, b], stroke=INK, sw=1.5, owner="camera")
+
+    def thing(p, name, color):
+        if color is ORANGE:
+            f.rect(p[0] - 11, p[1] - 11, 22, 22, fill=FILL[ORANGE], stroke=ORANGE, sw=WIDE)
+        else:
+            f.circle(*p, 11, fill=FILL[GREEN], stroke=GREEN, sw=WIDE, owner=name)
+
+    # --- Left: world. Axes from the world origin, grid in world units.
+    ox, oy = 50, 400
+    W = lambda p: (ox + p[0] * S, oy - p[1] * S)  # noqa: E731
+    f.text(20, 30, "Світ: від початку координат", size=MD, weight="bold")
+    for i in range(8):
+        f.line(*W((i, 0)), *W((i, 6.4)), stroke=GRID, check=False)
+    for j in range(7):
+        f.line(*W((0, j)), *W((7.4, j)), stroke=GRID, check=False)
+    f.arrow([W((0, 0)), W((7.6, 0))], color=GRAY, sw=THIN)
+    f.arrow([W((0, 0)), W((0, 6.6))], color=GRAY, sw=THIN)
+    f.text(*W((7.6, 0.25)), "X", color=GRAY, weight="bold", anchor="end")
+    f.text(W((0, 6.6))[0] + 10, W((0, 6.6))[1] + 6, "Y", color=GRAY, weight="bold")
+    f.text(ox - 8, oy + 18, "0", color=GRAY, weight="bold", anchor="end")
+    wedge(lambda v: W((C[0] + v[0], C[1] + v[1])), fwd, right)
+    f.arrow([W(C), W((C[0] + 1.5 * fwd[0], C[1] + 1.5 * fwd[1]))], color=BLUE, sw=3)
+    f.arrow([W(C), W((C[0] + 1.2 * right[0], C[1] + 1.2 * right[1]))], color=RED, sw=3)
+    f.circle(*W(C), 5)
+    f.text(W(C)[0] - 10, W(C)[1] - 4, "камера\n(2, 1)", weight="bold", anchor="end")
+    for name, p, color in things:
+        thing(W(p), name, color)
+    f.text(W((5, 5))[0] + 18, W((5, 5))[1] + 5, "блок (5, 5)", color=ORANGE, weight="bold")
+    f.text(W((7, 1))[0], W((7, 1))[1] - 20, "дерево (7, 1)", color=GREEN, weight="bold",
+           anchor="middle")
+
+    # --- Right: camera. The camera at the origin, forward (−z) up the page, x to the right.
+    cx, cy = 600, 400
+    K = lambda p: (cx + p[0] * S, cy - p[1] * S)  # noqa: E731
+    f.text(460, 30, "Камера: від камери", size=MD, weight="bold")
+    for i in range(-2, 6):
+        f.line(*K((i, 0)), *K((i, 6.4)), stroke=GRID, check=False)
+    for j in range(7):
+        f.line(*K((-2, j)), *K((5.4, j)), stroke=GRID, check=False)
+    wedge(K, (0, 1), (1, 0))
+    f.arrow([K((0, 0)), K((0, 6.6))], color=BLUE, sw=WIDE)
+    f.arrow([K((0, 0)), K((5.6, 0))], color=RED, sw=WIDE)
+    f.text(K((0, 6.6))[0] + 10, K((0, 6.6))[1] + 6, "−z (вперед)", color=BLUE, weight="bold")
+    f.text(*K((5.6, 0.25)), "x (праворуч)", color=RED, weight="bold", anchor="end")
+    f.circle(*K((0, 0)), 5)
+    f.text(cx - 10, cy + 20, "камера (0, 0, 0)", weight="bold", anchor="end")
+    for name, p, color in things:
+        rel = (p[0] - C[0], p[1] - C[1])
+        q = (rel[0] * right[0] + rel[1] * right[1], rel[0] * fwd[0] + rel[1] * fwd[1])
+        thing(K(q), name, color)
+    f.text(K((0, 5))[0] + 18, K((0, 5))[1] + 5, "блок (0, 0, −5)", color=ORANGE, weight="bold")
+    f.text(K((4, 3))[0], K((4, 3))[1] - 20, "дерево (4, 0, −3)", color=GREEN, weight="bold",
+           anchor="middle")
+    f.text(20, 455, "Вигляд згори; камера і предмети на одній висоті, тому y камери = 0. "
+           "Сині стрілки — «вперед», червоні — «праворуч».", color=MUTED)
+    f.save(out("world_vs_camera"))
+
+
 @diagram("03-perspective", "camera_basis")
 def camera_basis():
-    f = Fig(720, 470, "Осі світу і базис камери в Mat4.lookAlong")
-    f.text(360, 30, "Базис камери в Mat4.lookAlong", size=MD, weight="bold", anchor="middle")
-    P = projector(330, 300, 150)
-    o = P((0, 0, 0))
-    for v, name, dx, dy, anchor in (((1.25, 0, 0), "X", 8, 6, "start"), ((0, 1.35, 0), "Y", 8, 0, "start"),
-                                    ((0, 0, 1.3), "Z (вгору)", 0, -10, "middle")):
-        f.arrow([o, P(v)], color=GRAY, sw=THIN)
-        p = P(v)
-        f.text(p[0] + dx, p[1] + dy, name, color=GRAY, weight="bold", anchor=anchor)
-    d = norm((0.7, 0.7, 0.25))
+    # Built up step by step (like LearnOpenGL's camera figure): each panel adds one vector,
+    # earlier ones are faded. The ground grid (the XY plane) and a single "stick" from the
+    # camera down to it are the only depth cues.
+    PW, PH = 380, 340
+    f = Fig(2 * PW, 2 * PH + 40, "Базис камери в Mat4.lookAlong, крок за кроком")
+
+    # Turned partly towards the reader, so the camera's image frame is not seen edge-on.
+    d = norm((0.85, 0.2, 0.3))
     z = neg(d)
-    x = norm(cross((0, 0, 1), z))
+    up = (0, 0, 1)
+    x = norm(cross(up, z))
     y = cross(z, x)
-    L = 0.95
-    for v, color in ((d, BLUE), (z, PURPLE), (x, RED), (y, GREEN)):
-        f.arrow([o, P(tuple(c * L for c in v))], color=color, sw=3)
-    f.circle(*o, 5, fill=RED)
-    pd, pz, px, py = (P(tuple(c * L for c in v)) for v in (d, z, x, y))
-    f.text(pd[0] + 10, pd[1] - 8, "direction", color=BLUE, weight="bold")
-    f.text(pz[0] - 10, pz[1] + 22, "zAxis = −direction", color=PURPLE, weight="bold", anchor="end")
-    f.text(px[0] + 6, px[1] + 26, "xAxis = up × zAxis\n(праворуч)", color=RED, weight="bold")
-    f.text(py[0] - 14, py[1] - 4, "yAxis = zAxis × xAxis\n(вгору для камери)", color=GREEN,
-           weight="bold", anchor="end")
-    f.text(20, 455, "Камера в початку координат; up = (0, 0, 1) — вісь Z світу.", color=MUTED)
+    S, L = 100, 0.8
+
+    steps = (
+        ("1. Куди дивиться камера", [(d, BLUE)]),
+        ("2. zAxis = −direction", [(d, None), (z, PURPLE)]),
+        ("3. xAxis = up × zAxis", [(d, None), (z, None), (up, GRAY), (x, RED)]),
+        ("4. yAxis = zAxis × xAxis", [(d, None), (z, None), (x, None), (y, GREEN)]),
+    )
+    colors = {d: BLUE, z: PURPLE, x: RED, y: GREEN, up: GRAY}
+    for k, (title, vectors) in enumerate(steps):
+        x0, y0 = (k % 2) * PW, (k // 2) * PH
+        # The camera C is at height 1 above the middle of the grid.
+        P = projector(x0 + 190, y0 + 132 + S, S)
+        pc = P((0, 0, 1))
+        for t in (-1, -0.5, 0, 0.5, 1):
+            f.line(*P((t, -1, 0)), *P((t, 1, 0)), stroke=GRID, check=False)
+            f.line(*P((-1, t, 0)), *P((1, t, 0)), stroke=GRID, check=False)
+        f.line(*pc, *P((0, 0, 0)), stroke=GRAY, sw=THIN, dash="5 4", owner="stick")
+        f.circle(*P((0, 0, 0)), 3, fill=GRAY, owner="foot")
+        camera_object(f, P, x, y, z, pos=(0, 0, 1), depth=0.32, height=0.22,
+                      color=INK if k == 0 else faded(INK, 0.55))
+        f.text(x0 + 16, y0 + 30, title, size=MD, weight="bold")
+
+        def tip(v):
+            return P((v[0] * L, v[1] * L, 1 + v[2] * L))
+
+        for v, color in vectors:
+            f.arrow([pc, tip(v)], color=color or faded(colors[v]), sw=3 if color else WIDE)
+        f.circle(*pc, 5, fill=INK)
+        f.text(pc[0] + 8, pc[1] + 28, "C", weight="bold")
+
+        new = vectors[-1][0]
+        p = tip(new)
+        if new is d:
+            f.text(p[0] + 8, p[1] - 8, "direction", color=BLUE, weight="bold")
+        elif new is z:
+            f.text(p[0] - 8, p[1] + 5, "zAxis", color=PURPLE, weight="bold", anchor="end")
+            f.text(x0 + 16, y0 + PH - 14, "камера дивиться вздовж −zAxis", color=MUTED)
+        elif new is x:
+            q = tip(up)
+            f.text(q[0] + 8, q[1] + 4, "up = (0, 0, 1)", color=GRAY, weight="bold")
+            f.text(p[0], p[1] + 24, "xAxis", color=RED, weight="bold", anchor="middle")
+            f.text(x0 + 16, y0 + PH - 14, "праворуч; лежить горизонтально", color=MUTED)
+        else:
+            f.text(p[0] - 10, p[1] + 4, "yAxis", color=GREEN, weight="bold", anchor="end")
+            f.text(x0 + 16, y0 + PH - 14, "вгору для камери; ⟂ zAxis і xAxis", color=MUTED)
+    f.line(PW, 10, PW, 2 * PH - 10, stroke=GRID, check=False)
+    f.line(10, PH, 2 * PW - 10, PH, stroke=GRID, check=False)
+    f.text(20, 2 * PH + 26, "Ґратка — земля (площина XY), вісь Z світу вгору. "
+           "Базис не залежить від того, де стоїть камера.", color=MUTED)
     f.save(out("camera_basis"))
 
 

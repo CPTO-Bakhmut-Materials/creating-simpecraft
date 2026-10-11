@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="470" viewBox="0 0 880 470" font-family="DejaVu Sans, Verdana, Geneva, sans-serif" fill="#1f2933" role="img" aria-label="Ті самі точки у світових координатах і в координатах камери">
+<title>Ті самі точки у світових координатах і в координатах камери</title>
+<rect width="880" height="470" fill="#ffffff"/>
+<text x="20" y="30" font-size="17" font-weight="bold" textLength="278.6" lengthAdjust="spacingAndGlyphs">Світ: від початку координат</text>
+<path d="M50,400 L50,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M100,400 L100,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M150,400 L150,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M200,400 L200,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M250,400 L250,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M300,400 L300,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M350,400 L350,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M400,400 L400,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M50,400 L420,400" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M50,350 L420,350" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M50,300 L420,300" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M50,250 L420,250" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M50,200 L420,200" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M50,150 L420,150" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M50,100 L420,100" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M430,400 L421.7,403.4 L421.7,396.6 Z" fill="#7a8594"/>
+<path d="M50,400 L423.2,400" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M50,70 L53.4,78.3 L46.6,78.3 Z" fill="#7a8594"/>
+<path d="M50,400 L50,76.8" fill="none" stroke="#7a8594" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="430" y="387.5" font-size="12" font-weight="bold" text-anchor="end" fill="#7a8594" textLength="9.3" lengthAdjust="spacingAndGlyphs">X</text>
+<text x="60" y="76" font-size="12" font-weight="bold" fill="#7a8594" textLength="8.7" lengthAdjust="spacingAndGlyphs">Y</text>
+<text x="42" y="418" font-size="12" font-weight="bold" text-anchor="end" fill="#7a8594" textLength="8.4" lengthAdjust="spacingAndGlyphs">0</text>
+<path d="M150,350 L159,300.5 L195,327.5 Z" fill="#1f2933" opacity="0.08"/>
+<path d="M150,350 L159,300.5 L195,327.5 Z" fill="none" stroke="#1f2933" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M195,290 L191.5,303.1 L183.4,297 Z" fill="#2f6fdb"/>
+<path d="M150,350 L188.9,298.2" fill="none" stroke="#2f6fdb" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M198,386 L184.9,382.5 L191,374.4 Z" fill="#d64545"/>
+<path d="M150,350 L189.8,379.9" fill="none" stroke="#d64545" stroke-width="3" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="150" cy="350" r="5" fill="#1f2933"/>
+<text x="140" y="346" font-size="12" font-weight="bold" text-anchor="end" textLength="50.9" lengthAdjust="spacingAndGlyphs">камера</text>
+<text x="140" y="361.6" font-size="12" font-weight="bold" text-anchor="end" textLength="36.4" lengthAdjust="spacingAndGlyphs">(2, 1)</text>
+<rect x="289" y="139" width="22" height="22" fill="#fbece1" stroke="#e8833a" stroke-width="2"/>
+<circle cx="400" cy="350" r="11" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="2"/>
+<text x="318" y="155" font-size="12" font-weight="bold" fill="#e8833a" textLength="74.1" lengthAdjust="spacingAndGlyphs">блок (5, 5)</text>
+<text x="400" y="330" font-size="12" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="91.0" lengthAdjust="spacingAndGlyphs">дерево (7, 1)</text>
+<text x="460" y="30" font-size="17" font-weight="bold" textLength="195.9" lengthAdjust="spacingAndGlyphs">Камера: від камери</text>
+<path d="M500,400 L500,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M550,400 L550,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M600,400 L600,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M650,400 L650,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M700,400 L700,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M750,400 L750,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M800,400 L800,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M850,400 L850,80" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M500,400 L870,400" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M500,350 L870,350" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M500,300 L870,300" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M500,250 L870,250" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M500,200 L870,200" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M500,150 L870,150" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M500,100 L870,100" fill="none" stroke="#d5dde8" stroke-width="1" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M600,400 L577.5,355 L622.5,355 Z" fill="#1f2933" opacity="0.08"/>
+<path d="M600,400 L577.5,355 L622.5,355 Z" fill="none" stroke="#1f2933" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M600,70 L603.9,79.6 L596.1,79.6 Z" fill="#2f6fdb"/>
+<path d="M600,400 L600,77.8" fill="none" stroke="#2f6fdb" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<path d="M880,400 L870.4,403.9 L870.4,396.1 Z" fill="#d64545"/>
+<path d="M600,400 L872.2,400" fill="none" stroke="#d64545" stroke-width="2" stroke-linejoin="round" stroke-linecap="butt"/>
+<text x="610" y="76" font-size="12" font-weight="bold" fill="#2f6fdb" textLength="82.6" lengthAdjust="spacingAndGlyphs">−z (вперед)</text>
+<text x="880" y="387.5" font-size="12" font-weight="bold" text-anchor="end" fill="#d64545" textLength="88.4" lengthAdjust="spacingAndGlyphs">x (праворуч)</text>
+<circle cx="600" cy="400" r="5" fill="#1f2933"/>
+<text x="590" y="420" font-size="12" font-weight="bold" text-anchor="end" textLength="108.6" lengthAdjust="spacingAndGlyphs">камера (0, 0, 0)</text>
+<rect x="589" y="139" width="22" height="22" fill="#fbece1" stroke="#e8833a" stroke-width="2"/>
+<circle cx="800" cy="250" r="11" fill="#e4f1e6" stroke="#3a9a4e" stroke-width="2"/>
+<text x="618" y="155" font-size="12" font-weight="bold" fill="#e8833a" textLength="101.3" lengthAdjust="spacingAndGlyphs">блок (0, 0, −5)</text>
+<text x="800" y="230" font-size="12" font-weight="bold" text-anchor="middle" fill="#3a9a4e" textLength="118.1" lengthAdjust="spacingAndGlyphs">дерево (4, 0, −3)</text>
+<text x="20" y="455" font-size="12" fill="#6b7785" textLength="755.6" lengthAdjust="spacingAndGlyphs">Вигляд згори; камера і предмети на одній висоті, тому y камери = 0. Сині стрілки — «вперед», червоні — «праворуч».</text>
+</svg>
