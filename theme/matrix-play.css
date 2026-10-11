@@ -1,0 +1,94 @@
+/* Interactive matrices (theme/matrix-play.js). Colours come from the mdBook theme. */
+.matrix-play {
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid var(--table-border-color);
+    border-radius: 6px;
+    background: var(--bg);
+    font-size: 0.9em;
+}
+
+.matrix-play-top { display: flex; flex-wrap: wrap; gap: 1em 1.6em; align-items: center; }
+
+.matrix-play-matrix {
+    display: grid;
+    gap: 3px;
+    padding: 4px 8px;
+    border-left: 2px solid var(--fg);
+    border-right: 2px solid var(--fg);
+    border-radius: 6px;
+}
+
+.matrix-play-matrix input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.25em 0.3em;
+    border: 1px solid var(--table-border-color);
+    border-radius: 3px;
+    background: var(--bg);
+    color: var(--fg);
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.matrix-play-matrix input[readonly] { opacity: 0.6; }
+.matrix-play-matrix .mp-x { box-shadow: inset 3px 0 0 #d64545; }
+.matrix-play-matrix .mp-y { box-shadow: inset 3px 0 0 #3a9a4e; }
+.matrix-play-matrix .mp-z { box-shadow: inset 3px 0 0 #2f6fdb; }
+.matrix-play-matrix .mp-t { background: rgba(232, 131, 58, 0.15); }
+.matrix-play-matrix .mp-w { background: rgba(126, 79, 196, 0.12); }
+
+.matrix-play-legend { line-height: 1.6; }
+.mp-sw { display: inline-block; width: 0.8em; height: 0.8em; margin-right: 0.4em; border-radius: 2px; vertical-align: -0.05em; }
+.mp-sw-t { background: rgba(232, 131, 58, 0.45); }
+.mp-sw-w { background: rgba(126, 79, 196, 0.35); }
+
+.matrix-play-buttons { display: flex; flex-wrap: wrap; gap: 0.4em; margin: 0.8em 0 0.4em; }
+
+.matrix-play-buttons button {
+    padding: 0.3em 0.7em;
+    border: 1px solid var(--table-border-color);
+    border-radius: 4px;
+    background: var(--bg);
+    color: var(--fg);
+    font: inherit;
+    cursor: pointer;
+}
+
+.matrix-play-buttons button:hover { border-color: var(--links); }
+
+.matrix-play-slider {
+    display: grid;
+    grid-template-columns: auto 1fr 3.5em;
+    align-items: center;
+    gap: 0.6em;
+    margin: 0.3em 0;
+}
+
+.matrix-play-slider output { font-variant-numeric: tabular-nums; text-align: right; font-weight: bold; }
+.matrix-play-slider.mp-disabled { opacity: 0.4; }
+.matrix-play-check { display: block; margin: 0.3em 0; }
+
+.matrix-play-canvas { display: block; width: 100%; margin-top: 0.4em; }
+
+.matrix-play-calc { margin-top: 0.4em; font-variant-numeric: tabular-nums; }
+
+.matrix-play-order { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 1em; margin-top: 0.4em; }
+.matrix-play-order > div { display: flex; align-items: center; gap: 0.5em; }
+
+.matrix-play-mini {
+    display: inline-grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 0 0.8em;
+    padding: 2px 6px;
+    border-left: 2px solid var(--fg);
+    border-right: 2px solid var(--fg);
+    border-radius: 4px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+@media print {
+    .matrix-play { display: none; }
+}

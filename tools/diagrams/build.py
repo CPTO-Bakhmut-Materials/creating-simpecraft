@@ -9,6 +9,7 @@ DIAGRAMS_PREVIEW=1 also writes diagrams that fail the checks.
 Diagram labels are Ukrainian on purpose: they appear in the book.
 """
 
+import base64
 import math
 import os
 import re
@@ -811,7 +812,7 @@ def mipmaps_filters():
 
 @diagram("05-textures", "uv_mapping")
 def uv_mapping():
-    f = Fig(880, 470, "UV-координати текстури і кути грані")
+    f = Fig(900, 540, "UV-координати текстури і кути грані")
     f.text(20, 30, "Текстура dirt_grass.png у координатах UV", size=MD, weight="bold")
     X, Y, S = 90, 110, 280
     f.image(X, Y, S, S, os.path.join(TEXTURES, "dirt_grass.png"))
@@ -834,24 +835,71 @@ def uv_mapping():
         ly = py + 12 if v == 0 else py - 32
         f.rect(lx - 5, ly, w + 10, 22, fill="#1f2933", rx=3, opacity=0.85)
         f.text(lx, ly + 16, label, color="#ffffff", weight="bold")
-    # Right: the +X face and its corners from the FACES table.
-    f.text(500, 30, "Грань +X: кути з таблиці FACES", size=MD, weight="bold")
-    FX, FY, FS = 590, 130, 200
-    f.image(FX, FY, FS, FS, os.path.join(TEXTURES, "dirt_grass.png"))
-    f.rect(FX, FY, FS, FS, stroke=INK, sw=WIDE, check=False)
-    pos = {1: ("(1, 0, 0)", FX, FY + FS), 2: ("(1, 1, 0)", FX + FS, FY + FS),
-           3: ("(1, 1, 1)", FX + FS, FY), 4: ("(1, 0, 1)", FX, FY)}
-    for n, (coord, px, py) in pos.items():
+    # Right: a block in the world with the same texture stretched over its +X face. Corners
+    # carry the same numbers as on the left, so "corner n" links a texture point to a vertex.
+    f.text(500, 30, "Та сама картинка на грані +X блока", size=MD, weight="bold")
+    # Oblique (cabinet) view: the +X face is seen head-on, as an undistorted square of the same
+    # size and height as the texture on the left; depth (−X) goes up and to the right, so the
+    # top and +Y faces show only as narrow strips.
+    fx = 530
+
+    def P(p):
+        x, y, z = p
+        back = 1 - x
+        return (fx + S * (y + 0.28 * back), Y + S * (1 - z - 0.2 * back))
+
+    def textured(src, o, du, dv, shade=0.0):
+        """The texture mapped onto the parallelogram o + u·du + v·dv (u, v in 0..1)."""
+        a, b = P(du)[0] - P((0, 0, 0))[0], P(du)[1] - P((0, 0, 0))[1]
+        c, d = P(dv)[0] - P((0, 0, 0))[0], P(dv)[1] - P((0, 0, 0))[1]
+        e, g = P(o)
+        with open(os.path.join(TEXTURES, src), "rb") as fh:
+            data = base64.b64encode(fh.read()).decode()
+        f.raw(f'<g transform="matrix({a:.3f} {b:.3f} {c:.3f} {d:.3f} {e:.2f} {g:.2f})">'
+              f'<image width="1" height="1" preserveAspectRatio="none" style="image-rendering:pixelated"'
+              f' href="data:image/png;base64,{data}"/>'
+              + (f'<rect width="1" height="1" fill="#000" opacity="{shade}"/>' if shade else "")
+              + "</g>")
+
+    # The image's top-left (u, v) = (0, 0) goes to corner 4, u runs along +Y, v runs down −Z.
+    textured("grass_top.png", (0, 0, 1), (1, 0, 0), (0, 1, 0), 0.0)
+    textured("dirt_grass.png", (1, 1, 1), (-1, 0, 0), (0, 0, -1), 0.3)
+    textured("dirt_grass.png", (1, 0, 1), (0, 1, 0), (0, 0, -1), 0.0)
+    for face in (((0, 0, 1), (1, 0, 1), (1, 1, 1), (0, 1, 1)),
+                 ((1, 1, 0), (0, 1, 0), (0, 1, 1), (1, 1, 1))):
+        f.poly([P(p) for p in face], stroke=INK, sw=THIN, owner="block")
+    face_x = {1: (1, 0, 0), 2: (1, 1, 0), 3: (1, 1, 1), 4: (1, 0, 1)}
+    f.poly([P(face_x[n]) for n in (1, 2, 3, 4)], stroke=INK, sw=XWIDE, owner="block")
+
+    def badge(x, y, label):
+        w = text_width(label, SM, "bold")
+        f.rect(x - 5, y, w + 10, 22, fill="#1f2933", rx=3, opacity=0.85)
+        f.text(x, y + 16, label, color="#ffffff", weight="bold")
+
+    # Labels inside the face, laid out exactly like the UV labels on the left.
+    for n, p in face_x.items():
+        px, py = P(p)
         f.circle(px, py, 6)
-        right = n in (2, 3)
-        f.text(px + (12 if right else -12), py + (26 if n in (1, 2) else -14), f"{n}  {coord}",
-               weight="bold", anchor="start" if right else "end")
-    m = 34
-    f.arrow([(FX + m, FY + FS - m), (FX + FS - m, FY + FS - m)], color="#ffffff", sw=3)
-    f.arrow([(FX + FS - m, FY + FS - m), (FX + FS - m, FY + m)], color="#ffffff", sw=3)
-    f.arrow([(FX + FS - m, FY + m), (FX + m, FY + m)], color="#ffffff", sw=3)
-    f.text(FX + FS / 2, FY + FS + 66, "обхід 1→2→3→4 проти годинникової стрілки (ззовні);\n"
-           "кут 1 — лівий нижній ⇒ UV (0, 1)", anchor="middle")
+        label = f"{n}: {p}"
+        w = text_width(label, SM, "bold")
+        badge(px + 12 if n in (1, 4) else px - 12 - w, py + 12 if n in (3, 4) else py - 32, label)
+
+    # The link between the halves.
+    f.arrow([(388, Y + S / 2), (512, Y + S / 2)], color=INK, sw=WIDE)
+    f.text(450, Y + S / 2 - 12, "натягуємо", anchor="middle", weight="bold")
+
+    # A tiny world axes gizmo.
+    gx, gy = 470, 440
+    for v, name, color in (((1, 0, 0), "X", RED), ((0, 1, 0), "Y", GREEN), ((0, 0, 1), "Z", BLUE)):
+        d = (P(v)[0] - P((0, 0, 0))[0], P(v)[1] - P((0, 0, 0))[1])
+        k = 42 / math.hypot(*d)
+        f.arrow([(gx, gy), (gx + d[0] * k, gy + d[1] * k)], color=color, sw=THIN)
+        f.text(gx + d[0] * k * 1.35, gy + d[1] * k * 1.35 + 4, name, color=color, weight="bold",
+               anchor="middle")
+
+    f.text(20, 500, "Кут 1 грані (лівий нижній, якщо дивитися ззовні) бере з картинки точку UV (0, 1) — "
+           "її лівий нижній кут.\nТак само кут 2 ↔ UV (1, 1), кут 3 ↔ UV (1, 0), кут 4 ↔ UV (0, 0). "
+           "Між кутами відеокарта розтягує картинку.", color=MUTED)
     f.save(out("uv_mapping"))
 
 
