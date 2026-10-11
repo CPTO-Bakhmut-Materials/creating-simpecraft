@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <polygon points="4,17 16,23 16,31 4,25" fill="#8a6140"/>
+  <polygon points="16,23 28,17 28,25 16,31" fill="#6e4c31"/>
+  <polygon points="4,17 16,23 16,26 4,20" fill="#4f8a2b"/>
+  <polygon points="16,23 28,17 28,20 16,26" fill="#3f7322"/>
+  <polygon points="16,11 28,17 16,23 4,17" fill="#5f9f35"/>
+  <rect x="7" y="23" width="1.6" height="1.6" fill="#5a3d27"/>
+  <rect x="11" y="26" width="1.6" height="1.6" fill="#5a3d27"/>
+  <rect x="20" y="27" width="1.6" height="1.6" fill="#5a3d27"/>
+  <rect x="24" y="24" width="1.6" height="1.6" fill="#5a3d27"/>
+  <rect x="9" y="21.5" width="1.6" height="1.6" fill="#5a3d27"/>
+  <polygon points="10,12.5 22,12.5 22,15.5 16,18.5 10,15.5" fill="#24456b"/>
+  <polygon points="16,3 29,9.5 16,16 3,9.5" fill="#2f5a8a" stroke="#16304d" stroke-width="0.8" stroke-linejoin="round"/>
+  <circle cx="16" cy="9.5" r="1.1" fill="#f2b705"/>
+  <path d="M16 9.5 L27.5 9.5 L27.5 16.5" fill="none" stroke="#f2b705" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="26.3,16 28.7,16 29.2,20 25.8,20" fill="#f2b705"/>
+</svg>
