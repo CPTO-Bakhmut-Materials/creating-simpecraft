@@ -1,9 +1,9 @@
-/* Живі демо уроків (love.js, tools/build-demos.sh).
-   У Markdown демо стоїть одразу після картинки результату:
+/* Live lesson demos (love.js, tools/build-demos.sh).
+   In the Markdown a demo follows the lesson's result image directly:
        ![…](images/move.gif)
        <iframe class="lesson-demo" src="demo/index.html?poster=../images/move.gif" …></iframe>
-   У книзі показуємо демо замість картинки; GitHub вирізає iframe, тож там лишається
-   картинка, і в друці теж. */
+   The book shows the demo instead of the image; GitHub strips the iframe, so the image
+   stays there, and in print as well. */
 .lesson-demo {
     display: block;
     width: 100%;
@@ -11,7 +11,7 @@
     border: 0;
     border-radius: 6px;
     background: #87bdf2;
-    pointer-events: none; /* демо неінтерактивне: прокручування сторінки працює й над ним */
+    pointer-events: none; /* the demo is non-interactive: page scrolling works over it too */
 }
 
 p:has(> img:only-child):has(+ .lesson-demo) {

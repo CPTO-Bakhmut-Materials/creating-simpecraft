@@ -1,14 +1,15 @@
 <!doctype html>
-<!-- Сторінка демо уроку (tools/build-demos.sh підставляє __TITLE__ і __RUNTIME__ — відносний
-     шлях до спільного рушія book/demo-runtime). Вбудовується в урок
-     через <iframe>; ?poster=… — статична картинка, якщо WebGL 2 немає або демо не запустилося. -->
+<!-- Lesson demo page (tools/build-demos.sh fills in __TITLE__ and __RUNTIME__, the relative
+     path to the shared runtime in book/demo-runtime). Embedded in a lesson via <iframe>;
+     ?poster=… is a static image shown if WebGL 2 is missing or the demo fails to start.
+     Visible messages are Ukrainian on purpose: readers of the book see them. -->
 <html lang="uk">
 <head>
 <meta charset="utf-8">
 <title>__TITLE__</title>
 <style>
     html, body { margin: 0; height: 100%; overflow: hidden; background: #87bdf2; }
-    /* Буфер полотна — 1280×720 (вікно гри), тут лише масштабуємо його під рамку. */
+    /* The canvas buffer is 1280×720 (the game window); here it is only scaled to fit the frame. */
     canvas { display: block; width: 100% !important; height: 100% !important; object-fit: contain; }
     #status {
         position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
@@ -22,7 +23,7 @@
 <div id="status">Завантаження демо…</div>
 <img id="poster" alt="">
 <script>
-    // Не «status»: глобальна змінна з такою назвою — це вбудований рядок window.status.
+    // Not "status": a global with that name is the built-in string window.status.
     var statusEl = document.getElementById("status");
     var poster = new URLSearchParams(location.search).get("poster");
 
@@ -61,7 +62,7 @@
             },
         };
         window.onerror = function () { fallback("Демо зупинилося з помилкою"); };
-        // game.js — файли уроку (свої для кожного демо); love.js і love.wasm — спільні для всієї книги.
+        // game.js holds the lesson's files (one per demo); love.js and love.wasm are shared by the whole book.
         loadScript("game.js", function () {
             loadScript("__RUNTIME__/love.js", function () { Love(Module); });
         });

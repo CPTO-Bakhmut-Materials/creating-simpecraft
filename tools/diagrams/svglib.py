@@ -1,18 +1,18 @@
-"""Мінімальна бібліотека для схем курсу: пише SVG і перевіряє, що написи
-нічого не перекривають.
+"""Minimal library for the course diagrams: writes SVG and checks that labels
+do not overlap anything.
 
-Правила оформлення (за мотивами ISO 128 і ISO 3098):
-- шрифт прямий, написи лише горизонтальні;
-- висоти шрифту утворюють ряд із кроком √2: SM = 12, MD = 17, LG = 24 px;
-- товщини ліній співвідносяться як 1 : 2 : 4 (THIN, WIDE, XWIDE);
-- виносні лінії (leader) тонкі й закінчуються крапкою всередині площі або
-  стрілкою на контурі об'єкта;
-- напис не перетинає жодної лінії, не накладається на інший напис і не
-  лежить «навпіл» на межі фігури: або цілком усередині, або цілком зовні.
+Drawing rules (after ISO 128 and ISO 3098):
+- upright lettering, labels are horizontal only;
+- text heights follow a √2 series: SM = 12, MD = 17, LG = 24 px;
+- line widths relate as 1 : 2 : 4 (THIN, WIDE, XWIDE);
+- leader lines are thin and end in a dot inside an area or an arrow on an
+  object's outline;
+- a label crosses no line, overlaps no other label and never straddles a
+  shape's border: it is either fully inside or fully outside.
 
-Fig.save() перевіряє ці правила і падає з переліком порушень.
-Ширину тексту міряємо шрифтом DejaVu Sans (із matplotlib) і записуємо в
-textLength, тож інший шрифт у браузері не зробить напис довшим.
+Fig.save() checks these rules and fails with a list of violations.
+Text width is measured with DejaVu Sans (bundled with matplotlib) and written
+to textLength, so a different browser font cannot make a label longer.
 """
 
 import base64
@@ -23,9 +23,9 @@ from html import escape
 import matplotlib
 from PIL import ImageFont
 
-# Ряд висот шрифту (ISO 3098: крок √2).
+# Text height series (ISO 3098: √2 steps).
 SM, MD, LG = 12, 17, 24
-# Товщини ліній (ISO 128: 1 : 2 : 4).
+# Line widths (ISO 128: 1 : 2 : 4).
 THIN, WIDE, XWIDE = 1, 2, 4
 
 INK = "#1f2933"
@@ -42,7 +42,7 @@ STONE_C = "#7f7f7f"
 DIRT_C = "#79553a"
 GRASS_C = "#5f9f35"
 
-# Світлі заливки до кольорів вище.
+# Light fills matching the colours above.
 FILL = {
     BLUE: "#e3ebfa", GREEN: "#e4f1e6", RED: "#f9e3e3", ORANGE: "#fbece1",
     PURPLE: "#ede6f8", GRAY: "#eceef1", YELLOW: "#fbf1cf",
@@ -62,7 +62,7 @@ _FONT_FILES = {
 }
 _fonts = {}
 
-PAD = 3  # мінімальний просвіт навколо напису, px
+PAD = 3  # minimum clearance around a label, px
 
 
 def text_width(s, size, weight="normal", style="normal", mono=False):
@@ -78,7 +78,7 @@ def fmt(v):
 
 
 def _seg_hits_box(p, q, box):
-    """Чи перетинає відрізок pq прямокутник box = (x0, y0, x1, y1) (Liang-Barsky)."""
+    """Whether segment pq crosses the box (x0, y0, x1, y1) (Liang-Barsky)."""
     x0, y0, x1, y1 = box
     dx, dy = q[0] - p[0], q[1] - p[1]
     t0, t1 = 0.0, 1.0
@@ -116,7 +116,7 @@ def bezier(p0, p1, p2, p3, n=24):
 
 
 def arc_points(cx, cy, r, a0, a1, n=32, ry=None):
-    """Точки дуги; кути в градусах, 0° — праворуч, додатні — проти год. стрілки (вгору)."""
+    """Arc points; angles in degrees, 0° points right, positive is counter-clockwise (up)."""
     ry = r if ry is None else ry
     return [(cx + r * math.cos(math.radians(a0 + (a1 - a0) * i / n)),
              cy - ry * math.sin(math.radians(a0 + (a1 - a0) * i / n))) for i in range(n + 1)]
@@ -127,12 +127,12 @@ class Fig:
         self.w, self.h, self.title = w, h, title
         self.out = []
         self.texts = []      # (box, label)
-        self.edges = []      # (p, q, owner) — лінії, яких напис не має торкатися
-        self.areas = []      # (box, owner) — фігури: напис цілком усередині або зовні
-        self.solids = []     # (box, owner) — точки/маркери: напис не накладається
+        self.edges = []      # (p, q, owner) — lines a label must not touch
+        self.areas = []      # (box, owner) — shapes: a label is fully inside or fully outside
+        self.solids = []     # (box, owner) — dots/markers: a label must not overlap them
         self.defs = []
 
-    # --- примітиви ------------------------------------------------------
+    # --- primitives ------------------------------------------------------
 
     def _register_poly(self, pts, closed, check, owner):
         if not check:
@@ -187,8 +187,8 @@ class Fig:
         self.out.append(s)
 
     def image(self, x, y, w, h, src, pixelated=True, check=True):
-        """Растрове зображення всередині SVG (вбудоване: <img> не вантажить зовнішні файли).
-        src — шлях до PNG або вже готові байти PNG."""
+        """Raster image inside the SVG, embedded (an <img> SVG does not load external files).
+        src is a PNG path or the PNG bytes themselves."""
         if isinstance(src, str):
             with open(src, "rb") as f:
                 src = f.read()
@@ -199,7 +199,7 @@ class Fig:
         if check:
             self.areas.append(((x, y, x + w, y + h), "image"))
 
-    # --- стрілки й виносні лінії ---------------------------------------
+    # --- arrows and leader lines ----------------------------------------
 
     def _head(self, tip, frm, color, sw, size=None):
         L = size or max(9, 3.2 * sw + 4)
@@ -212,7 +212,7 @@ class Fig:
 
     def arrow(self, pts, color=INK, sw=WIDE, start=False, end=True, dash=None, head=None,
               check=True):
-        """Ламана зі стрілкою на кінці (і/або на початку)."""
+        """Polyline with an arrowhead at the end (and/or the start)."""
         pts = list(pts)
         if end:
             pts[-1] = self._head(pts[-1], pts[-2], color, sw, head)
@@ -234,8 +234,8 @@ class Fig:
         self._register_poly(pts, False, True, "curve")
 
     def leader(self, frm, to, color=INK, end="dot"):
-        """Виносна лінія ISO 128: від напису до об'єкта; end = 'dot' (усередині площі),
-        'arrow' (на контурі) або None."""
+        """ISO 128 leader line from a label to an object; end = 'dot' (inside an area),
+        'arrow' (on an outline) or None."""
         if end == "arrow":
             self.arrow([frm, to], color=color, sw=THIN)
         else:
@@ -243,14 +243,14 @@ class Fig:
             if end == "dot":
                 self.out.append(f'<circle cx="{fmt(to[0])}" cy="{fmt(to[1])}" r="2.5" fill="{color}"/>')
 
-    # --- текст ----------------------------------------------------------
+    # --- text ------------------------------------------------------------
 
     def text(self, x, y, s, size=SM, color=INK, weight="normal", style="normal", mono=False,
              anchor="start", check=True, halo=None, lh=1.3):
-        """Напис; y — базова лінія першого рядка. '\\n' розбиває на рядки.
-        Повертає рамку (x0, y0, x1, y1)."""
+        """A label; y is the baseline of the first line, '\\n' splits lines.
+        Returns the bounding box (x0, y0, x1, y1)."""
         boxes = []
-        # Рядки одного напису між собою не перевіряємо — це одна група.
+        # Lines of one label are not checked against each other: they form one group.
         self._group = getattr(self, "_group", 0) + 1
         for i, line in enumerate(s.split("\n")):
             yy = y + i * size * lh
@@ -280,11 +280,11 @@ class Fig:
         return (min(b[0] for b in boxes), min(b[1] for b in boxes),
                 max(b[2] for b in boxes), max(b[3] for b in boxes))
 
-    # --- готові блоки ---------------------------------------------------
+    # --- ready-made blocks ----------------------------------------------
 
     def box(self, x, y, w, h, title, sub=None, color=BLUE, title_mono=False, rx=8,
             title_size=MD, sub_size=SM, fill=None):
-        """Скруглений блок із заголовком і підписом, текст по центру."""
+        """Rounded box with a centred title and caption."""
         self.rect(x, y, w, h, fill=fill or FILL.get(color, "#fff"), stroke=color, sw=WIDE, rx=rx)
         tl = title.split("\n")
         sl = sub.split("\n") if sub else []
@@ -298,7 +298,7 @@ class Fig:
             self.text(x + w / 2, top + th + gap + sub_size * 0.95, sub, size=sub_size,
                       anchor="middle", color=INK)
 
-    # --- перевірка й запис ---------------------------------------------
+    # --- checks and output ----------------------------------------------
 
     def check(self):
         errs = []
@@ -307,21 +307,21 @@ class Fig:
         for i, (b, s, g) in enumerate(padded):
             raw = self.texts[i][0]
             if not _inside(raw, canvas):
-                errs.append(f"за межами полотна: {s!r} {tuple(round(v) for v in raw)}")
+                errs.append(f"outside the canvas: {s!r} {tuple(round(v) for v in raw)}")
             for b2, s2, g2 in padded[i + 1:]:
                 if g != g2 and _boxes_hit(b, b2):
-                    errs.append(f"напис на написі: {s!r} / {s2!r}")
+                    errs.append(f"label overlaps label: {s!r} / {s2!r}")
             for p, q, owner in self.edges:
                 if _seg_hits_box(p, q, b):
-                    errs.append(f"лінія ({owner}) перетинає напис {s!r}")
+                    errs.append(f"line ({owner}) crosses label {s!r}")
                     break
             for box, owner in self.solids:
                 if _boxes_hit(b, box):
-                    errs.append(f"маркер ({owner}) під написом {s!r}")
+                    errs.append(f"marker ({owner}) under label {s!r}")
                     break
             for box, owner in self.areas:
                 if _boxes_hit(raw, box) and not _inside(raw, box):
-                    errs.append(f"напис {s!r} лежить на межі фігури ({owner})")
+                    errs.append(f"label {s!r} straddles a shape border ({owner})")
                     break
         return errs
 
@@ -336,8 +336,8 @@ class Fig:
         return head + "\n".join(self.out) + "\n</svg>\n"
 
     def save(self, path):
-        """Записує SVG, якщо перевірка пройшла. DIAGRAMS_PREVIEW=1 записує й
-        схему з порушеннями — щоб подивитися, що саме не так."""
+        """Writes the SVG if the checks pass. DIAGRAMS_PREVIEW=1 also writes a diagram
+        with violations, so you can look at what is wrong."""
         errs = self.check()
         if not errs or os.environ.get("DIAGRAMS_PREVIEW"):
             with open(path, "w", encoding="utf-8") as f:

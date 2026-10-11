@@ -7,15 +7,15 @@ src = "."
 [build]
 build-dir = "book"
 create-missing = false
-# Без стандартного препроцесора index: інакше README.md перетворюються на index.html
-# і посилання між уроками (../01-window/README.md) ламаються.
+# No default index preprocessor: it would turn README.md into index.html and break
+# the links between lessons (../01-window/README.md).
 use-default-preprocessors = false
 
 [preprocessor.links]
 
-# Формули LaTeX: $...$ у рядку, $$...$$ окремим блоком. KaTeX рендерить їх під час
-# збирання, а GitHub показує ту саму розмітку у файлах README.
-# Потрібна програма mdbook-katex 0.9.x (сумісна з mdBook 0.4), див. .github/workflows/pages.yml.
+# LaTeX formulas: $...$ inline, $$...$$ as a block. KaTeX renders them at build time,
+# and GitHub shows the same markup in the README files.
+# Needs mdbook-katex 0.9.x (compatible with mdBook 0.4); pinned in tools/versions.env.
 [preprocessor.katex]
 after = ["links"]
 
@@ -24,10 +24,10 @@ default-theme = "light"
 preferred-dark-theme = "navy"
 no-section-label = true
 additional-css = ["theme/katex.css", "theme/demo.css", "theme/rgb-mixer.css"]
-# Віджет «модель RGB» в уроці 1 (<div class="rgb-mixer"> у Markdown).
+# The "RGB model" widget in lesson 1 (<div class="rgb-mixer"> in the Markdown).
 additional-js = ["theme/rgb-mixer.js"]
 
-# Вбудований пошук mdBook (elasticlunr) відкидає кириличні слова, тож для
-# українського тексту він нічого не знаходить. Вимикаємо, щоб не вводити в оману.
+# mdBook's built-in search (elasticlunr) drops Cyrillic words, so it finds nothing
+# in Ukrainian text. Disabled so it doesn't mislead readers.
 [output.html.search]
 enable = false

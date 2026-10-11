@@ -1,5 +1,5 @@
-/* Віджет «модель RGB» (theme/rgb-mixer.js) і вбудоване відео YouTube Shorts.
-   Кольори рамок — зі змінних теми mdBook. */
+/* The "RGB model" widget (theme/rgb-mixer.js), embedded YouTube Shorts and foldables.
+   Border colours come from the mdBook theme variables. */
 .rgb-mixer {
     margin: 1em 0;
     padding: 1em;
@@ -63,7 +63,7 @@
 
 .rgb-mixer-presets button:hover { border-color: var(--links); }
 
-/* Вертикальне відео (YouTube Shorts, 9:16). */
+/* Vertical video (YouTube Shorts, 9:16). */
 .video-short {
     display: block;
     width: 100%;
@@ -76,16 +76,16 @@
 
 .video-credit { text-align: center; font-size: 0.9em; }
 
-/* Згорнуті блоки «детальніше». */
+/* Foldable "more details" blocks. */
 details.more {
     margin: 0.6em 0 1em;
     padding: 0.4em 0.9em;
     border: 1px solid var(--table-border-color);
     border-radius: 6px;
-    background: #f2f3f5; /* світло-сірий і згорнутим, і розгорнутим */
+    background: #f2f3f5; /* light gray both folded and unfolded */
 }
 
-/* У темних темах mdBook світло-сірий був би сліпучим — беремо ледь світліший відтінок тла. */
+/* In mdBook's dark themes light gray would glare, so use a barely lighter shade of the background. */
 .coal details.more,
 .navy details.more,
 .ayu details.more {

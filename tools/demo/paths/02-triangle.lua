@@ -1,4 +1,4 @@
--- Урок 2: сцена нерухома; щотри секунди вмикаємо й вимикаємо каркасний режим (Tab).
+-- Lesson 2: a static scene; wireframe mode (Tab) toggles every three seconds.
 return {
     duration = 6,
     presses = {

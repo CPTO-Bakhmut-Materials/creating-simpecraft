@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
-# Збирає неінтерактивні демо для браузера (love.js):
-#   * демо уроків у book/<урок>/demo/ — код уроку без змін + tools/demo/main.lua
-#     (сценарій камери з tools/demo/paths/<урок>.lua) і tools/demo/conf.lua (версія рушія);
-#   * приклади <урок>/samples/<назва>/ (окремі неінтерактивні програми LÖVE) у
-#     book/<урок>/samples/<назва>/ — лише з tools/demo/conf.lua.
-# Рушій love.js / love.wasm спільний: book/demo-runtime/.
+# Builds the non-interactive in-browser demos (love.js):
+#   * lesson demos in book/<lesson>/demo/: the unchanged lesson code + tools/demo/main.lua
+#     (camera script from tools/demo/paths/<lesson>.lua) and tools/demo/conf.lua (runtime version);
+#   * samples <lesson>/samples/<name>/ (standalone non-interactive LÖVE programs) in
+#     book/<lesson>/samples/<name>/, with tools/demo/conf.lua only.
+# The love.js / love.wasm runtime is shared: book/demo-runtime/.
 #
-# Використання: LOVEJS=/шлях/до/love.js tools/build-demos.sh
-#   LOVEJS — клон https://github.com/cptobakhmut925-glitch/love.js з виконаним `npm ci`.
-#   Запускати після mdbook build (tools/build-book.sh робить це сам).
-#   Без LOVEJS пишемо лише сторінки демо: вони показують статичну картинку уроку.
+# Usage: LOVEJS=/path/to/love.js tools/build-demos.sh
+#   LOVEJS is a clone of https://github.com/cptobakhmut925-glitch/love.js with `npm ci` done.
+#   Run after mdbook build (tools/build-book.sh does this itself).
+#   Without LOVEJS only the demo pages are written: they show the lesson's static image.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-# Сторінка демо: $1 — тека в book/, $2 — назва, $3 — відносний шлях до book/demo-runtime.
+# Demo page: $1 is the folder in book/, $2 the title, $3 the relative path to book/demo-runtime.
 write_page() {
     mkdir -p "$1"
     sed -e "s#__TITLE__#$2#" -e "s#__RUNTIME__#$3#" tools/demo/index.html > "$1/index.html"
@@ -34,7 +34,7 @@ fi
 
 runtime=book/demo-runtime
 mkdir -p "$runtime"
-# compat — однопотокова збірка: не потребує заголовків COOP/COEP, яких GitHub Pages не надсилає.
+# compat is the single-threaded build: it needs no COOP/COEP headers, which GitHub Pages can't send.
 cp "$LOVEJS/src/compat/love.js" "$LOVEJS/src/compat/love.wasm" "$runtime/"
 
 work=$(mktemp -d)

@@ -1,5 +1,5 @@
--- Урок 7: той самий обліт острова; на третину циклу вмикаємо каркас (Tab),
--- щоб було видно, що прихованих граней більше немає.
+-- Lesson 7: the same island orbit; wireframe (Tab) is on for a third of the loop
+-- to show that the hidden faces are gone.
 return {
     duration = 32,
     camera = function(u)

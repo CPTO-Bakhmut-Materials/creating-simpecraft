@@ -1,20 +1,20 @@
---- Налаштування демо (збирає tools/build-demos.sh): conf.lua уроку без змін,
--- перейменований на lesson_conf.lua, плюс одна поправка для браузера.
+--- Demo settings (packed by tools/build-demos.sh): the lesson's conf.lua unchanged,
+-- renamed to lesson_conf.lua, plus a few browser-specific fixes.
 
 love.filesystem.load("lesson_conf.lua")()
 local lessonConf = love.conf
 
 function love.conf(t)
     lessonConf(t)
-    -- Рушій love.js — LÖVE 11.4, а уроки написано для 11.5. Розбіжність версій LÖVE
-    -- показує вікном-попередженням, а в браузері це alert(), що зупиняє сторінку.
-    -- Код уроків від цієї різниці не залежить, тож оголошуємо версію самого рушія.
+    -- The love.js runtime is LÖVE 11.4, while the lessons target 11.5. LÖVE reports a
+    -- version mismatch with a warning dialog, which in a browser is a blocking alert().
+    -- The lesson code doesn't depend on the difference, so declare the runtime's own version.
     t.version = love._version
-    -- Фіксований кадр 1280×720, як в уроці: сторінка лише масштабує його під розмір рамки.
-    -- Інакше вікно підлаштувалося б під рамку, і квадрат уроку 1 виїхав би за край.
+    -- Fixed 1280×720 frame as in the lesson; the page only scales it to fit the iframe.
+    -- Otherwise the window would resize to the frame and lesson 1's square would leave the screen.
     t.window.resizable = false
-    -- Однопотокова збірка love.js падає («RuntimeError: null function»), якщо модулі
-    -- звуку вимкнено, як в уроці 10. Демо звуку не відтворює, тож просто вмикаємо їх.
+    -- The single-threaded love.js build crashes ("RuntimeError: null function") when the
+    -- audio modules are disabled, as lesson 10 does. Demos play no sound, so just enable them.
     t.modules.audio = true
     t.modules.sound = true
 end

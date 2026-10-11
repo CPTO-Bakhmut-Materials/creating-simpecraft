@@ -1,21 +1,21 @@
---- Демо-режим уроку для книги (збирає tools/build-demos.sh, у браузері — love.js).
+--- Lesson demo mode for the book (packed by tools/build-demos.sh, run by love.js).
 --
--- Код уроку не змінюється: його main.lua перейменовано на lesson_main.lua, а цей
--- файл запускає його і робить показ неінтерактивним:
---   * справжній ввід вимкнено — клавіатура «нічого не натиснуто», події миші й
---     клавіш до уроку не доходять, курсор не захоплюється;
---   * сценарій demo_path.lua (свій для кожного уроку) замкнено в цикл: він рухає
---     камеру, «натискає» клавіші або вмикає каркасний режим у заданий момент.
+-- The lesson code is unchanged: its main.lua is renamed to lesson_main.lua, and
+-- this file runs it and makes the show non-interactive:
+--   * real input is off: the keyboard reports "nothing pressed", mouse and key
+--     events never reach the lesson, and the cursor is never captured;
+--   * the script demo_path.lua (one per lesson) runs in a loop: it moves the
+--     camera, "holds" keys or toggles wireframe at given moments.
 --
--- Формат demo_path.lua:
---   duration = секунди одного циклу;
---   camera   = function(u) → eye {x, y, z}, target {x, y, z}   (u від 0 до 1);
---   keys     = { {from, to, {"d", ...}}, ... } — клавіші, «утримувані» на відрізку часу;
---   presses  = { {t, "tab"}, ... }          — разові натискання в момент t.
+-- demo_path.lua format:
+--   duration = seconds per loop;
+--   camera   = function(u) → eye {x, y, z}, target {x, y, z}   (u from 0 to 1);
+--   keys     = { {from, to, {"d", ...}}, ... } — keys "held" during a time span;
+--   presses  = { {t, "tab"}, ... }          — single key presses at time t.
 
 local Path = require("demo_path")
 
--- Камеру урок створює сам; перехоплюємо її, щойно викликано Camera.new.
+-- The lesson creates its own camera; capture it as soon as Camera.new is called.
 local camera
 do
     local ok, Camera = pcall(require, "src.render.camera")
@@ -28,7 +28,7 @@ do
     end
 end
 
--- Клавіші «утримує» лише сценарій.
+-- Only the script "holds" keys.
 local held = {}
 love.keyboard.isDown = function(...)
     for i = 1, select("#", ...) do
@@ -53,9 +53,9 @@ local function silenceInput()
 end
 
 function love.load()
-    -- Аргументів командного рядка в браузері немає: урок бере свій світ за замовчуванням.
+    -- There are no command-line arguments in the browser: the lesson loads its default world.
     if lesson.load then lesson.load({}, {}) end
-    -- Урок 10 реєструє обробники вводу всередині love.load, тож беремо їх звідти.
+    -- Lesson 10 registers its input callbacks inside love.load, so take them from there.
     lesson.keypressed = love.keypressed or lesson.keypressed
     silenceInput()
 end
@@ -72,7 +72,7 @@ local function keysAt(t)
     return set
 end
 
--- Найближча межа відрізка «клавіші» після t (щоб не розмазати її по кадру).
+-- The next key-span boundary after t (so a boundary is never smeared across a frame).
 local function nextBoundary(t)
     local best = Path.duration
     for _, span in ipairs(Path.keys or {}) do
@@ -101,8 +101,8 @@ local function placeCamera()
 end
 
 function love.update(dt)
-    dt = math.min(dt, 0.1) -- після паузи вкладки не перестрибуємо півсцени
-    -- Ділимо кадр на межах відрізків клавіш: так рух за сценарієм точний і цикл не «пливе».
+    dt = math.min(dt, 0.1) -- after a paused tab, don't jump half the scene ahead
+    -- Split the frame at key-span boundaries: scripted movement stays exact and the loop doesn't drift.
     while dt > 0 do
         local step = math.min(dt, nextBoundary(time) - time)
         held = keysAt(time)

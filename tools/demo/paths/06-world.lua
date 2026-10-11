@@ -1,4 +1,4 @@
--- Урок 6: облітаємо острів 48×48×24 по колу.
+-- Lesson 6: circle the 48×48×24 island.
 return {
     duration = 32,
     camera = function(u)

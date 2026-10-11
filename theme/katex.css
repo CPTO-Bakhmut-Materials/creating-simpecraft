@@ -1,5 +1,5 @@
-/* Формула не розривається посередині: у вузькій колонці таблиці
-   краще ширша колонка, ніж «|v| =» на одному рядку і корінь на іншому. */
+/* Never break a formula in the middle: in a narrow table column, a wider column is
+   better than "|v| =" on one line and the square root on the next. */
 .katex {
     white-space: nowrap;
 }

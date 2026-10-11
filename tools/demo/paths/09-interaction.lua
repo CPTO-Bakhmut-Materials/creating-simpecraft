@@ -1,4 +1,4 @@
--- Урок 9: ближчий обліт — у центрі екрана видно приціл над блоками.
+-- Lesson 9: a closer orbit, with the crosshair visible over the blocks.
 return {
     duration = 28,
     camera = function(u)

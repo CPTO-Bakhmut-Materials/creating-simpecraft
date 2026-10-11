@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Генерує SVG-схеми уроків у <урок>/images/<назва>.g.svg
-(«.g.» у назві — ознака згенерованого файлу: редагуйте цей скрипт, а не SVG).
+"""Generates the lesson SVG diagrams into <lesson>/images/<name>.g.svg
+(".g." marks a generated file: edit this script, not the SVG).
 
-Використання: python3 tools/diagrams/build.py [назва ...]
-(без аргументів — усі схеми). Потрібні matplotlib (лише заради шрифтів
-DejaVu для вимірювання тексту) і Pillow.
-Змінна DIAGRAMS_PREVIEW=1 записує й схему, що не пройшла перевірку.
+Usage: python3 tools/diagrams/build.py [name ...]
+(no arguments builds every diagram). Needs matplotlib (only for its DejaVu
+fonts, used to measure text) and Pillow.
+DIAGRAMS_PREVIEW=1 also writes diagrams that fail the checks.
+Diagram labels are Ukrainian on purpose: they appear in the book.
 """
 
 import math
@@ -44,7 +45,7 @@ def neg(v):
 
 
 class Chart:
-    """Прямокутна система координат: осі, поділки, сітка."""
+    """Cartesian chart frame: axes, ticks, grid."""
 
     def __init__(self, fig, x, y, w, h, xr, yr, xticks=(), yticks=(), xlabel=None, ylabel=None,
                  grid=True, ytick_labels=True, xfmt=str, yfmt=str):
@@ -66,7 +67,7 @@ class Chart:
         if xlabel:
             fig.text(x + w / 2, y + h + 46, xlabel, anchor="middle")
         if ylabel:
-            # Написи лише горизонтальні (ISO 3098), тож підпис осі y — над нею.
+            # Labels are horizontal only (ISO 3098), so the y-axis caption sits above the axis.
             fig.text(x - 40, y - 24, ylabel)
 
     def px(self, v):
@@ -140,7 +141,7 @@ def game_loop():
 def screen_coords():
     f = Fig(700, 430, "Система координат екрана LÖVE: квадрат уроку 1")
     sky = "#87bdf2"
-    # Вікно 1280×720 у масштабі 0.43 — компактно, щоб написи не дрібнішали в книзі.
+    # The 1280×720 window at 0.43 scale: compact, so labels don't shrink in the book.
     S = 0.43
     ox, oy = 100, 76
 
@@ -157,14 +158,14 @@ def screen_coords():
     f.text(ox - 28, oy + 5, "(0, 0)", anchor="end")
     f.circle(*P(1280, 720), 4)
     f.text(P(1280, 720)[0], P(1280, 720)[1] + 22, "(1280, 720)", anchor="end")
-    # Квадрат 64×64 у точці (100, 100), колір землі з code/main.lua.
+    # The 64×64 square at (100, 100), in the dirt colour from code/main.lua.
     sx, sy = P(100, 100)
     f.rect(sx, sy, 64 * S, 64 * S, fill="#78543b")
     f.circle(sx, sy, 3.5, fill=INK)
     f.text(sx + 6, sy + 64 * S + 30, "player = { x = 100, y = 100 }:\nлівий верхній кут квадрата",
            size=MD)
     f.leader((sx - 4, sy + 64 * S + 24), (sx - 1, sy + 3), end=None)
-    # Куди рухають клавіші.
+    # Where the keys move it.
     q = 64 * S
     cx, cy = sx + q / 2, sy + q / 2
     f.arrow([(cx, sy - 5), (cx, sy - 36)], color=GREEN, sw=WIDE)
@@ -182,7 +183,7 @@ def screen_coords():
 def ndc():
     f = Fig(900, 440, "Координати екрана і нормалізовані координати пристрою (NDC)")
     sky = "#87bdf2"
-    # Ліворуч: пікселі, (0, 0) угорі ліворуч.
+    # Left: pixels, (0, 0) at the top left.
     f.text(30, 34, "Координати екрана (пікселі)", size=MD, weight="bold")
     x0, y0, w, h = 60, 110, 352, 198
     f.rect(x0, y0, w, h, fill=sky, stroke=INK, sw=THIN)
@@ -195,7 +196,7 @@ def ndc():
     f.circle(x0 + w, y0 + h, 4)
     f.text(x0 + w, y0 + h + 22, "(1280, 720)", anchor="end")
     f.text(x0 + w / 2, y0 + h / 2 + 5, "y росте вниз", color="#165c25", size=MD, anchor="middle")
-    # Праворуч: NDC, (0, 0) у центрі, y угору.
+    # Right: NDC, (0, 0) in the centre, y up.
     f.text(455, 34, "Нормалізовані координати пристрою (NDC)", size=MD, weight="bold")
     cx, cy, s = 680, 235, 150
 
@@ -216,7 +217,7 @@ def ndc():
     for (x, y), color in zip(tri, (BLUE, RED, GREEN)):
         f.circle(*P(x, y), 6, fill=color)
     f.text(P(-0.5, 0.4)[0], P(-0.5, 0.4)[1] - 14, "(-0.5, 0.4)", anchor="middle")
-    # Нижні вершини близько одна до одної, тож підписи в два ряди.
+    # The bottom vertices are close together, so their labels go on two rows.
     f.text(P(-0.8, -0.6)[0] - 16, P(-0.8, -0.6)[1] + 26, "(-0.8, -0.6)")
     f.text(P(-0.2, -0.6)[0] + 22, P(-0.2, -0.6)[1] + 48, "(-0.2, -0.6)", anchor="end")
     f.text(P(0.5, 0.62)[0], P(0.5, 0.62)[1], "y росте вгору,\nрозмір вікна\nне важливий",
@@ -271,7 +272,7 @@ def quad_split():
             f.poly([c, v[2], v[3]], fill=both_f, stroke=INK, sw=THIN)
             f.text(ox + S / 2, oy + S * 0.86, "△1", size=MD, weight="bold", color=BLUE, anchor="middle")
             f.text(ox + S / 2, oy + S * 0.2, "△2", size=MD, weight="bold", color=ORANGE, anchor="middle")
-            # Вузькі області підписуємо зовні, з виносною лінією (ISO 128).
+            # Narrow regions are labelled outside, with a leader line (ISO 128).
             f.text(ox - 24, oy + S / 2 - 4, "дірка:\nтут порожньо", color=RED, weight="bold",
                    anchor="end")
             f.leader((ox - 20, oy + S / 2), (ox + S * 0.18, oy + S * 0.5), color=RED)
@@ -288,7 +289,7 @@ def quad_split():
 # ---------------------------------------------------------------- 03-perspective
 
 def projector(ox, oy, s, ex=(1.0, 0.32), ey=(0.62, -0.42), ez=(0.0, -1.0)):
-    """Похила (кабінетна) проєкція: світова Z угору."""
+    """Oblique (cabinet) projection with world Z up."""
     def P(v):
         x, y, z = v
         return (ox + s * (x * ex[0] + y * ey[0] + z * ez[0]),
@@ -330,7 +331,7 @@ def frustum():
     f = Fig(660, 500, "Піраміда видимості (frustum)")
     f.text(330, 30, "Піраміда видимості (frustum)", size=MD, weight="bold", anchor="middle")
 
-    # Координати камери: d — глибина (праворуч), h — убік (до глядача), v — угору.
+    # Camera coordinates: d is depth (to the right), h is sideways (towards the viewer), v is up.
     def P(d, h, v):
         return (70 + d * 1.0 + h * 0.5, 290 - v * 1.0 + h * 0.32)
 
@@ -341,7 +342,7 @@ def frustum():
         return [P(dd, -hh, hv), P(dd, -hh, -hv), P(dd, hh, -hv), P(dd, hh, hv)]
 
     def cube(d, h, v, s, fill, top, side):
-        # Видимі грані в цій проєкції: −d (ліва), +h (до глядача), +v (верх).
+        # Faces visible in this projection: −d (left), +h (towards the viewer), +v (top).
         c = [[[P(d + i * s, h + j * s, v + k * s) for k in (0, 1)] for j in (0, 1)] for i in (0, 1)]
         f.poly([c[0][0][0], c[0][1][0], c[0][1][1], c[0][0][1]], fill=side, stroke=INK, sw=THIN)
         f.poly([c[0][1][0], c[1][1][0], c[1][1][1], c[0][1][1]], fill=fill, stroke=INK, sw=THIN)
@@ -350,13 +351,13 @@ def frustum():
     gray = ("#b8b8b8", "#d6d6d6", "#9a9a9a")
     cam = P(0, 0, 0)
     far_pts, near_pts = plane(far), plane(near)
-    cube(400, -30, -10, 36, *gray)          # далі за far: малюємо до площини far, бо він за нею
+    cube(400, -30, -10, 36, *gray)          # beyond far: drawn before the far plane, since it is behind it
     f.poly(far_pts, fill="#fbe7d7", stroke=ORANGE, sw=THIN, opacity=0.75)
     for p in far_pts:
         f.line(cam[0], cam[1], p[0], p[1], stroke=INK, sw=THIN, owner="frustum edge")
-    cube(170, -10, -20, 36, "#3a9a4e", "#62b874", "#2c7a3c")    # видно
+    cube(170, -10, -20, 36, "#3a9a4e", "#62b874", "#2c7a3c")    # visible
     f.poly(near_pts, fill="#a9c3f0", stroke=BLUE, sw=WIDE, opacity=0.9)
-    cube(120, -30, 110, 30, *gray)          # поза пірамідою
+    cube(120, -30, 110, 30, *gray)          # outside the frustum
     f.circle(*cam, 7, fill=RED)
     f.text(cam[0], cam[1] + 30, "камера", color=RED, weight="bold", anchor="middle")
     f.text(130, 352, "near", color=BLUE, weight="bold", anchor="middle")
@@ -386,10 +387,10 @@ def perspective_side():
     f.arrow([(ex, ey), (P(9.3, 0)[0], ey)], color=GRAY, sw=THIN)
     f.text(P(9.3, 0)[0] + 6, ey + 5, "z", color=GRAY, weight="bold")
     f.text(P(9.3, 0)[0] - 10, ey + 24, "глибина", color=GRAY, anchor="end")
-    # Кут fovY — дугою за екраном, щоб підпис мав місце між променями.
+    # The fovY arc sits beyond the screen, so its label has room between the rays.
     f.poly(arc_points(ex, ey, 150, -35, 35), stroke=PURPLE, sw=WIDE, closed=False, owner="fov arc")
     f.text(ex + 152, ey + 66, "fovY = 70°", color=PURPLE, weight="bold")
-    # Екран на відстані d = 1; підпис зовні піраміди, з виносною стрілкою.
+    # The screen at distance d = 1; its label sits outside the frustum, with a leader arrow.
     f.line(P(1, tan)[0], P(1, tan)[1], P(1, -tan)[0], P(1, -tan)[1], stroke=BLUE, sw=XWIDE, owner="screen")
     f.text(P(1, 0)[0] - 4, ey + 76, "екран (d = 1)", color=BLUE, weight="bold", anchor="end")
     f.leader((P(1, 0)[0] - 2, ey + 62), (P(1, 0)[0], P(1, -tan)[1] + 2), color=BLUE, end="arrow")
@@ -461,8 +462,8 @@ def diagonal():
 def yaw_pitch():
     f = Fig(760, 560, "Від кутів yaw і pitch до напрямку погляду")
     f.text(380, 30, "Від кутів до напрямку погляду", size=MD, weight="bold", anchor="middle")
-    # Вид «з боку X»: X — до глядача (ліворуч униз), Y — праворуч, Z — угору;
-    # так вектор forward не збігається на малюнку з жодною віссю.
+    # View "from the X side": X towards the viewer (down-left), Y right, Z up,
+    # so the forward vector doesn't coincide with any axis on the drawing.
     P = projector(300, 330, 300, ex=(-0.55, 0.40), ey=(1.0, 0.12))
     o = P((0, 0, 0))
     f.poly([P((math.cos(a), math.sin(a), 0)) for a in
@@ -479,7 +480,7 @@ def yaw_pitch():
     fwd = (shadow[0], shadow[1], math.sin(pitch))
     f.poly([o, P(shadow)], stroke=ORANGE, sw=WIDE, closed=False, dash="7 5", owner="cos(pitch)")
     f.poly([P(shadow), P(fwd)], stroke=GREEN, sw=WIDE, closed=False, dash="2 4", owner="sin(pitch)")
-    # Дуга yaw — на землі від +X до «тіні», дуга pitch — у вертикальній площині.
+    # The yaw arc lies on the ground from +X to the "shadow"; the pitch arc is in the vertical plane.
     r = 0.3
     f.poly([P((r * math.cos(a), r * math.sin(a), 0)) for a in
             (yaw * i / 24 for i in range(25))], stroke=ORANGE, sw=3, closed=False, owner="yaw arc")
@@ -495,7 +496,7 @@ def yaw_pitch():
     ya = P((0.3 * math.cos(yaw / 2), 0.3 * math.sin(yaw / 2), 0))
     f.text(ya[0] + 10, ya[1] + 60, "yaw", color=ORANGE, weight="bold", size=MD)
     f.leader((ya[0] + 8, ya[1] + 40), ya, color=ORANGE)
-    # «pitch» — у вільному клині між forward і віссю Y, поруч зі своєю дугою.
+    # "pitch" goes in the free wedge between forward and the Y axis, next to its arc.
     pa = P((0.45 * math.cos(pitch) * math.cos(yaw), 0.45 * math.cos(pitch) * math.sin(yaw),
             0.45 * math.sin(pitch)))
     f.text(pa[0] + 12, pa[1] + 30, "pitch", color=GREEN, weight="bold", size=MD)
@@ -534,8 +535,8 @@ def array_layers():
         x, yk = X0 + k * DX, Y0 - k * DY
         f.image(x, yk, S, S, os.path.join(TEXTURES, files[k]), check=False)
         f.rect(x, yk, S, S, stroke=INK, sw=THIN, check=False)
-    # Підпис шару — ліворуч від стосу; виносна лінія йде до видимої верхньої смуги шару,
-    # тож не перетинає інших шарів (усі шари попереду лежать нижче).
+    # Layer labels sit left of the stack; each leader goes to the layer's visible top strip,
+    # so it crosses no other layer (all layers in front of it lie lower).
     for k in range(4):
         x, yk = X0 + k * DX, Y0 - k * DY
         ly = yk + 22
@@ -601,7 +602,7 @@ def uv_mapping():
         ly = py + 12 if v == 0 else py - 32
         f.rect(lx - 5, ly, w + 10, 22, fill="#1f2933", rx=3, opacity=0.85)
         f.text(lx, ly + 16, label, color="#ffffff", weight="bold")
-    # Праворуч: грань +X і кути з таблиці FACES.
+    # Right: the +X face and its corners from the FACES table.
     f.text(500, 30, "Грань +X: кути з таблиці FACES", size=MD, weight="bold")
     FX, FY, FS = 590, 130, 200
     f.image(FX, FY, FS, FS, os.path.join(TEXTURES, "dirt_grass.png"))
@@ -647,7 +648,7 @@ def flat_index():
         f.arrow([(ox - 14, top + SY * C), (ox - 14, top - 10)], color=GREEN)
         f.text(ox - 14, top - 18, "y", color=GREEN, weight="bold", size=MD, anchor="middle")
     f.text(430, 196, "+1 по z →", color=PURPLE, weight="bold", size=MD, anchor="middle")
-    # Те саме в пам'яті: один плоский масив.
+    # The same in memory: one flat array.
     oy = 330
     f.text(20, oy, "У пам'яті — один масив blocks[ ]:", weight="bold", size=MD)
     CW = 66
@@ -679,7 +680,7 @@ def flat_index():
 
 
 def surface_height(x, y):
-    """Копія surfaceHeight з 06-world/code/src/world/generate.lua."""
+    """Copy of surfaceHeight from 06-world/code/src/world/generate.lua."""
     h = 10 + 3 * math.sin(x / 6) + 3 * math.cos(y / 7) + 2 * math.sin((x + y) / 9)
     return max(4, min(24 - 2, math.floor(h)))
 
@@ -691,8 +692,8 @@ def cmap_hex(name, t):
 
 
 def height_cells(f, ox, oy, cell, color_of, n=48):
-    """Карта висот векторними клітинками; сусідні клітинки одного кольору в рядку
-    зливаємо в один прямокутник, щоб файл був невеликим."""
+    """Heightmap as vector cells; neighbouring cells of the same colour in a row
+    are merged into one rectangle to keep the file small."""
     for y in range(n):
         x = 0
         while x < n:
@@ -720,7 +721,7 @@ def heightmap():
     ly = oy + (n - 20 - 0.5) * cell
     f.line(ox, ly, ox + n * cell, ly, stroke=RED, sw=WIDE, dash="7 4", check=False)
     f.text(ox + 8, ly - 7, "розріз y = 20", color=RED, weight="bold", halo="#ffffff")
-    # Шкала кольорів.
+    # Colour scale.
     bx = ox + n * cell + 20
     for i in range(48):
         f.rect(bx, oy + n * cell - (i + 1) * cell, 14, cell + 0.3,
@@ -729,13 +730,13 @@ def heightmap():
     for t in range(0, 25, 5):
         f.text(bx + 20, oy + n * cell - t / 24 * n * cell + 4, str(t))
     f.text(bx - 4, oy - 10, "висота, блоків")
-    # Праворуч: розріз стовпчиків при y = 20.
+    # Right: cross-section of the columns at y = 20.
     f.text(480, 30, "Розріз світу при y = 20", size=MD, weight="bold")
     sx, sy, sc = 500, 120, 8
     base = sy + 24 * sc
     kinds = ((GRASS_C, "трава: верхній блок"), (DIRT_C, "земля: 3 блоки під травою"),
              (STONE_C, "камінь: решта"))
-    # Легенда — у порожній частині розрізу (над рельєфом там лише повітря).
+    # The legend goes in the empty part of the section (only air above the terrain there).
     for k, (color, label) in enumerate(kinds):
         ly = sy + 8 + k * 22
         f.rect(sx + 12, ly, 12, 12, fill=color)
@@ -801,7 +802,7 @@ def hidden_faces():
                               ((0, 1), (x0, y0, x0 + C, y0)), ((0, -1), (x0, y0 + C, x0 + C, y0 + C))):
             if (x + dx, z + dz) in solid:
                 hidden += 1
-                if dx > 0 or dz > 0:   # спільну грань малюємо один раз
+                if dx > 0 or dz > 0:   # draw a shared face only once
                     f.line(*seg, stroke=RED, sw=1.5, dash="3 3", owner="hidden")
             else:
                 visible += 1
@@ -851,7 +852,7 @@ def winding():
         f.text(A[0] - 14, A[1] + 22, str(left), size=MD, weight="bold", anchor="middle")
         f.text(B[0] + 14, B[1] + 22, str(right), size=MD, weight="bold", anchor="middle")
         f.text(T[0], T[1] - 14, "3", size=MD, weight="bold", anchor="middle")
-        # Стрілки обходу 1→2→3→1 усередині трикутника, паралельно сторонам.
+        # Winding arrows 1→2→3→1 inside the triangle, parallel to its sides.
         pts = {1: A if left == 1 else B, 2: B if left == 1 else A, 3: T}
         cen = ((A[0] + B[0] + T[0]) / 3, (A[1] + B[1] + T[1]) / 3)
         for a, b in ((1, 2), (2, 3), (3, 1)):
@@ -994,8 +995,8 @@ def little_endian():
 
 
 def fields(f, x, y, cells, color, fill=None, dashed=False, value_color=INK, caption_color=INK, h=48):
-    """Рядок полів чанка .vox: [(значення, підпис)], ширина поля — за текстом.
-    Повертає рамки полів (x0, y0, x1, y1)."""
+    """A row of .vox chunk fields: [(value, caption)], each field sized to its text.
+    Returns the field boxes (x0, y0, x1, y1)."""
     boxes = []
     for value, caption in cells:
         w = max(text_width(value, SM, "bold", mono=True), text_width(caption, SM)) + 18
@@ -1017,7 +1018,7 @@ def vox_format():
            size=MD, weight="bold", anchor="middle")
     f.text(450, 54, "Усі числа — u32: 4 байти, молодший перший (little-endian).\n"
            "Файл — дерево «чанків»: заголовок + вміст + дочірні чанки.", anchor="middle")
-    # Заголовок і MAIN.
+    # Header and MAIN.
     f.text(110, 124, "заголовок", weight="bold", color=GRAY, anchor="end")
     b = fields(f, 120, 100, [('"VOX "', "сигнатура"), (str(u32(4)), "версія, u32")], GRAY)
     f.text(b[-1][2] + 12, 126, "← якщо перші 4 байти не «VOX », це не наш формат: помилка", color=GRAY)
@@ -1025,7 +1026,7 @@ def vox_format():
     b = fields(f, 120, 160, [('"MAIN"', "id, 4 байти"), (str(u32(12)), "вміст, u32"),
                              (str(u32(16)), "дочірні, u32")], PURPLE)
     f.text(b[-1][2] + 12, 186, "← корінь: власного вмісту немає,\n    усе — у дочірніх чанках", color=PURPLE)
-    # Контейнер дочірніх чанків MAIN.
+    # Container of MAIN's child chunks.
     f.rect(40, 230, 845, 755, stroke=PURPLE, sw=1.5, dash="2 4")
     f.text(875, 250, "дочірні чанки MAIN", color=PURPLE, style="italic", anchor="end")
     X = 130
@@ -1046,7 +1047,7 @@ def vox_format():
     f.rect(vox0[0] + 2, vox0[1] + 2, vox0[2] - vox0[0] - 4, vox0[3] - vox0[1] - 4, stroke=RED, sw=WIDE,
            check=False)
     f.text(X, 416, "N вокселів по 4 байти: координати + індекс кольору i", color=ORANGE)
-    # Пара SIZE + XYZI — підпис у проміжку між їхніми рядками.
+    # The SIZE + XYZI pair: its label goes in the gap between their rows.
     f.text(X, 337, "↕ пара SIZE + XYZI = одна модель", color=BLUE, weight="bold")
     # RGBA.
     pal = [data[i:i + 4] for i in range(len(data) - 1024, len(data), 4)]
@@ -1056,7 +1057,7 @@ def vox_format():
     rgba_cells += [("…", "до 256")]
     b = fields(f, X, 490, rgba_cells, GREEN)
     f.text(X, 556, "палітра: 256 кольорів по 4 байти", color=GREEN)
-    # Від i = 1 до запису 0.
+    # From i = 1 to palette record 0.
     rec0 = b[3]
     f.curve_arrow(((vox0[0] + vox0[2]) / 2, vox0[3] + 2), ((vox0[0] + vox0[2]) / 2, 450),
                   ((rec0[0] + rec0[2]) / 2 + 40, 440), ((rec0[0] + rec0[2]) / 2 + 20, rec0[1] - 2),
@@ -1076,7 +1077,7 @@ def vox_format():
         f.rect(x, fy, 110, 46, fill=color, rx=3)
         f.text(x + 55, fy + 29, f"{name} ({k + 1})", color="#ffffff", weight="bold", anchor="middle")
     f.text(fx, fy + 72, "найближчий еталонний колір → id блока → World")
-    # Чанки, які пропускаємо.
+    # Chunks we skip.
     sy = 720
     f.text(X - 60, sy, "Інші дочірні чанки, які пише MagicaVoxel. Ми їх ПРОПУСКАЄМО (у нашому файлі їх немає):",
            weight="bold", color=GRAY)
@@ -1110,7 +1111,7 @@ def chunks_touching():
     f = Fig(860, 420, "Renderer.chunksTouching: які чанки зачіпає зміна блока")
     f.text(430, 28, "Renderer.chunksTouching (вид згори; так само працює і по осі z)",
            size=MD, weight="bold", anchor="middle")
-    U = 6.25   # пікселів на блок: чанк 16 блоків = 100 px
+    U = 6.25   # pixels per block: a 16-block chunk = 100 px
     panels = ((60, "блок усередині чанка: 1 чанк", (20, 22), {(1, 1): "свій чанк"}),
               (480, "блок на межі: 3 чанки", (16, 31),
                {(1, 1): "свій чанк", (0, 1): "сусід", (1, 2): "сусід"}))
@@ -1130,18 +1131,18 @@ def chunks_touching():
             f.text(ox - 8, oy + 300 - k * 100 + 4, str(16 * k), anchor="end")
         bx, by = ox + (block[0] + 0.5) * U, oy + 300 - (block[1] + 0.5) * U
         f.rect(bx - U / 2, by - U / 2, U, U, fill=RED, check=False)
-        # Підпис блока — у порожньому чанку, щоб виносна лінія не йшла крізь інші підписи.
+        # The block label goes in an empty chunk, so its leader doesn't run through other labels.
         tx, ty = (ox + 250, oy + 260) if len(marked) == 1 else (ox + 250, oy + 60)
         lbl = f"блок {block}"
         f.text(tx, ty, lbl, color=RED, weight="bold", anchor="middle")
-        # Виносна лінія — від середини лівого краю напису (ISO 128).
+        # The leader starts at the middle of the label's left edge (ISO 128).
         f.leader((tx - text_width(lbl, SM, "bold") / 2 - 5, ty - 4), (bx + 3, by + 3), color=RED,
                  end="arrow")
     f.save(out("chunks_touching"))
 
 
 def traverse(origin, direction, max_cells=40):
-    """Amanatides & Woo у 2D, як у src/world/raycast.lua. Повертає [(клітинка, точка входу, нормаль)]."""
+    """Amanatides & Woo in 2D, as in src/world/raycast.lua. Returns [(cell, entry point, normal)]."""
     cell = [math.floor(origin[0]), math.floor(origin[1])]
     step = [1 if d > 0 else -1 for d in direction]
     spacing = [abs(1 / d) for d in direction]
@@ -1192,7 +1193,7 @@ def raycast():
             for n, (c, entry, _) in enumerate(path):
                 if c != hit:
                     f.rect(*P(c[0], c[1] + 1), U, U, fill="#d5e2f8", stroke=BLUE, sw=1.5)
-                # Номер — у тій половині клітинки, яку промінь не перетинає.
+                # The number goes in the half of the cell the ray doesn't cross.
                 ray_y = origin[1] + (c[0] + 0.5 - origin[0]) * d[1] / d[0]
                 dy = 0.25 if ray_y < c[1] + 0.5 else -0.25
                 tx, ty = P(c[0] + 0.5, c[1] + 0.5 + dy)
@@ -1219,7 +1220,7 @@ def raycast():
             place = (hit[0] + hit_normal[0], hit[1] + hit_normal[1])
             f.rect(*P(place[0], place[1] + 1), U, U, stroke=GREEN, sw=3, dash="6 4", check=False)
             f.arrow([P(hit[0] + 0.1, hit[1] + 0.15), P(hit[0] - 0.45, hit[1] + 0.15)], color=GREEN, sw=3)
-            # Підписи — у порожніх клітинках: під влученням і вгорі ліворуч.
+            # Labels go in empty cells: below the hit and at the top left.
             f.text(*P(5.55, 1.4), f"normal = ({hit_normal[0]}, {hit_normal[1]})".replace("-", "−"),
                    color=GREEN, weight="bold", anchor="middle")
             f.leader(P(5.55, 1.75), P(hit[0] - 0.2, hit[1] + 0.42), color=GREEN, end="arrow")
@@ -1237,11 +1238,11 @@ LESSONS = ("01-window", "02-triangle", "03-perspective", "04-camera", "05-textur
            "07-culling-chunks", "08-vox", "09-interaction", "10-final")
 LESSON_NAMES = ("вікно", "трикутник", "перспектива", "камера", "текстури", "світ", "чанки", ".vox",
                 "взаємодія", "фінал")
-REFERENCE_LINES = 1493   # еталонний проєкт love-mcraft
+REFERENCE_LINES = 1493   # the love-mcraft reference project
 
 
 def lua_stats(lesson):
-    """(непорожніх рядків, файлів) у коді уроку, без тестів."""
+    """(non-empty lines, files) in a lesson's code, excluding tests."""
     lines = files = 0
     for dirpath, dirnames, filenames in os.walk(os.path.join(ROOT, lesson, "code")):
         if "tests" in dirpath.split(os.sep):
@@ -1275,8 +1276,8 @@ def code_growth():
 
 
 def require_graph(lesson):
-    """Ребра require() уроку: {(модуль, модуль)}; імена — останній сегмент шляху
-    ("src.input" і "src.input.init" — це "init")."""
+    """A lesson's require() edges: {(module, module)}; names are the last path segment
+    ("src.input" and "src.input.init" are both "init")."""
     src = os.path.join(ROOT, lesson, "code")
     alias = {"src.input": "init"}
     edges = set()
@@ -1300,8 +1301,8 @@ def require_graph(lesson):
 @diagram("10-final", "modules")
 def modules():
     f = Fig(940, 680, "Залежності модулів фінальної гри")
-    # Пакети: (x, y, w, h, підпис, колір, підпис знизу?). Підписи render і world — знизу:
-    # згори в ці рамки заходять ребра від game.
+    # Packages: (x, y, w, h, label, colour, label at the bottom?). The render and world labels
+    # go at the bottom, because edges from game enter those frames from the top.
     packs = {"input": (15, 200, 180, 200, "src/input/", PURPLE, False),
              "render": (230, 200, 425, 212, "src/render/", BLUE, True),
              "world": (680, 200, 245, 312, "src/world/", GREEN, True),
@@ -1330,8 +1331,8 @@ def modules():
         f.box(x, y, w, h, title, sub, color, title_size=SM, rx=6)
 
     E = GRAY
-    # Маршрути ребер. Залежності від src/math — «рамка → рамка»: vec3 потрібен майже всім,
-    # і окремі стрілки до нього закрили б схему.
+    # Edge routes. Dependencies on src/math are drawn frame to frame: nearly everything uses
+    # vec3, and separate arrows to it would cover the diagram.
     routes = {
         ("main", "game"): [(470, 68), (470, 110)],
         ("main", "config"): [(370, 44), (6, 44), (6, 464), (25, 464)],
@@ -1363,7 +1364,7 @@ def modules():
         else:
             f.arrow(route, color=E, sw=1.5)
 
-    # Схема мусить збігатися з кодом: кожен require() має свою стрілку і навпаки.
+    # The diagram must match the code: every require() has its arrow and vice versa.
     pack_of = {n: v[7] for n, v in nodes.items()}
     expected = set()
     for a, b in require_graph("10-final"):
@@ -1395,7 +1396,7 @@ def testability():
               ["шейдери", "UV і текстури", "MSAA", "відчуття від керування"]))
     y = 54
     for title, note, color, chips in bands:
-        # Фішки розкладаємо в рядки, щоб не вилізли за смугу.
+        # Lay the chips out in rows so they don't overflow the band.
         rows, row, w = [], [], 0
         for chip in chips:
             cw = text_width(chip, SM, mono=True) + 22

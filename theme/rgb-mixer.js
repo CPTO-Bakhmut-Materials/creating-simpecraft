@@ -1,7 +1,8 @@
-// Урок 1: модель RGB. Три «ліхтарики» (червоний, зелений, синій) світять на чорне
-// тло й складаються, як світло; поруч — отриманий колір і той самий колір у
-// записі LÖVE (числа 0..1) і у звичному записі 0..255.
-// Вставляється в Markdown як <div class="rgb-mixer"></div>.
+// Lesson 1: the RGB model. Three "torches" (red, green, blue) shine on a black
+// background and add up like light; next to them is the resulting colour, written
+// both the LÖVE way (0..1 numbers) and the usual 0..255 way.
+// Inserted into the Markdown as <div class="rgb-mixer"></div>.
+// Visible labels are Ukrainian on purpose: readers of the book see them.
 (function () {
     "use strict";
 
@@ -33,8 +34,8 @@
         const rgb = [135, 191, 242];
         host.textContent = "";
 
-        // Ліхтарики: три кола на чорному, mix-blend-mode: screen. Кожне коло має лише свій
-        // канал, тож «screen» тут дає рівно суму каналів — як додавання світла.
+        // Torches: three circles on black with mix-blend-mode: screen. Each circle has only its
+        // own channel, so "screen" gives exactly the sum of the channels, like adding light.
         const pic = svg("svg", { viewBox: "0 0 240 210", class: "rgb-mixer-torches", role: "img",
             "aria-label": "Три кольорові кола, що накладаються" });
         pic.append(svg("rect", { width: 240, height: 210, rx: 8, fill: "#000" }));
@@ -87,7 +88,7 @@
             circles[2].setAttribute("fill", `rgb(0, 0, ${b})`);
             swatch.style.background = `rgb(${r}, ${g}, ${b})`;
             sliders.forEach((s, i) => { s.out.textContent = rgb[i]; });
-            // 0..255 → 0..1 з двома знаками, без зайвих нулів: 1, 0.5, 0.53.
+            // 0..255 → 0..1 with two decimals and no trailing zeros: 1, 0.5, 0.53.
             const f = v => String(parseFloat((v / 255).toFixed(2)));
             code.innerHTML =
                 "<div>LÖVE (0..1):</div><code>love.graphics.setColor(" + rgb.map(f).join(", ") + ")</code>" +

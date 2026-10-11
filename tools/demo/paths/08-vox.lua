@@ -1,4 +1,4 @@
--- Урок 8: світ із test.vox; облітаємо в протилежний бік, трохи вище.
+-- Lesson 8: the world from test.vox, orbited the other way and a little higher.
 return {
     duration = 32,
     camera = function(u)

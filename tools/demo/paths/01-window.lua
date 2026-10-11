@@ -1,4 +1,4 @@
--- Урок 1: квадрат обходить прямокутник — «натискаємо» D, S, A, W.
+-- Lesson 1: the square traces a rectangle by "holding" D, S, A, W.
 return {
     duration = 6,
     keys = {

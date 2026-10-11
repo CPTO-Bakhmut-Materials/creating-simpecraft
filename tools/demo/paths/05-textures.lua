@@ -1,4 +1,4 @@
--- Урок 5: те саме поле, ближче й нижче, щоб було видно текстури.
+-- Lesson 5: the same field, closer and lower so the textures show.
 return {
     duration = 24,
     camera = function(u)
